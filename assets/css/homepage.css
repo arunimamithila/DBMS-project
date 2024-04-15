@@ -15,7 +15,7 @@
   --text-color-light: #A5A1AA;
   --gradiant-color: linear-gradient(250.59deg, #322c38 0%,  #1c2137 28.53%, #000 75.52%);
   --gradiant-color2: linear-gradient(310deg ,#322c38 0%,  #1c2137 28.53%, #000 75.52%);
-  --body-color:  #242934;
+  --body-color:  #202938;
   --container-color: #111727;
   --primary-clr: #b38add;
 
@@ -237,6 +237,12 @@ img {
     
   }
 
+  .bookmark_box i:hover{
+
+    transform: translateY(-6px);
+    transition: all .6s;
+  }
+
   .notification_icon{
 
     font-size: 1.5rem;
@@ -248,6 +254,8 @@ img {
   .notification_icon:hover{
 
     color: var(--first-color);
+    transform: translateY(-6px);
+    transition: all .6s;
   }
 
   .notification_icon img{
@@ -278,31 +286,38 @@ img {
   .bookmarks{
 
     position: absolute;
-    top: 17%;
-    left: 79%;
+    top: 250%;
+    left: 82%;
     transform: translate(-50%, -50%);
-    width: 320px;
-    height: 220px;
+    width: 300px;
+    height: 210px;
     background: var(--container-color);
-    padding: 15px;
+    border-color: var(--container-color);
+    border-radius: 6px;
+    padding: 12px;
     align-items: center; 
     display: none;
+    box-shadow: 0 1px 0 rgba(22, 8, 43, 0.1);
+    border-width: 1rem;
+    box-sizing: border-box;
+    
     /* border-radius:  1.5rem 0 1.5rem 1.5rem; */
 
   } 
   .bookmarks.active{
     display: block;
+    
   }
 
 
   .bookmark_search{
     display: flex;
-    background-color: var(--first-color-light);
+    background-color: #21363f;
     border-radius: .25rem;
     padding: var(--search-padding);
     align-items: center;
     height: 35px;
-    margin-top: 8px;
+    margin-top: 4px;
  
 
   }
@@ -336,7 +351,6 @@ img {
     justify-content: space-between;
     align-items: center;
     font-size: 18px;
-    background-color: var(--first-color);
     box-sizing: border-box;
     margin-top: 8px;
     cursor: pointer;
@@ -350,7 +364,7 @@ img {
 
   .add-bm:hover{
    
-    background-color: var(--second_color);
+    background-color: #21363f;
   
   }
 
@@ -372,15 +386,14 @@ img {
   .notification{
 
     position: absolute;
-    top: 15.7%;
+    top: 240%;
     left: 90%;
     transform: translate(-50%, -50%);
-    width: 300px;
+    width: 270px;
     height: 178px;
-    background: var(--body-color);
-    padding: 4px;
+    background: var(--container-color);
     align-items: center; 
-    display: none;
+    display: none;   
 
     
   }
@@ -428,7 +441,7 @@ img {
 
   .add_noti:hover{
    
-    background-color: #1c2137;
+    background-color: #21363f;
   
   }
 
@@ -437,7 +450,7 @@ img {
   .profile_dropdown{
 
     position: absolute;
-    top: 18%;
+    top: 260%;
     left: 91%;
     transform: translate(-50%, -50%);
     width: 260px;
@@ -640,11 +653,7 @@ img {
   
   .nav__link:hover {
     color: var(--first-color);
-    border-radius: 6px;
-    height: 2rem;
-    box-sizing: dashed;
-    background-color: #1e293b;
-    padding: 8px;
+
   }
   
   .nav__icon {
@@ -1329,13 +1338,12 @@ img {
   padding: 4px;
 
 }
-.card-body h5{
+.card-body h6{
   color: var(--title-color);
 }
 
 .count-progress h5{
   color: var(--first-color);
-  font-weight: bolder;
 
 }
 
