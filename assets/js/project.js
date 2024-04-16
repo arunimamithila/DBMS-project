@@ -1,3 +1,89 @@
+// Function to fetch progress data from server
+function fetchProgress() {
+    fetch('project.php') // Assuming your PHP script is named progress.php
+        .then(response => response.json())
+        .then(data => {
+            // Update progress percentage text
+            document.querySelector('.progress-percentage').textContent = data.percentage + '%';
+            
+            // Update progress bar width
+            const progressBox = document.getElementById('progress-box');
+            progressBox.style.width = data.percentage + '%';
+            progressBox.style.animationDuration = '2s'; // Set animation duration dynamically based on progress percentage
+        })
+        .catch(error => console.error('Error fetching progress:', error));
+}
+
+
+// Optionally, you can set up an interval to continuously update the progress
+// setInterval(fetchProgress, 5000); // Update progress every 5 seconds
+
+
+// Function to fetch project details from server
+function fetchProjectDetails() {
+    fetch('project.php') // Assuming your PHP script is named project_details.php
+        .then(response => response.json())
+        .then(data => {
+            // Update project details in HTML
+            document.querySelector('.pdetails_list:nth-child(2)').textContent = data.issues || '0';
+            document.querySelector('.pdetails_list:nth-child(4)').textContent = data.resolved || '0';
+            document.querySelector('.pdetails_list:nth-child(6)').textContent = data.comments || '0';
+        })
+        .catch(error => console.error('Error fetching project details:', error));
+}
+
+// Call fetchProjectDetails initially to load project details when the page loads
+fetchProjectDetails();
+
+// Optionally, you can set up an interval to continuously update the project details
+// setInterval(fetchProjectDetails, 5000); // Update project details every 5 seconds
+
+
+
+
+
+// Function to fetch project mates' image URLs from server
+function fetchProjectMates() {
+    fetch('project.php') // Assuming your PHP script is named project_mates.php
+        .then(response => response.json())
+        .then(data => {
+            // Update project mates' images in HTML
+            const projectMatesDiv = document.querySelector('.project_mates ul');
+            projectMatesDiv.innerHTML = ''; // Clear existing content
+            data.slice(0, 3).forEach(imageUrl => {
+                const li = document.createElement('li');
+                li.classList.add('d-inline-block');
+                const img = document.createElement('img');
+                img.classList.add('pmate-img', 'rounded-circle');
+                img.src = imageUrl;
+                img.alt = '';
+                img.dataset.originalTitle = '';
+                img.title = '';
+                li.appendChild(img);
+                projectMatesDiv.appendChild(li);
+            });
+
+            // If there are more than 3 project mates, show the "+X More" element
+            if (data.length > 3) {
+                const moreLi = document.createElement('li');
+                moreLi.classList.add('d-inline-block', 'ms-2');
+                const moreP = document.createElement('p');
+                moreP.classList.add('f-12');
+                moreP.textContent = `+${data.length - 3} More`;
+                moreLi.appendChild(moreP);
+                projectMatesDiv.appendChild(moreLi);
+            }
+        })
+        .catch(error => console.error('Error fetching project mates:', error));
+}
+
+// Call fetchProjectMates initially to load project mates when the page loads
+fetchProjectMates();
+
+// Optionally, you can set up an interval to continuously update the project mates
+// setInterval(fetchProjectMates, 5000); // Update project mates every 5 seconds
+
+
 
 // ========================headernav icons============================
 

@@ -740,6 +740,7 @@ img {
     height: 80px;
     margin-top: 1.5rem;
     background-color: var(--container-color);
+    border-radius: 0;
   }
 
   .status-tab{
@@ -797,7 +798,8 @@ img {
     padding-left: 6px;
     background-color: var(--first-color);
     border: none;
-    border-radius: 4px;
+    border-radius: 3px;
+
   }
 
   .create:hover{
@@ -824,26 +826,29 @@ img {
     row-gap: 50px;
     width: 100%;
     padding: 20px;
-    height: 100%;
     margin-top: 1.5rem;
-    border-radius: 8px;
     color: var(--text-color-light);
     font-size: .9rem;
     grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    
+
+
 
   }
 
   .project_con{
-    
+
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     background-color: var(--body-color);
     padding: 25px;
-    border-radius: 8px;
     border-style: ridge;
     border-color: #21363f;
     cursor: pointer;
+    margin-bottom: 3rem;
+
   }
 
   .project_con:hover{
@@ -868,6 +873,18 @@ img {
     border-radius: 3px;
   }
 
+  .badge-secondary{
+
+    color: #f5f5f5;
+    font-size: 11px;
+    font-weight: bold;
+    align-self: flex-end;
+    background-color: var(--second_color);
+    padding: 2px 5px 2px 5px;
+    border-radius: 3px;
+
+  }
+
   .project-box h6{
 
     font-weight: bold;
@@ -890,7 +907,7 @@ img {
     overflow: hidden;
     text-align: center;
     position: relative;
-    margin-right: 12px;
+
 
   }
 
@@ -903,6 +920,7 @@ img {
   .media-body{
     display:flex;
     flex-direction: column;
+    margin-left: 1rem;
     
   }
  
@@ -920,7 +938,7 @@ img {
     overflow: hidden;
     text-align: center;
     position: relative;
-    margin-bottom: .5rem;
+    /* margin-bottom: .5rem; */
    
  
   }
@@ -934,11 +952,74 @@ img {
 
   }
 
+
   .font-primary{
     color: var(--first-color);
     font-weight: bold;
     
   }
+
+  .project-status{
+
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+
+  .progress-text{
+    display: flex;
+    flex-direction: row;
+    gap: 25rem;
+    
+
+  }
+
+  .progress-text span{
+
+    font-weight: bold;
+  }
+
+  .font-primary-s{
+    
+    color: var(--second_color);
+    font-weight: 500;
+  }
+
+
+
+  .progress-bar{
+
+    margin-top: .5rem;
+    width: 100%;
+    height: 8px;
+    background-color: white;
+    border-radius: 2px;
+    overflow: hidden;
+   
+  }
+
+  .progress-box{
+    height: 100%;
+    background-color: var(--first-color);
+    animation: progressAnimation 2s ease;
+  }
+
+  .box-secondary{
+    height: 100%;
+    background-color: var(--second_color);
+    animation: progressAnimation 2s ease;
+
+  }
+
+  /* Keyframes for the animation */
+@keyframes progressAnimation {
+  0% {
+      width: 0; /* Start width of the progress bar */
+  }
+  100% {
+      width: 100%; /* End width of the progress bar */
+  }
+}
 
 
 
