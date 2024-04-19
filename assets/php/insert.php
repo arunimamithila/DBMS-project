@@ -14,8 +14,8 @@ try {
     // Execute the SQL statement
     $stmt->execute();
 
-    echo "New record created successfully";
-   // header("Location: ..\..\admin\homePage.html");
+   // echo "New record created successfully";
+    header("Location: ..\..\admin\project.html");
 
 } catch(Exception $e) {
     echo "Error: " . $e->getMessage();
