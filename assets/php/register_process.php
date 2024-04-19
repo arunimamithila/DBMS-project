@@ -2,12 +2,13 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
-
 // Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    require 'vendor/autoload.php';
-    include "db_conn.php";
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+   echo  "hello world";
+
+    require '..\..\vendor\autoload.php';
+   // include "db_conn.php";
     session_start();
 
     // Get username, password, and email from the form
@@ -52,14 +53,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Send email
         $mail->send();
-      echo $otp;
+        echo $otp;
         // Redirect to a page indicating that a verification email has been sent
-        header("Location: otp_verify.html");
+        header("Location: ..\..\admin\otp_verify.html");
         exit();
     } catch (Exception $e) {
         // Display any exceptions
         echo "Error: " . $e->getMessage();
     }
-}
 
+}
 ?>

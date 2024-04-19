@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get username and password from the form
     $username = $_POST["username"];
     $password = $_POST["password"];
+    $_SESSION['username'] = $username;
   
 
   // Prepare and execute a SQL query to check the credentials
@@ -30,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          $_SESSION['loggedin'] = true;
 
           // Redirect to the welcome page
-          header("Location: homePage.php");
+          header("Location: ..\..\admin\homePage.html");
           exit();
       } else {
           // Authentication failed, display an error message
