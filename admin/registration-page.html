@@ -18,28 +18,28 @@
     <section>         
         <div class="container">
               <div class="register-card">
-                <form class="form-container">
-                        <form class="register-form" action="../assets/php/register_process.php">
+                
+                        <form class="register-form" action="../assets/php/register_process.php"  method="POST">
                           <h4>Create your account</h4>
                           <h6>Enter your personal details to create account</h6>
                           <div class="form-group">
                             <label>Username</label>
                             <div class="small-group">
                               <div class="input-group"><span class="input-group-text"><i class='bx bxs-user'></i></span>
-                                <input class="form-control" type="text" required="" placeholder="username">
+                                <input class="form-control" type="text" name="username" required="" placeholder="username">
                               </div>
                             </div>
                           </div>
                           <div class="form-group">
                             <label>Email Address</label>
                             <div class="input-group"><span class="input-group-text"><i class='bx bxs-envelope'></i></span>
-                              <input class="form-control" type="email" required="" placeholder="Test@gmail.com">
+                              <input class="form-control" type="email" name="email" required="" placeholder="Test@gmail.com">
                             </div>
                           </div>
                           <div class="form-group">
                             <label>Password</label>
                             <div class="input-group"><span class="input-group-text"><i class='bx bxs-lock-alt'></i></span>
-                              <input class="form-control" type="password" name="login[password]" required="" placeholder="*********">
+                              <input class="form-control" type="password" name="password" required="" placeholder="*********">
                               <div class="show-hide"><span class="show">                         </span></div>
                             </div>
                           </div>
@@ -57,8 +57,7 @@
                         </div>
                         </div>
 
-                         
-                        </form>
+                      
                       </div>
                   
                 </form>
