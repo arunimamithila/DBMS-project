@@ -1,6 +1,49 @@
-// ========================headernav icons============================
+function loadContent(url) {
+    $.ajax({
+      url: url,
+      success: function(response) {
+        $('.workspace-container').html(response);
+      },
+      error: function(xhr, status, error) {
+        console.error('Error loading content:', error);
+      }
+    });
+  }
+
+  // Add click event listener to each nav link
+  $('.nav-link').click(function(event) {
+    event.preventDefault(); // Prevent default link behavior
+    var targetId = $(this).attr('id'); // Get the ID of the clicked link
+
+    // Load content based on the clicked link
+    switch (targetId) {
+      case 'nav-overview':
+        loadContent('overview.html');
+        break;
+      case 'nav-feedback':
+        loadContent('../admin/workspace/feedback.html');
+        break;
+      case 'nav-calendar':
+        loadContent('calendar.html');
+        break;
+      case 'nav-board':
+        loadContent('board.html');
+        break;
+      case 'nav-timeline':
+        loadContent('../admin/workspace/timeline.html');
+        break;
+      case 'nav-addtask':
+        loadContent('addtask.html');
+        break;
+      default:
+        $('.workspace-container').html('<p>Default Content</p>');
+    }
+  });
+
 
 document.addEventListener("DOMContentLoaded", function() {
+
+    // ========================headernav icons============================
     const bookmarkBox = document.querySelector(".bookmark_box");
     const bookmarksDropdown = document.querySelector(".bookmarks");
     const notificationIcon = document.querySelector(".notification_icon");
@@ -45,55 +88,19 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    // ===================== LINK ACTIVE ====================
+    const linkColor = document.querySelectorAll('.nav__link');
+
+    function colorLink() {
+        linkColor.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+    }
+
+    linkColor.forEach(l => l.addEventListener('click', colorLink));
+
 });
 
 showMenu('header-toggle', 'navbar');
 
-/*==================== LINK ACTIVE ====================*/
-const linkColor = document.querySelectorAll('.nav__link');
 
-function colorLink() {
-    linkColor.forEach(l => l.classList.remove('active'));
-    this.classList.add('active');
-}
-
-linkColor.forEach(l => l.addEventListener('click', colorLink));
-
-
-// ==================project upload===========================
-
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    var form = document.querySelector('.dropzone');
-    var fileInput = document.getElementById('fileInput');
-
-    form.addEventListener("click", () => {
-        fileInput.click();
-    });
-
-    fileInput.addEventListener('change', function(event) {
-        var file = event.target.files[0]; // Get the selected file
-        if (file) {
-            var fileName = file.name; // Get the name of the selected file
-            uploadFile(fileName, file); // Call uploadFile function with file name and file object
-        }
-    });
-
-    function uploadFile(fileName, file) {
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '../assets/php/upload.php', true);
-        xhr.onload = function() {
-            // Handle response from server if needed
-        };
-        var formData = new FormData();
-        formData.append('file', file); // Append the file to the FormData object
-        xhr.send(formData); // Send FormData object containing the file to server
-    }
-});
-
-
-
-
-
-
+ 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>GoCircle Create a Project</title>
 
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
@@ -164,12 +164,25 @@
                                       <i class='bx bxs-network-chart nav__icon'></i>
                                       <span class="nav__name">Team</span>
                                   </a>
-      
-                                  <!--  onclick="loadContent('../admin/project.html')" -->
-                                  <a href="../admin/project.html" class="nav__link"> 
-                                    <i class="bx bx-shape-square nav__icon"></i>
-                                      <span class="nav__name">Project</span>
-                                  </a>
+
+                                  
+                                  <div class="nav__dropdown">
+                                    <a href="../admin/project.html" class="nav__link"> 
+                                      <i class="bx bx-shape-square nav__icon"></i>
+                                        <span class="nav__name">Project</span>
+                                        <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                    </a>
+    
+                                        <div class="nav__dropdown-collapse">
+                                          <div class="nav__dropdown-content">
+                                            <a href="../admin/project.html" class="nav__dropdown-item">My projects</a>
+                                            <a href="../admin/projectcreate.html" class="nav__dropdown-item">Create</a>
+                                            <a href="../admin/projecthome.html" class="nav__dropdown-item">Workspace</a>
+                                            <a href="#" class="nav__dropdown-item">Projects wall</a>
+                                        </div>
+                                    </div>
+                                  </div>
+
 
                                   <a href="#" class="nav__link">
                                     <i class='bx bx-medal nav__icon'></i>
@@ -224,60 +237,82 @@
 
                 <div class="create-card">
                     <div class="project-title">
-                        <label for="">Project Titile</label>
-                        <input class="form-control" type="text" placeholder="project name">
+                        <label for="">Project Title</label>
+                        <input class="form-control" id="ProjectFormControlInput" type="text" placeholder="project name*">
                     </div>
 
                     <div class="project-admin">
-                        <label for="">Project Admin</label>
-                        <input class="form-control" type="text" placeholder="project admin name">
-                    </div>
+                      <label for="">Project Admin</label>
+                      <input class="form-control" id="ProjectFormControlInput" type="text" placeholder="project admin name">
+                  </div>
 
+
+
+                  <div class="member-required">
+                    <label for="">Member Required</label>
+                    <input class="form-control" id="ProjectFormControlInput" type="text" placeholder="num of members">
+                   </div>
+
+                   <div class="p-des">
                     <div class="admin-circle">
                         <label for="">Admin Root Circle</label>
-                        <input class="form-control" type="text" placeholder="root circle name">
+                        <input class="form-control" id="ProjectFormControlInput" type="text" placeholder="root circle name">
                     </div>
 
-                    
+  
+
 
                     <div class="project-type">
-                        <label for="">Project Type</label>
-                        <select class="form-select">
-                            <option>CSE PROJECTS</option>
-                            <option>EEE PROJECTS</option>
-                            <option>CIVIL PROJECTS</option>
-                            <option>MACANICAL PROJECTS</option>
-                            <option>TEXTILE PROJECTS</option>
-                            <option>GRAPHIC DESIGN PROJECTS</option>
-                            <option>3D MODELS PROJECTS</option>
-                            <option>MARKETING PROJECTS</option>
-                            <option>RESEARCH</option>
-                            <option>OTHERS</option>
-                        </select>
+                      <label for="">Project Type</label>
+                      <select class="form-select">
+                          <option>CSE PROJECTS</option>
+                          <option>EEE PROJECTS</option>
+                          <option>CIVIL PROJECTS</option>
+                          <option>MACANICAL PROJECTS</option>
+                          <option>TEXTILE PROJECTS</option>
+                          <option>GRAPHIC DESIGN PROJECTS</option>
+                          <option>3D MODELS PROJECTS</option>
+                          <option>MARKETING PROJECTS</option>
+                          <option>RESEARCH</option>
+                          <option>OTHERS</option>
+                      </select>
+                  </div>
+
+                   </div>
+
+
+                   
+
+                   <!-- <form class="search-form" action="">
+                    <div class="team search">
+                      <label for="">Invite a team</label>
+                      <input type="search" placeholder="team name" class="form-control" id="ProjectFormControlInput">            
                     </div>
+                  </form> -->
 
                     <div class="project-duration">
                         <div class="star-date">
                             <label>Starting date</label>
-                            <input class="datepicker-here form-control" type="text" data-language="en">
+                            <input class="datepicker-here form-control" id="ProjectFormControlInput" type="text" data-language="en">
                         </div>
 
                         <div class="end-date">
                             <label>Ending date</label>
-                            <input class="datepicker-here form-control" type="text" data-language="en">
+                            <input class="datepicker-here form-control" id="ProjectFormControlInput" type="text" data-language="en">
                         </div>
 
+                        <div class="project-coins">
+                          <label for="">Earn Coins</label>
+                          <select class="form-select">
+                              <option>10</option>
+                              <option>20</option>
+                              <option>30</option>
+                              <option>50</option>
+                          </select>
+                      </div>
                     </div>
 
-                    <div class="project-coins">
-                        <label for="">Earn Coins</label>
-                        <select class="form-select">
-                            <option>10</option>
-                            <option>20</option>
-                            <option>30</option>
-                            <option>50</option>
-                        </select>
-                    </div>
+                  
 
 
 
@@ -292,6 +327,7 @@
                         <form class="dropzone" id="singleFileUpload" action="../assets/php/upload.php">
                           <div class="dz-message needsclick"><i class='bx bxs-cloud-upload'></i>
                             <h6>Drop files here or click to upload.</h6>
+                            <input type="file" name="file" multiple style="display: none;" />
                           </div>
                         </form>
                     </div>
@@ -300,8 +336,8 @@
                     <div class="buttons">
 
                         <div class="text-end">
-                            <a class="btn btn-secondary" href="#">Add</a>
-                            <a class="btn btn-danger" href="#">Cancel</a>
+                            <a class="btn btn-secondary" href="../admin/projecthome.html">Add</a>
+                            <a class="btn btn-danger" href="../admin/projectcreate.html">Cancel</a>
                         </div>
 
                     </div>
