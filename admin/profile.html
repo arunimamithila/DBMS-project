@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" href="../assets/css/homepage.css">
+  <link rel="stylesheet" href="../assets/css/profile.css">
 
 </head>
 
@@ -129,7 +129,7 @@
           
                           <div class="nav__list">
                                   
-                                  <a href="#" class="nav__link active">
+                                  <a href="./homePage.html" class="nav__link active">
                                       <i class='bx bx-home nav__icon' ></i>
                                       <span class="nav__name">Home</span>
                                   </a>
@@ -228,183 +228,188 @@
               </div>
 
 
+              <!-- ================main================ -->
 
-              <!-- ============body main================ -->
-              <main class="main" id="mainContent">
-                <div class="container">
-                  <div class="left">
-                    <div class="calendar">
-                      <div class="month">
-                        <i class="fas fa-angle-left prev"></i>
-                        <div class="date">April 2024</div>
-                        <i class="fas fa-angle-right next"></i>
-                      </div>
-                      <div class="weekdays">
-                        <div>Sun</div>
-                        <div>Mon</div>
-                        <div>Tue</div>
-                        <div>Wed</div>
-                        <div>Thu</div>
-                        <div>Fri</div>
-                        <div>Sat</div>
-                      </div>
-                      <div class="days">
-                            <div class="day prev-date">30</div>
-                            <div class="day prev-date">31</div>
-                            <div class="day">1</div>
-                            <div class="day">2</div>
-                            <div class="day">3</div>
-                            <div class="day">4</div>
-                            <div class="day">5</div>
-                            <div class="day">6</div>
-                            <div class="day">7</div>
-                            <div class="day event">8</div>
-                            <div class="day">9</div>
-                            <div class="day">10</div>
-                            <div class="day">11</div>
-                            <div class="day">12</div>
-                            <div class="day">13</div>
-                            <div class="day">14</div>
-                            <div class="day today active">15</div>
-                            <div class="day">16</div>
-                            <div class="day">17</div>
-                            <div class="day">18</div> 
-                            <div class="day">19</div>
-                            <div class="day">20</div>
-                            <div class="day event">21</div>
-                            <div class="day">22</div>
-                            <div class="day">23</div>
-                            <div class="day">24</div>
-                            <div class="day">25</div>
-                            <div class="day">26</div>
-                            <div class="day">27</div>
-                            <div class="day">28</div>
-                            <div class="day">29</div>
-                            <div class="day">30</div>
-                            <div class="day next-date">1</div>
-                            <div class="day next-date">2</div>
-                            <div class="day next-date">3</div>
-                          
-                      </div>
-                      <div class="goto-today">
-                        <div class="goto">
-                          <input type="text" placeholder="mm/yyyy" class="date-input" />
-                          <button class="goto-btn">Go</button>
-                        </div>
-                        <button class="today-btn">Today</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="right">
-                    <div class="today-date">
-                      <div class="event-day">Sun</div>
-                      <div class="event-date">12th May 2024</div>
-                    </div>
-                    <div class="events"></div>
-                    <div class="add-event-wrapper">
-                      <div class="add-event-header">
-                        <div class="title">Add Event</div>
-                        <i class="fas fa-times close"></i>
-                      </div>
-                      <div class="add-event-body">
-                        <div class="add-event-input">
-                          <input type="text" placeholder="Event Name" class="event-name" />
-                        </div>
-                        <div class="add-event-input">
-                          <input
-                            type="text"
-                            placeholder="Event Time From"
-                            class="event-time-from"
-                          />
-                        </div>
-                        <div class="add-event-input">
-                          <input
-                            type="text"
-                            placeholder="Event Time To"
-                            class="event-time-to"
-                          />
-                        </div>
-                      </div>
-                      <div class="add-event-footer">
-                        <button class="add-event-btn">Add Event</button>
-                      </div>
-                    </div>
-                  </div>
-                  <button class="add-event">
-                    <i class="fas fa-plus"></i>
-                  </button>
-                </div>
+              <main>
 
-                <div class="activity_container">
-                  <div class="welcome">
-                    <div class="progress_container">
-                      <div class="circular-progress" data-progress="<?php echo $progressPercentage; ?>">
-                        <span class="progress-value">0%</span>
-                      </div>
-                      <span class="text">Activity Log</span>
-                    </div>
-  
-                    <div class="title">
-                      <p>Welcome,<span class="welcome_id">username</span>!</p>
-                      <span class="wel-t">Jump back in, or start something new.</span>
-                    </div>
+                    <div class="profile-container">
 
-                  </div>
-  
-                    <div class="card_container">
-                      <div class="card-body">
-                          <div class="team"><i class='bx bx-network-chart'></i>
-                            <h6>Team</h6>
-                            <div class="count-progress">
-                              <h5>0</h5><span>total joined</span>
+                        <div class="profile_info">
+                            <div class="profile-banner">
+                                <img src="../assets/image/profile/bg-profile.jpg" alt="">
+                            </div>
+        
+                            <div class="user-details">
+                                <div class="title">
+                                    <div class="avatar"><img class="profile_img rounded-circle" src="../assets/image/perfil.jpg" alt=""></div>
+                                    <h4>username</h4>
+                                    <h5>root circle</h5>
+                                    <a class="root_circle" href="">
+                                        <h6>United International University</h6>
+                                    </a>
+                                </div>
+
+                                <div class="line"> </div>
+
+                                <div class="user-info">
+                                    <ul class="follow">
+                                        <li>
+                                            <div class="fol-c">
+                                                <span class="fol-count">09</span>
+                                                <span class="fc">Circle_in</span>
+                                              </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="fol-team">
+                                                <span class="team-count">10 </span>
+                                                <span class="tc">Joined_team</span>
+                                             
+                                              </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="fol-comp">
+                                                <span class="comp-count">0 </span>
+                                                <span class="cc">Joined_competetion</span>
+                                             
+                                              </div>
+                                        </li>
+                                      </ul>
+                                </div>
+
                             </div>
                         </div>
-                      </div>
-    
-                      <div class="card-body">
-                        <div class="project"><i class="bx bx-shape-square"></i>
-                          <h6>Project</h6>
-                          <div class="count-progress">
-                            <h5>0</h5><span>total finished</span>
-                          </div>
-                        </div>
-                      </div>
-    
-    
-                      <div class="card-body">
-                        <div class="skill"><i class='bx bx-expand-horizontal'></i>
-                          <h6>Skill</h6>
-                          <div class="count-progress">
-                            <h5>0</h5><span>total learned</span>
-                          </div>
-                        </div>
-                      </div>
-    
-    
-                      <div class="card-body">
-                        <div class="Competition"><i class='bx bx-trophy'></i>
-                          <h6>Competition</h6>
-                          <div class="count-progress">
-                            <h5>0</h5><span>total created</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-  
-                  
-                </div>
 
- 
-                
+
+                        <div class="aside">
+
+                            <div class="aboutme">
+                                <ul>
+                                    <li>
+                                        <div class="icon"><i class='bx bxs-adjust-alt nav__icon' ></i></div>
+                                        <h5>root circle</h5>
+                                        <span class="rootcircle_name">United International University</span>
+                                    </li>
+
+                                    <li>
+                                        <div class="icon"><i class='bx bxs-book-alt'></i></div>
+                                        <h5>study</h5>
+                                        <span class="study">computer science</span>
+                                    </li>
+
+                                    <li>
+                                        <div class="icon"><i class='bx bxs-map'></i></div>
+                                        <h5>lives</h5>
+                                        <span class="lives">Dhaka</span>
+                                    </li>
+
+                                    <li>
+                                        <div class="icon"><i class='bx bx-coin-stack' ></i></div>
+                                        <h5>earned coin</h5>
+                                        <span class="coin-earned">0</span>
+                                    </li>
+
+                                    <li>
+                                        <div class="icon"><i class='bx bx-line-chart'></i></div>
+                                        <h5>rank</h5>
+                                        <span class="total-rank">0</span>
+                                    </li>
+                                </ul>
+
+                                <div class="edit btn btn-primary">                    
+                                    <i class='bx bxs-edit' ></i>
+                                    <a class="edit_link" href="#">Edit</a>
+                                </div>
+                                
+                            </div>
+
+
+                            <div class="mycircles">
+                                <ul class="circle-show">
+                                   <li>
+                                        <div class="circle-img">
+                                            <img class="circle_img rounded-circle" src="../assets/image/buet.svg" alt="">
+                                        </div>
+                                        <div class="circle-name">buet champion league</div>
+                                   </li>
+
+                                   <li>
+                                        <div class="circle-img">
+                                            <img class="circle_img rounded-circle" src="../assets/image/ai_uiu.png" alt="">
+                                        </div>
+                                        <div class="circle-name">uiu freshers of AI</div>
+                                   </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+
+
+                        <div class="middle-container">
+                        
+                                <div class="post-card">
+                                    <div class="post-header">
+                                      <div class="media"><img class="user-img rounded-circle" src="/assets/image/perfil.jpg" alt="">                            
+                                            <div class="media-body">
+                                                <h5 class="user-name">Emay Walter</h5>
+                                                <h6 class="post-time">22 Hours ago</h6>
+                                            </div>
+                                      </div>
+
+                                    </div>
+
+
+                                    <div class="post-body">
+                                        <div class="post-banner">
+                                            <img src="/assets/image/profile/post1.jpg" alt="">
+                                        </div>
+
+                                      <div class="post-react">
+                                        <ul>
+                                          <li><img class="rounded-circle" src="/assets/image/user/3.jpg" alt=""></li>
+                                          <li><img class="rounded-circle" src="/assets/image/user/5.jpg" alt=""></li>
+                                          <li><img class="rounded-circle" src="/assets/image/user/1.jpg" alt=""></li>
+                                        </ul>
+                                        <h6>+5 people react this post</h6>
+                                      </div>
+                                      
+                                      <div class="post-text">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.                                     </p>
+                                      </div>
+
+
+                                      <ul class="post-reaction">
+                                        <li>
+                                          <label><a href="#"><i data-feather="heart"></i>&nbsp;&nbsp;Like<span class="counter">50</span></a></label>
+                                        </li>
+                                        <li>
+                                          <label><a href="#"><i data-feather="message-square"></i>&nbsp;&nbsp;Comment<span class="counter">70</span></a></label>
+                                        </li>
+                                        <li>
+                                          <label><a href="#"><i data-feather="share"></i>&nbsp;&nbsp;share<span class="counter">20</span></a></label>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                </div>
+
+
+                        </div>
+
+
+
+                    </div>
+                            
+                          
+
+                    
+                    
+
 
               </main>
-         
 
-    
-        <script src="../assets/js/homepage.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
-</body>
-</html>
- 
+              <script src="../assets/js/profile.js"></script>
+
+      </body>
+      </html>              
