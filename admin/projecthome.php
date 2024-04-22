@@ -43,6 +43,7 @@ $conn->close();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="../assets/css/projecthome.css">
 </head>
@@ -169,7 +170,7 @@ $conn->close();
                                           <span class="nav__name">Home</span>
                                       </a>
           
-                                      <a href="#" class="nav__link">
+                                      <a href="./profile.html" class="nav__link">
                                            <i class='bx bx-user nav__icon' ></i>
                                            <span class="nav__name">Profile</span>
                                       </a>
@@ -276,15 +277,24 @@ $conn->close();
                     </div>
 
                     <div class="project-details">
-                        <label for="">Glass fiber reinforced concrete layout design</label>
+                        <label for="">GoCircle Database design</label>
                         <div class="project-member-info">
                             <ul class="pm-info">
+<<<<<<< HEAD:admin/projecthome.php
            <li>Project admin : <span class="pm-details po"><?php echo $data['projectAdmin']; ?></span></li>
             <li>Category : <span class="pm-details ct"><?php echo $data['projectSelect']; ?></span></li>
             <li>Project Member : <span class="pm-details mem">none</span></li>
             <li>Created On : <span class="pm-details date"><?php echo $data['startDate']; ?></span></li>
             <li>Duration : <span class="pm-details duration">null</span></li>
         </ul>
+=======
+                                <li>Project admin : <span class="pm-details po">username</span></li>
+                                <li>Catagory : <span class="pm-details ct">CSE Project</span></li>
+                                <li>Project Member : <span class="pm-details mem">4</span></li>
+                                <li>Created On : <span class="pm-details date">2024-04-03</span></li>
+                                <li>Duration : <span class="pm-details duration">1 month</span></li>
+                            </ul>
+>>>>>>> bbb817b3aa149e9e0def1056253b765cede79b9b:admin/projecthome.html
                         </div>
                     </div>
                 </div>
@@ -317,25 +327,22 @@ $conn->close();
 
 
                <div class="project-workspace">
-
-                <div class="workspace-container">
-
-                </div>
               
-                <footer>
+                <header>
                   <div class="nav-list">
 
-                    <a class="nav-link" id="nav-overview" href=""><i class='bx bx-spreadsheet'></i>overview</a>
-                    <a class="nav-link" id="nav-feedback" href=""><i class='bx bxs-checkbox-checked'></i>feed back</a>
-                    <a class="nav-link" id="nav-calander" href=""><i class='bx bx-calendar' ></i>calander</a>
-                    <a class="nav-link" id="nav-board" href=""><i class='bx bx-bar-chart-square'></i>board</a>
-                    <a class="nav-link" id="nav-timeline" href=""><i class='bx bx-objects-vertical-center'></i>timeline</a>
-                    <a class="nav-link" id="nav-addtask" href=""><i class='bx bx-message-square-add'></i>add task</a>
+                    <a class="nav-link" id="nav-overview" href="./workspace/overview.html" ><i class='bx bx-spreadsheet'></i>overview</a>
+                    <a class="nav-link" id="nav-feedback" href="./workspace/feedback.html" ><i class='bx bxs-checkbox-checked'></i>feed back</a>
+                    <a class="nav-link" id="nav-calander" href="./workspace/calander.html"><i class='bx bx-calendar' ></i>calander</a>
+                    <a class="nav-link" id="nav-board" href="./workspace/board.html"><i class='bx bx-bar-chart-square'></i>board</a>
+                    <a class="nav-link" id="nav-timeline" href="./workspace/timeline.html"><i class='bx bx-objects-vertical-center'></i>timeline</a>
+                    <a class="nav-link" id="nav-addtask" href="./workspace/addtask.html"><i class='bx bx-message-square-add'></i>add task</a>
 
                   </div>
-                </footer>
+                </header>
 
-
+                <div class="target-container" id="target">
+                </div>
 
                </div>
 
@@ -344,6 +351,22 @@ $conn->close();
     
 
 
+          <script>
+            $(document).ready(function() {
+            // Add click event listener to each nav-link
+            $(".nav-link").click(function(event) {
+                event.preventDefault(); // Prevent default link behavior
+                var href = $(this).attr("href"); // Get the href attribute of the clicked link
+                $("#target").load(href, function(response, status, xhr) {
+                    if (status === "error") {
+                        console.error("Error loading content:", xhr.statusText);
+                    }
+                }); // Load the content of the href into the target-container
+            });
+           });
+
+          </script>    
         <script src="../assets/js/projecthome.js"></script>
+
 </body>
 </html>

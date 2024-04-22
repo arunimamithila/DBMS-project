@@ -1,10 +1,6 @@
-
-
-
+// ========================headernav icons============================
 
 document.addEventListener("DOMContentLoaded", function() {
-
-    // ========================headernav icons============================
     const bookmarkBox = document.querySelector(".bookmark_box");
     const bookmarksDropdown = document.querySelector(".bookmarks");
     const notificationIcon = document.querySelector(".notification_icon");
@@ -49,21 +45,20 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // ===================== LINK ACTIVE ====================
-    const linkColor = document.querySelectorAll('.nav__link');
-
-    function colorLink() {
-        linkColor.forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
-    }
-
-    linkColor.forEach(l => l.addEventListener('click', colorLink));
-
 });
 
 showMenu('header-toggle', 'navbar');
 
+/*==================== LINK ACTIVE ====================*/
+const linkColor = document.querySelectorAll('.nav__link');
+
+function colorLink() {
+    linkColor.forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+}
+
+linkColor.forEach(l => l.addEventListener('click', colorLink));
 
 
 
- 
+

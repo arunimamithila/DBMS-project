@@ -73,12 +73,15 @@ h5 {
 }
 
 ul {
-
+  padding-left: 0px;
   list-style-type: none;
+  margin-bottom: 0;
+  padding-right: 0px;
+
   }
 
 a {
-    
+  color: var(--first-color);
   text-decoration: none; 
   a:hover {
     text-decoration: none; }
@@ -139,7 +142,6 @@ img {
 .profile_img:hover{
 
   color: var(--text-color-1);
-
 }
 
 .header_title{
@@ -232,7 +234,7 @@ img {
     font-size: 1.5rem;
     cursor: pointer;
     margin-right: 8rem;
-  
+    
   }
 
   .bookmark_box i:hover{
@@ -240,8 +242,6 @@ img {
     transform: translateY(-6px);
     transition: all .6s;
   }
-
-
 
   .notification_icon{
 
@@ -300,11 +300,13 @@ img {
     box-shadow: 0 1px 0 rgba(22, 8, 43, 0.1);
     border-width: 1rem;
     box-sizing: border-box;
+    
     /* border-radius:  1.5rem 0 1.5rem 1.5rem; */
 
   } 
   .bookmarks.active{
     display: block;
+    
   }
 
 
@@ -315,7 +317,8 @@ img {
     padding: var(--search-padding);
     align-items: center;
     height: 35px;
-    margin-top: 8px;
+    margin-top: 4px;
+ 
 
   }
 
@@ -348,7 +351,7 @@ img {
     justify-content: space-between;
     align-items: center;
     font-size: 18px;
-  
+    box-sizing: border-box;
     margin-top: 8px;
     cursor: pointer;
     height: 40px;
@@ -361,7 +364,7 @@ img {
 
   .add-bm:hover{
    
-    background-color:  #21363f;
+    background-color: #21363f;
   
   }
 
@@ -374,6 +377,7 @@ img {
     margin-left: -2rem;
     margin-top: .9rem; 
 
+ 
   }
 
 
@@ -390,6 +394,8 @@ img {
     background: var(--container-color);
     align-items: center; 
     display: none;   
+
+    
   }
 
   .notification.active{
@@ -435,7 +441,7 @@ img {
 
   .add_noti:hover{
    
-    background-color:  #21363f;
+    background-color: #21363f;
   
   }
 
@@ -464,7 +470,7 @@ img {
 
   .profile_dropdown img{
 
-    width: 50px;
+    width: 55px;
     height: 50px;
     border-radius: 30%;
     aspect-ratio: 1/1;
@@ -486,10 +492,10 @@ img {
 
   .pro-usrname{
 
-    font-size: 12px;
+    font-size: small;
     font-weight: bold;
     color: var(--title-color);
-    margin-left: 1.5rem;
+    margin-left: 1rem;
     margin-top: 1rem;
  
 
@@ -497,7 +503,7 @@ img {
 
   .pro-mail{
 
-    font-size: 10px;
+    font-size: 8px;
     color: var(--text-color-1);
     align-self: top;
   }
@@ -720,156 +726,24 @@ img {
     color: var(--first-color);
   }
 
-/* =====================main=========================== */
-
-  .main{
-    margin-top: 1rem;
-    margin-left: 1.5rem;
-    margin-right: 1rem;
-    overscroll-behavior: none;
-
-  }
-
-  .create-card{
-    margin-top: 1rem;
-    background-color: var(--container-color);
-    padding: 2rem;
-    color: var(--text-color-light);
-    font-weight: 420;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-  }
-
-  .form-control{
-    background-color: transparent;
-    border-radius: 3px;
-    border-color: var(--first-color);
-    margin-bottom: 1rem;
-  }
-
-  .create-card input::placeholder{
-    color: var(--text-color-1);
-    font-size: 15px;
-  }
-  
-  .create-card select{
-    color: var(--text-color-1);
-    font-size: 15px;
-  } 
-
-  .project-duration{
-    display: flex;
-    gap: 30px;
-    width: 100%;
-  
-  }
-
-  .p-des{
-    display: flex;
-    gap: 30px;
-    width: 100%;
-  }
 
 
-  .form-select{
-    background-color: transparent;
-    border-radius: 2px;
-    border-color: var(--first-color);
-    margin-bottom: 1rem;
+/* =============body================ */
 
-  }
-
-  .admin-circle,
-  .project-type{
-
-    width: 100%;
-  }
-
-  .star-date,
-  .end-date,
-  .project-coins{
-
-    width: 100%;
-  }
-
-  .project-description{
-
-    width: 100%;
-  }
-
-
- option{
-    background-color: var(--container-color);
-  }
-
-
-  #projectName{
-
-    background-color: var(--container-color);
-    color: var(--text-color-light);
-  }
-
-  #ProjectFormControlTextarea{
-    background-color: var(--container-color);
-    color: var(--text-color-light);
-    
-  }
-
-  .project-duration input{
-
-    background-color: var(--container-color);
-    color: var(--text-color-light);
-
-  }
-
-  #ProjectFormControlInput{
-
-    background-color: var(--container-color);
-    color: var(--text-color-light);
-  }
-
-
-  /* =============dropzone================== */
-
-  .dropzone{
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 60px;
-    background-color: #202938;
-    border-radius: 4px;
-    border-style: dashed;
-    border-color: var(--first-color);
-    cursor: pointer;
-  }
-
-  .dz-message i{
-
-    font-size: 60px;
-  }
-
-
-
-  .buttons{
-
-    margin-top: 1rem;
-    font-size: 15px;
-
-  }
+.main{
+  display: flex;
+  margin-top: 1rem;
+  margin-left: 10rem;
+  margin-right: 1rem;
+  justify-content: space-between;
+}
 
 
 
 
 
 
-
-
-
-      /* ========== MEDIA QUERIES ==========*/
+    /* ========== MEDIA QUERIES ==========*/
 /* For small devices reduce search*/
 @media screen and (max-width: 320px) {
     .header_search {

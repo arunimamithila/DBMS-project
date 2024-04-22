@@ -62,7 +62,7 @@ body {
   padding: 0; 
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
-  background: var(--body-color);
+  background: var(--gradiant-color);
   color: var(--text-color);
   overscroll-behavior: none;
 
@@ -724,8 +724,9 @@ img {
 
   .main{
     margin-top: 1rem;
-    margin-left: 10rem;
+    margin-left: 1.5rem;
     margin-right: 1rem;
+    overscroll-behavior: none;
 
   }
 
@@ -769,6 +770,7 @@ img {
     border-color: #786595;
     border-style: ridge;
     font-family: "Delius", cursive;
+    padding-right: 3rem;
   }
 
   .project-details label{
@@ -909,6 +911,12 @@ img {
     background-color: var(--container-color);
     width: 100%;
     height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .target-container{
 
   }
 
@@ -929,6 +937,8 @@ img {
     align-items: center;
     gap: 5px;
   }
+
+
 
 
  
