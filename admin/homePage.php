@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+include '../assets/php/db_conn.php';
+$username = $_SESSION['username'];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +89,7 @@
                 <div class="pro-des">
                   <img src="../assets/image/perfil.jpg" alt="">
                 <div>
-                  <p class="pro-usrname">user_name 
+                  <p class="pro-usrname"><?php echo $username; ?></p> 
                   <span class="pro-mail">user1234@gmail.com</span></p>
                 </div>
                 </div>
@@ -165,7 +172,7 @@
                                   </a>
       
                                   <div class="nav__dropdown">
-                                    <a href="../admin/project.html" class="nav__link"> 
+                                    <a href="../admin/project.php" class="nav__link"> 
                                       <i class="bx bx-shape-square nav__icon"></i>
                                         <span class="nav__name">Project</span>
                                         <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
@@ -173,9 +180,9 @@
     
                                         <div class="nav__dropdown-collapse">
                                           <div class="nav__dropdown-content">
-                                            <a href="../admin/project.html" class="nav__dropdown-item">My projects</a>
+                                            <a href="../admin/project.php" class="nav__dropdown-item">My projects</a>
                                             <a href="../admin/projectcreate.html" class="nav__dropdown-item">Create</a>
-                                            <a href="../admin/projecthome.html" class="nav__dropdown-item">Workspace</a>
+                                            <a href="../admin/projecthome.php" class="nav__dropdown-item">Workspace</a>
                                             <a href="#" class="nav__dropdown-item">Projects wall</a>
                                         </div>
                                     </div>

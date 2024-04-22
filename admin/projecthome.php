@@ -1,3 +1,33 @@
+<?php
+session_start();
+include '../assets/php/db_conn.php';
+
+$username = $_SESSION['username'];
+
+// Prepare a SQL statement to fetch the project info for this user
+$stmt = $conn->prepare("SELECT * FROM projects WHERE projectAdmin = ?");
+
+// Bind the username to the SQL statement
+$stmt->bind_param('s', $username);
+
+// Execute the SQL statement
+$stmt->execute();
+
+// Get the result
+$result = $stmt->get_result();
+
+// Fetch the data
+$data = $result->fetch_assoc();
+
+// Close the statement
+$stmt->close();
+
+// Close the database connection
+$conn->close();
+
+
+?>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,7 +165,7 @@
               
                               <div class="nav__list">
                                       
-                                      <a href="../admin/homePage.html" class="nav__link active">
+                                      <a href="../admin/homePage.php" class="nav__link active">
                                           <i class='bx bx-home nav__icon' ></i>
                                           <span class="nav__name">Home</span>
                                       </a>
@@ -172,7 +202,7 @@
           
                                       
                                       <div class="nav__dropdown">
-                                        <a href="../admin/project.html" class="nav__link"> 
+                                        <a href="../admin/project.php" class="nav__link"> 
                                           <i class="bx bx-shape-square nav__icon"></i>
                                             <span class="nav__name">Project</span>
                                             <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
@@ -180,9 +210,9 @@
         
                                             <div class="nav__dropdown-collapse">
                                               <div class="nav__dropdown-content">
-                                                <a href="../admin/project.html" class="nav__dropdown-item">My projects</a>
+                                                <a href="../admin/project.php" class="nav__dropdown-item">My projects</a>
                                                 <a href="../admin/projectcreate.html" class="nav__dropdown-item">Create</a>
-                                                <a href="../admin/projecthome.html" class="nav__dropdown-item">Workspace</a>
+                                                <a href="../admin/projecthome.php" class="nav__dropdown-item">Workspace</a>
                                                 <a href="#" class="nav__dropdown-item">Projects wall</a>
                                             </div>
                                         </div>
@@ -243,19 +273,21 @@
 
                 <div class="project_info">
                     <div class="project-banner">
-                        <img src="../assets/image/civil.jpg" alt="">
+                    <img src="<?php echo $data['fileUploadPath']; ?>" alt="">
                     </div>
 
                     <div class="project-details">
                         <label for="">GoCircle Database design</label>
                         <div class="project-member-info">
                             <ul class="pm-info">
-                                <li>Project admin : <span class="pm-details po">username</span></li>
-                                <li>Catagory : <span class="pm-details ct">CSE Project</span></li>
-                                <li>Project Member : <span class="pm-details mem">4</span></li>
-                                <li>Created On : <span class="pm-details date">2024-04-03</span></li>
-                                <li>Duration : <span class="pm-details duration">1 month</span></li>
-                            </ul>
+
+           <li>Project admin : <span class="pm-details po"><?php echo $data['projectAdmin']; ?></span></li>
+            <li>Category : <span class="pm-details ct"><?php echo $data['projectSelect']; ?></span></li>
+            <li>Project Member : <span class="pm-details mem">none</span></li>
+            <li>Created On : <span class="pm-details date"><?php echo $data['startDate']; ?></span></li>
+            <li>Duration : <span class="pm-details duration">null</span></li>
+        </ul>
+
                         </div>
                     </div>
                 </div>

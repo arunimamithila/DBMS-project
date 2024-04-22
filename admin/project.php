@@ -1,3 +1,21 @@
+<?php
+session_start();
+include '../assets/php/db_conn.php';
+
+$username = $_SESSION['username'];
+
+// Prepare a SQL statement to fetch the project info for this user
+$stmt = $conn->prepare("SELECT * FROM projects WHERE projectAdmin = ?");
+
+// Bind the username to the SQL statement
+$stmt->bind_param('s', $username);
+
+// Execute the SQL statement
+$stmt->execute();
+
+// Get the result
+$result = $stmt->get_result();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,7 +101,7 @@
                 <div class="pro-des">
                   <img src="../assets/image/perfil.jpg" alt="">
                 <div>
-                  <p class="pro-usrname">user_name 
+                  <p class="pro-usrname">< <?php echo $username; ?> ></p>
                   <span class="pro-mail">user1234@gmail.com</span></p>
                 </div>
                 </div>
@@ -130,7 +148,7 @@
           
                           <div class="nav__list">
                                   
-                                  <a href="../admin/homePage.html" class="nav__link active">
+                                  <a href="../admin/homePage.php" class="nav__link active">
                                       <i class='bx bx-home nav__icon' ></i>
                                       <span class="nav__name">Home</span>
                                   </a>
@@ -166,7 +184,7 @@
                                   </a>
       
                                   <div class="nav__dropdown">
-                                    <a href="../admin/project.html" class="nav__link"> 
+                                    <a href="../admin/project.php" class="nav__link"> 
                                       <i class="bx bx-shape-square nav__icon"></i>
                                         <span class="nav__name">Project</span>
                                         <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
@@ -174,9 +192,9 @@
     
                                         <div class="nav__dropdown-collapse">
                                           <div class="nav__dropdown-content">
-                                            <a href="../admin/project.html" class="nav__dropdown-item">My projects</a>
+                                            <a href="../admin/project.php" class="nav__dropdown-item">My projects</a>
                                             <a href="../admin/projectcreate.html" class="nav__dropdown-item">Create</a>
-                                            <a href="../admin/projecthome.html" class="nav__dropdown-item">Workspace</a>
+                                            <a href="../admin/projecthome.php" class="nav__dropdown-item">Workspace</a>
                                             <a href="#" class="nav__dropdown-item">Projects wall</a>
                                         </div>
                                     </div>
@@ -254,21 +272,26 @@
 
 
                 <div class="project-card">
-                  <div class="project_con">
-                    <div class="project-box">
-                      <span class="project-badge">Doing</span>
-                      <h6>GoCircle Database Design</h6>
-                       <div class="media"><img class="project_user_img rounded-circle" src="../assets/image/perfil.jpg" alt="">
-                        <div class="media-body">
-                          <div class="m-urs">username,</div>
-                          <div class="projec_user_uni">United International University</div>
-                        </div>
-                        </div>
-                      </div>
-                      <div class="project-des"><p>This line is simply dummy description of the project</p></div>
-                     
-                     
-                      <div class="project-details">
+    <?php
+    // Loop through the results
+    while ($data = $result->fetch_assoc()) {
+    ?>
+        <div class="project_con">
+            <div class="project-box">
+                <span class="project-badge"><?php echo 'doing'; ?></span>
+                <h6><?php echo $data['projectName']; ?></h6>
+                <div class="media">
+                    <img class="project_user_img rounded-circle" src="<?php echo $data['fileUploadPath']; ?>" alt="">
+                    <div class="media-body">
+                        <div class="m-urs"><?php echo $data['projectAdmin']; ?>,</div>
+                        <div class="projec_user_uni"><?php echo $data['rootCircle']; ?></div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-des">
+                <p><?php echo $data['projectDescription']; ?></p>
+            </div>
+            <div class="project-details">
                         <div class="pdetails_list"><span>Issues </span></div>
                         <div class="pdetails_list font-primary">12 </div>
                         <div class="pdetails_list"> <span>Resolved</span></div>
@@ -298,254 +321,24 @@
                           <div class="progress-box" id="progress-box"></div>
                         </div>
                       </div>
-
-
-                </div>
-
-
-
-
-                <div class="project_con">
-                  <div class="project-box">
-                    <span class="project-badge badge-secondary">Done</span>
-                    <h6>Endless Database Design</h6>
-                     <div class="media"><img class="project_user_img rounded-circle" src="../assets/image/perfil.jpg" alt="">
-                      <div class="media-body">
-                        <div class="m-urs">username,</div>
-                        <div class="projec_user_uni">United International University</div>
-                      </div>
-                      </div>
-                    </div>
-                    <div class="project-des"><p>This line is simply dummy description of the project</p></div>
-                   
-                   
-                    <div class="project-details">
-                      <div class="pdetails_list"><span>Issues </span></div>
-                      <div class="pdetails_list font-primary-s">5 </div>
-                      <div class="pdetails_list"> <span>Resolved</span></div>
-                      <div class="pdetails_list font-primary-s">5</div>
-                      <div class="pdetails_list"> <span>Comment</span></div>
-                      <div class="pdetails_list font-primary-s">7</div>
-                    </div>
-
-                    <div class="project_mates">
-                      <ul>
-
-                         <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/2.png" alt="" data-original-title="" title=""></li>
-                         <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/2.jpg" alt="" data-original-title="" title=""></li>
-                         <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/14.png" alt="" data-original-title="" title=""></li>
-                         <li class="d-inline-block ms-2">
-                            <p class="f-12">+4 More</p>
-                         </li>
-
-                      </ul>
-                    </div>
-
-
-                    <div class="project-status">
-                        <div class="progress-text">progress <span class="progress-percentage">0%</span></div>
-
-                      <div class="progress-bar">
-                        <div class="progress-box box-secondary" id="progress-box"></div>
-                      </div>
-                    </div>
-
-
-              </div>
-
-
-              <div class="project_con">
-                <div class="project-box">
-                  <span class="project-badge badge-secondary">Done</span>
-                  <h6>Universal admin Design</h6>
-                   <div class="media"><img class="project_user_img rounded-circle" src="../assets/image/perfil.jpg" alt="">
-                    <div class="media-body">
-                      <div class="m-urs">username,</div>
-                      <div class="projec_user_uni">United International University</div>
-                    </div>
-                    </div>
-                  </div>
-                  <div class="project-des"><p>This line is simply dummy description of the project</p></div>
-                 
-                 
-                  <div class="project-details">
-                    <div class="pdetails_list"><span>Issues </span></div>
-                    <div class="pdetails_list font-primary-s">24 </div>
-                    <div class="pdetails_list"> <span>Resolved</span></div>
-                    <div class="pdetails_list font-primary-s">24</div>
-                    <div class="pdetails_list"> <span>Comment</span></div>
-                    <div class="pdetails_list font-primary-s">61</div>
-                  </div>
-
-                  <div class="project_mates">
-                    <ul>
-
-                       <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/2.png" alt="" data-original-title="" title=""></li>
-                       <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/2.jpg" alt="" data-original-title="" title=""></li>
-                       <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/14.png" alt="" data-original-title="" title=""></li>
-                       <li class="d-inline-block ms-2">
-                          <p class="f-12">+3 More</p>
-                       </li>
-
-                    </ul>
-                  </div>
-
-
-                  <div class="project-status">
-                      <div class="progress-text">progress <span class="progress-percentage">0%</span></div>
-
-                    <div class="progress-bar">
-                      <div class="progress-box box-secondary" id="progress-box"></div>
-                    </div>
-                  </div>
-
-
-            </div>
-
-
-
-          <div class="project_con">
-            <div class="project-box">
-              <span class="project-badge">Doing</span>
-              <h6>Endless UI Design</h6>
-               <div class="media"><img class="project_user_img rounded-circle" src="../assets/image/perfil.jpg" alt="">
-                <div class="media-body">
-                  <div class="m-urs">username,</div>
-                  <div class="projec_user_uni">United International University</div>
-                </div>
-                </div>
-              </div>
-              <div class="project-des"><p>This line is simply dummy description of the project</p></div>
-             
-             
-              <div class="project-details">
-                <div class="pdetails_list"><span>Issues </span></div>
-                <div class="pdetails_list font-primary">12 </div>
-                <div class="pdetails_list"> <span>Resolved</span></div>
-                <div class="pdetails_list font-primary">11</div>
-                <div class="pdetails_list"> <span>Comment</span></div>
-                <div class="pdetails_list font-primary">21</div>
-              </div>
-
-              <div class="project_mates">
-                <ul>
-
-                   <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/2.png" alt="" data-original-title="" title=""></li>
-                   <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/2.jpg" alt="" data-original-title="" title=""></li>
-                   <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/14.png" alt="" data-original-title="" title=""></li>
-                   <li class="d-inline-block ms-2">
-                      <p class="f-12">+3 More</p>
-                   </li>
-
-                </ul>
-              </div>
-
-
-              <div class="project-status">
-                  <div class="progress-text">progress <span class="progress-percentage">0%</span></div>
-
-                <div class="progress-bar">
-                  <div class="progress-box" id="progress-box"></div>
-                </div>
-              </div>
-
-
         </div>
+    <?php
+    }
+    ?>
+</div>
+
+<?php
+// Close the statement
+$stmt->close();
+
+// Close the database connection
+$conn->close();
+?>
 
 
-        <div class="project_con">
-          <div class="project-box">
-            <span class="project-badge badge-secondary">Done</span>
-            <h6>Poco admin Design</h6>
-             <div class="media"><img class="project_user_img rounded-circle" src="../assets/image/perfil.jpg" alt="">
-              <div class="media-body">
-                <div class="m-urs">username,</div>
-                <div class="projec_user_uni">United International University</div>
-              </div>
-              </div>
-            </div>
-            <div class="project-des"><p>This line is simply dummy description of the project</p></div>
-           
-           
-            <div class="project-details ">
-              <div class="pdetails_list"><span>Issues </span></div>
-              <div class="pdetails_list font-primary-s">40 </div>
-              <div class="pdetails_list"> <span>Resolved</span></div>
-              <div class="pdetails_list font-primary-s">40</div>
-              <div class="pdetails_list"> <span>Comment</span></div>
-              <div class="pdetails_list font-primary-s">100</div>
-            </div>
-
-            <div class="project_mates">
-              <ul>
-
-                 <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/2.png" alt="" data-original-title="" title=""></li>
-                 <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/2.jpg" alt="" data-original-title="" title=""></li>
-                 <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/14.png" alt="" data-original-title="" title=""></li>
-                 <li class="d-inline-block ms-2">
-                    <p class="f-12">+10 More</p>
-                 </li>
-
-              </ul>
-            </div>
 
 
-            <div class="project-status">
-                <div class="progress-text">progress <span class="progress-percentage">0%</span></div>
-
-              <div class="progress-bar">
-                <div class="progress-box box-secondary" id="progress-box"></div>
-              </div>
-            </div>
-
-
-      </div>
-
-
-        <div class="project_con">
-          <div class="project-box">
-            <span class="project-badge">Doing</span>
-            <h6>Universal System Design</h6>
-             <div class="media"><img class="project_user_img rounded-circle" src="../assets/image/perfil.jpg" alt="">
-              <div class="media-body">
-                <div class="m-urs">username,</div>
-                <div class="projec_user_uni">United International University</div>
-              </div>
-              </div>
-            </div>
-            <div class="project-des"><p>This line is simply dummy description of the project</p></div>
-           
-           
-            <div class="project-details">
-              <div class="pdetails_list"><span>Issues </span></div>
-              <div class="pdetails_list font-primary">12 </div>
-              <div class="pdetails_list"> <span>Resolved</span></div>
-              <div class="pdetails_list font-primary">5</div>
-              <div class="pdetails_list"> <span>Comment</span></div>
-              <div class="pdetails_list font-primary">7</div>
-            </div>
-
-            <div class="project_mates">
-              <ul>
-
-                 <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/2.png" alt="" data-original-title="" title=""></li>
-                 <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/2.jpg" alt="" data-original-title="" title=""></li>
-                 <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/14.png" alt="" data-original-title="" title=""></li>
-                 <li class="d-inline-block ms-2">
-                    <p class="f-12">+6 More</p>
-                 </li>
-
-              </ul>
-            </div>
-
-
-            <div class="project-status">
-                <div class="progress-text">progress <span class="progress-percentage">0%</span></div>
-
-              <div class="progress-bar">
-                <div class="progress-box" id="progress-box"></div>
-              </div>
-            </div>
+               
 
 
       </div>
