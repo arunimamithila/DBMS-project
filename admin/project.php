@@ -1,22 +1,41 @@
+<?php
+session_start();
+include '../assets/php/db_conn.php';
+
+$username = $_SESSION['username'];
+
+// Prepare a SQL statement to fetch the project info for this user
+$stmt = $conn->prepare("SELECT * FROM projects WHERE projectAdmin = ?");
+
+// Bind the username to the SQL statement
+$stmt->bind_param('s', $username);
+
+// Execute the SQL statement
+$stmt->execute();
+
+// Get the result
+$result = $stmt->get_result();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GoCircle homepage</title>
+  <title>Document</title>
+
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" href="../assets/css/homepage.css">
-
+  <link rel="stylesheet" href="../assets/css/project.css">
 </head>
-
 <body>
+
       <!-- ========header============ -->
 
       <header class = "header">
+         
 
         <div class="header_container">
 
@@ -82,7 +101,7 @@
                 <div class="pro-des">
                   <img src="../assets/image/perfil.jpg" alt="">
                 <div>
-                  <p class="pro-usrname">user_name 
+                  <p class="pro-usrname">< <?php echo $username; ?> ></p>
                   <span class="pro-mail">user1234@gmail.com</span></p>
                 </div>
                 </div>
@@ -129,7 +148,7 @@
           
                           <div class="nav__list">
                                   
-                                  <a href="#" class="nav__link active">
+                                  <a href="../admin/homePage.php" class="nav__link active">
                                       <i class='bx bx-home nav__icon' ></i>
                                       <span class="nav__name">Home</span>
                                   </a>
@@ -165,7 +184,7 @@
                                   </a>
       
                                   <div class="nav__dropdown">
-                                    <a href="../admin/project.html" class="nav__link"> 
+                                    <a href="../admin/project.php" class="nav__link"> 
                                       <i class="bx bx-shape-square nav__icon"></i>
                                         <span class="nav__name">Project</span>
                                         <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
@@ -173,13 +192,14 @@
     
                                         <div class="nav__dropdown-collapse">
                                           <div class="nav__dropdown-content">
-                                            <a href="../admin/project.html" class="nav__dropdown-item">My projects</a>
+                                            <a href="../admin/project.php" class="nav__dropdown-item">My projects</a>
                                             <a href="../admin/projectcreate.html" class="nav__dropdown-item">Create</a>
-                                            <a href="../admin/projecthome.html" class="nav__dropdown-item">Workspace</a>
+                                            <a href="../admin/projecthome.php" class="nav__dropdown-item">Workspace</a>
                                             <a href="#" class="nav__dropdown-item">Projects wall</a>
                                         </div>
                                     </div>
                                   </div>
+
                                   <a href="#" class="nav__link">
                                     <i class='bx bx-medal nav__icon'></i>
                                     <span class="nav__name">Rank</span>
@@ -225,186 +245,112 @@
                         <span class="nav__name">Log Out</span>
                     </a>
                     </nav>     
+                </div>
+
+              
+              
+              <main class="main" id="mainContent">
+
+                <!-- =============status card============ -->
+
+                <div class="card">
+
+                    <div class="status-card">
+                      <ul class="status-tab" id="top-tab">
+                        <li class="status-item"><i class='bx bxs-bullseye'></i><a class="status-link active">All</a></li>
+                        <li class="status-item"><i class='bx bxs-hourglass-top'></i><a class="status-link">Doing</a></li>
+                        <li class="status-item"><i class='bx bx-check-circle'></i><a class="status-link">Done</a></li>
+                      </ul>
+                    </div>
+                      
+                    <div class="create btn btn-primary">                    
+                      <i class='bx bxs-plus-square'></i>
+                      <a class="creat_link" href="../admin/projectcreate.html">Create New Project</a>
+                    </div>
+
+                </div>
+
+
+                <div class="project-card">
+    <?php
+    // Loop through the results
+    while ($data = $result->fetch_assoc()) {
+    ?>
+        <div class="project_con">
+            <div class="project-box">
+                <span class="project-badge"><?php echo 'doing'; ?></span>
+                <h6><?php echo $data['projectName']; ?></h6>
+                <div class="media">
+                    <img class="project_user_img rounded-circle" src="<?php echo $data['fileUploadPath']; ?>" alt="">
+                    <div class="media-body">
+                        <div class="m-urs"><?php echo $data['projectAdmin']; ?>,</div>
+                        <div class="projec_user_uni"><?php echo $data['rootCircle']; ?></div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-des">
+                <p><?php echo $data['projectDescription']; ?></p>
+            </div>
+            <div class="project-details">
+                        <div class="pdetails_list"><span>Issues </span></div>
+                        <div class="pdetails_list font-primary">12 </div>
+                        <div class="pdetails_list"> <span>Resolved</span></div>
+                        <div class="pdetails_list font-primary">5</div>
+                        <div class="pdetails_list"> <span>Comment</span></div>
+                        <div class="pdetails_list font-primary">7</div>
+                      </div>
+
+                      <div class="project_mates">
+                        <ul>
+
+                           <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/2.png" alt="" data-original-title="" title=""></li>
+                           <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/2.jpg" alt="" data-original-title="" title=""></li>
+                           <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/14.png" alt="" data-original-title="" title=""></li>
+                           <li class="d-inline-block ms-2">
+                              <p class="f-12">+10 More</p>
+                           </li>
+
+                        </ul>
+                      </div>
+
+
+                      <div class="project-status">
+                          <div class="progress-text">progress <span class="progress-percentage">0%</span></div>
+
+                        <div class="progress-bar">
+                          <div class="progress-box" id="progress-box"></div>
+                        </div>
+                      </div>
+        </div>
+    <?php
+    }
+    ?>
+</div>
+
+<?php
+// Close the statement
+$stmt->close();
+
+// Close the database connection
+$conn->close();
+?>
+
+
+
+
+               
+
+
+      </div>
+
               </div>
 
 
-
-              <!-- ============body main================ -->
-              <main class="main" id="mainContent">
-                <div class="container">
-                  <div class="left">
-                    <div class="calendar">
-                      <div class="month">
-                        <i class="fas fa-angle-left prev"></i>
-                        <div class="date">April 2024</div>
-                        <i class="fas fa-angle-right next"></i>
-                      </div>
-                      <div class="weekdays">
-                        <div>Sun</div>
-                        <div>Mon</div>
-                        <div>Tue</div>
-                        <div>Wed</div>
-                        <div>Thu</div>
-                        <div>Fri</div>
-                        <div>Sat</div>
-                      </div>
-                      <div class="days">
-                            <div class="day prev-date">30</div>
-                            <div class="day prev-date">31</div>
-                            <div class="day">1</div>
-                            <div class="day">2</div>
-                            <div class="day">3</div>
-                            <div class="day">4</div>
-                            <div class="day">5</div>
-                            <div class="day">6</div>
-                            <div class="day">7</div>
-                            <div class="day event">8</div>
-                            <div class="day">9</div>
-                            <div class="day">10</div>
-                            <div class="day">11</div>
-                            <div class="day">12</div>
-                            <div class="day">13</div>
-                            <div class="day">14</div>
-                            <div class="day today active">15</div>
-                            <div class="day">16</div>
-                            <div class="day">17</div>
-                            <div class="day">18</div> 
-                            <div class="day">19</div>
-                            <div class="day">20</div>
-                            <div class="day event">21</div>
-                            <div class="day">22</div>
-                            <div class="day">23</div>
-                            <div class="day">24</div>
-                            <div class="day">25</div>
-                            <div class="day">26</div>
-                            <div class="day">27</div>
-                            <div class="day">28</div>
-                            <div class="day">29</div>
-                            <div class="day">30</div>
-                            <div class="day next-date">1</div>
-                            <div class="day next-date">2</div>
-                            <div class="day next-date">3</div>
-                          
-                      </div>
-                      <div class="goto-today">
-                        <div class="goto">
-                          <input type="text" placeholder="mm/yyyy" class="date-input" />
-                          <button class="goto-btn">Go</button>
-                        </div>
-                        <button class="today-btn">Today</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="right">
-                    <div class="today-date">
-                      <div class="event-day">Sun</div>
-                      <div class="event-date">12th May 2024</div>
-                    </div>
-                    <div class="events"></div>
-                    <div class="add-event-wrapper">
-                      <div class="add-event-header">
-                        <div class="title">Add Event</div>
-                        <i class="fas fa-times close"></i>
-                      </div>
-                      <div class="add-event-body">
-                        <div class="add-event-input">
-                          <input type="text" placeholder="Event Name" class="event-name" />
-                        </div>
-                        <div class="add-event-input">
-                          <input
-                            type="text"
-                            placeholder="Event Time From"
-                            class="event-time-from"
-                          />
-                        </div>
-                        <div class="add-event-input">
-                          <input
-                            type="text"
-                            placeholder="Event Time To"
-                            class="event-time-to"
-                          />
-                        </div>
-                      </div>
-                      <div class="add-event-footer">
-                        <button class="add-event-btn">Add Event</button>
-                      </div>
-                    </div>
-                  </div>
-                  <button class="add-event">
-                    <i class="fas fa-plus"></i>
-                  </button>
-                </div>
-
-                <div class="activity_container">
-                  <div class="welcome">
-                    <div class="progress_container">
-                      <div class="circular-progress" data-progress="<?php echo $progressPercentage; ?>">
-                        <span class="progress-value">0%</span>
-                      </div>
-                      <span class="text">Activity Log</span>
-                    </div>
-  
-                    <div class="title">
-                      <p>Welcome,<span class="welcome_id">username</span>!</p>
-                      <span class="wel-t">Jump back in, or start something new.</span>
-                    </div>
-
-                  </div>
-  
-                    <div class="card_container">
-                      <div class="card-body">
-                          <div class="team"><i class='bx bx-network-chart'></i>
-                            <h6>Team</h6>
-                            <div class="count-progress">
-                              <h5>0</h5><span>total joined</span>
-                            </div>
-                        </div>
-                      </div>
-    
-                      <div class="card-body">
-                        <div class="project"><i class="bx bx-shape-square"></i>
-                          <h6>Project</h6>
-                          <div class="count-progress">
-                            <h5>0</h5><span>total finished</span>
-                          </div>
-                        </div>
-                      </div>
-    
-    
-                      <div class="card-body">
-                        <div class="skill"><i class='bx bx-expand-horizontal'></i>
-                          <h6>Skill</h6>
-                          <div class="count-progress">
-                            <h5>0</h5><span>total learned</span>
-                          </div>
-                        </div>
-                      </div>
-    
-    
-                      <div class="card-body">
-                        <div class="Competition"><i class='bx bx-trophy'></i>
-                          <h6>Competition</h6>
-                          <div class="count-progress">
-                            <h5>0</h5><span>total created</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-  
-                  
-                </div>
-
- 
-                
-
               </main>
-         
+  
 
-    
-        <script src="../assets/js/homepage.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
+
+
+              <script src="../assets/js/project.js"></script>
 </body>
 </html>
- 

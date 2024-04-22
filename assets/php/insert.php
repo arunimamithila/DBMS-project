@@ -2,7 +2,13 @@
 // Include the database connection file
 include 'db_conn.php';
 
+echo "<pre>";
+print_r($_POST);
+echo "</pre>";
+
+
 try {
+    
     session_start();
     echo "File upload path: " . $_SESSION['fileUploadPath'];
     // Prepare the SQL statement
@@ -15,7 +21,7 @@ try {
     $stmt->execute();
 
    // echo "New record created successfully";
-    header("Location: ..\..\admin\project.html");
+    header("Location: ..\..\admin\projecthome.php");
 
 } catch(Exception $e) {
     echo "Error: " . $e->getMessage();
