@@ -280,21 +280,14 @@ $conn->close();
                         <label for="">GoCircle Database design</label>
                         <div class="project-member-info">
                             <ul class="pm-info">
-<<<<<<< HEAD:admin/projecthome.php
+
            <li>Project admin : <span class="pm-details po"><?php echo $data['projectAdmin']; ?></span></li>
             <li>Category : <span class="pm-details ct"><?php echo $data['projectSelect']; ?></span></li>
             <li>Project Member : <span class="pm-details mem">none</span></li>
             <li>Created On : <span class="pm-details date"><?php echo $data['startDate']; ?></span></li>
             <li>Duration : <span class="pm-details duration">null</span></li>
         </ul>
-=======
-                                <li>Project admin : <span class="pm-details po">username</span></li>
-                                <li>Catagory : <span class="pm-details ct">CSE Project</span></li>
-                                <li>Project Member : <span class="pm-details mem">4</span></li>
-                                <li>Created On : <span class="pm-details date">2024-04-03</span></li>
-                                <li>Duration : <span class="pm-details duration">1 month</span></li>
-                            </ul>
->>>>>>> bbb817b3aa149e9e0def1056253b765cede79b9b:admin/projecthome.html
+
                         </div>
                     </div>
                 </div>
