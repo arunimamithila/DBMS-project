@@ -146,7 +146,7 @@ $username = $_SESSION['username'];
                                        <span class="nav__name">Profile</span>
                                   </a>
       
-                                  <a href="#" class="nav__link">
+                                  <a href="./circle.html" class="nav__link">
                                       <i class='bx bxs-adjust-alt nav__icon' ></i>
                                       <span class="nav__name">Circles</span>
                                   </a>
