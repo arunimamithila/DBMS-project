@@ -1,0 +1,217 @@
+/*========== GOOGLE FONTS ==========*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/*========== VARIABLES CSS ==========*/
+:root {
+  --header-height: 3.5rem;
+  --nav-width: 219px;
+
+  /*========== Colors ==========*/
+  --first-color: #8d6ffa;
+  --second_color:#cb81da;
+  --first-color-light: #424242;
+  --title-color: #fff;
+  --text-color: #fff;
+  --text-color-light: #A5A1AA;
+  --body-color: #000;
+  --container-color: #212121;
+
+  /*========== Font and typography ==========*/
+  --body-font: 'Poppins', sans-serif;
+  --normal-font-size: .938rem;
+  --small-font-size: .75rem;
+  --smaller-font-size: .75rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== z index ==========*/
+  --z-fixed: 100;
+
+/*========== padding ==========*/
+  --border-radius: 2rem;
+  --card-border-radius: 1rem;
+  --btn-padding: 12px 28px;
+  --search-padding: .8rem 1rem;
+  --card-padding: 1rem;
+
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+/*========== BASE ==========*/
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  margin: var(--header-height) 0 0 0;
+  padding: 0; 
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  overscroll-behavior: none;
+
+}
+
+h5 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+
+main{
+  background: var(--body-color);
+  grid-area: main;
+  padding: 0;
+
+}
+
+.content1{
+  background: var(--body-color);
+  grid-area: content1;
+
+}
+
+.content2{
+  background: var(--body-color);
+  grid-area: content2;
+  
+
+}
+
+.content3{
+  background: var(--body-color);
+  grid-area: content3;
+
+}
+
+footer{
+  background: #000;
+  grid-area: footer;
+}
+
+
+.canvas-content{
+  grid-area: main;
+}
+
+.glassy-overlay{
+  top: 0;
+  left: 0;
+  max-width: 400px;
+  height: 100%;
+  backdrop-filter: blur(50px);
+  pointer-events: none;
+ 
+}
+
+.container2 {
+  position: relative;
+  grid-area: main;
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure it spans the entire width */
+  height: 100%;
+  z-index: 100000;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 400%;
+
+  background: linear-gradient(transparent,#1c2137);
+
+}
+
+
+/*========== NAV ==========*/
+
+
+/* ................create................ */
+
+
+.create-wrapper{
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+  grid-template-rows:  2fr 2fr 2fr 2fr 2fr;
+  row-gap: 6rem;
+  column-gap: 2rem;
+  width: 100%;
+  border-radius: var(--card-border-radius);
+  height: 12rem ; 
+
+}
+
+.create-wrapper .mycircle{
+
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: linear-gradient(var(--first-color), transparent );
+  align-items: center;
+  border-radius: var(--card-border-radius);
+}
+
+.mycircle.header__img{
+  position: absolute;
+  top: .6rem;
+  left: .2rem;
+  width: 2.4rem;
+  border: 2px dashed var(--body-color);
+  background: #fff;
+  z-index: 8;
+  align-self:  center;
+  aspect-ratio: 1/1;
+
+}
+
+
+.mycircle.para{
+
+  text-align: center;
+  margin: -3rem;
+  color: var(--text-color);
+  z-index: 8;
+  position: absolute;
+  width: 100%;
+  font: bold;
+  
+}
+
+.mycircle>img{
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mycircle>div{
+  display: grid;
+  flex-direction: column;
+}
+
+

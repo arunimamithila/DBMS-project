@@ -248,84 +248,73 @@ $result = $stmt->get_result();
                 </div>
 
               
-              
-              <main class="main" id="mainContent">
-
-                <!-- =============status card============ -->
-
-                <div class="card">
-
-                    <div class="status-card">
-                      <ul class="status-tab" id="top-tab">
-                        <li class="status-item"><i class='bx bxs-bullseye'></i><a class="status-link active">All</a></li>
-                        <li class="status-item"><i class='bx bxs-hourglass-top'></i><a class="status-link">Doing</a></li>
-                        <li class="status-item"><i class='bx bx-check-circle'></i><a class="status-link">Done</a></li>
-                      </ul>
-                    </div>
-                      
-                    <div class="create btn btn-primary">                    
-                      <i class='bx bxs-plus-square'></i>
-                      <a class="creat_link" href="../admin/projectcreate.html">Create New Project</a>
-                    </div>
-
-                </div>
-
-
-                <div class="project-card">
-    <?php
-    // Loop through the results
-    while ($data = $result->fetch_assoc()) {
-    ?>
-        <div class="project_con">
-            <div class="project-box">
-                <span class="project-badge"><?php echo 'doing'; ?></span>
-                <h6><?php echo $data['projectName']; ?></h6>
-                <div class="media">
-                    <img class="project_user_img rounded-circle" src="<?php echo $data['fileUploadPath']; ?>" alt="">
-                    <div class="media-body">
-                        <div class="m-urs"><?php echo $data['projectAdmin']; ?>,</div>
-                        <div class="projec_user_uni"><?php echo $data['rootCircle']; ?></div>
-                    </div>
-                </div>
-            </div>
-            <div class="project-des">
-                <p><?php echo $data['projectDescription']; ?></p>
-            </div>
-            <div class="project-details">
-                        <div class="pdetails_list"><span>Issues </span></div>
-                        <div class="pdetails_list font-primary">12 </div>
-                        <div class="pdetails_list"> <span>Resolved</span></div>
-                        <div class="pdetails_list font-primary">5</div>
-                        <div class="pdetails_list"> <span>Comment</span></div>
-                        <div class="pdetails_list font-primary">7</div>
-                      </div>
-
-                      <div class="project_mates">
-                        <ul>
-
-                           <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/2.png" alt="" data-original-title="" title=""></li>
-                           <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/2.jpg" alt="" data-original-title="" title=""></li>
-                           <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/14.png" alt="" data-original-title="" title=""></li>
-                           <li class="d-inline-block ms-2">
-                              <p class="f-12">+10 More</p>
-                           </li>
-
-                        </ul>
-                      </div>
-
-
-                      <div class="project-status">
-                          <div class="progress-text">progress <span class="progress-percentage">0%</span></div>
-
-                        <div class="progress-bar">
-                          <div class="progress-box" id="progress-box"></div>
-                        </div>
-                      </div>
+  <main class="main" id="mainContent">
+    <!-- =============status card============ -->
+     <div class="card">
+         <div class="status-card">
+            <ul class="status-tab" id="top-tab">
+                <li class="status-item"><i class='bx bxs-bullseye'></i><a class="status-link active">All</a></li>
+                <li class="status-item"><i class='bx bxs-hourglass-top'></i><a class="status-link">Doing</a></li>
+                <li class="status-item"><i class='bx bx-check-circle'></i><a class="status-link">Done</a></li>
+            </ul>
         </div>
-    <?php
-    }
-    ?>
-</div>
+        <div class="create btn btn-primary">                    
+            <i class='bx bxs-plus-square'></i>
+            <a class="creat_link" href="../admin/projectcreate.html">Create New Project</a>
+        </div>
+    </div>
+     <div class="project-card">
+        <?php
+        // Loop through the results
+        while ($data = $result->fetch_assoc()) {
+        ?>
+        <a href="projecthome.php?projectName=<?php echo urlencode($data['projectName']); ?>">
+            <div class="project_con">
+                <div class="project-box">
+                    <span class="project-badge"><?php echo 'doing'; ?></span>
+                    <h6><?php echo $data['projectName']; ?></h6>
+                    <div class="media">
+                        <img class="project_user_img rounded-circle" src="<?php echo $data['fileUploadPath']; ?>" alt="">
+                        <div class="media-body">
+                            <div class="m-urs"><?php echo $data['projectAdmin']; ?>,</div>
+                            <div class="projec_user_uni"><?php echo $data['rootCircle']; ?></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-des">
+                    <p><?php echo $data['projectDescription']; ?></p>
+                </div>
+                <div class="project-details">
+                    <div class="pdetails_list"><span>Issues </span></div>
+                    <div class="pdetails_list font-primary">12 </div>
+                    <div class="pdetails_list"> <span>Resolved</span></div>
+                    <div class="pdetails_list font-primary">5</div>
+                    <div class="pdetails_list"> <span>Comment</span></div>
+                    <div class="pdetails_list font-primary">7</div>
+                </div>
+                <div class="project_mates">
+                    <ul>
+                        <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/2.png" alt="" data-original-title="" title=""></li>
+                        <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/2.jpg" alt="" data-original-title="" title=""></li>
+                        <li class="d-inline-block"><img class="pmate-img rounded-circle" src="../assets/image/user/14.png" alt="" data-original-title="" title=""></li>
+                        <li class="d-inline-block ms-2">
+                            <p class="f-12">+10 More</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="project-status">
+                    <div class="progress-text">progress <span class="progress-percentage">0%</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-box" id="progress-box"></div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <?php
+        }
+        ?>
+    </div>
+</main>
 
 <?php
 // Close the statement
@@ -334,20 +323,6 @@ $stmt->close();
 // Close the database connection
 $conn->close();
 ?>
-
-
-
-
-               
-
-
-      </div>
-
-              </div>
-
-
-              </main>
-  
 
 
 
