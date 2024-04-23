@@ -159,7 +159,7 @@ $conn->close();
                                        <span class="nav__name">Profile</span>
                                   </a>
       
-                                  <a href="#" class="nav__link">
+                                  <a href="./circle.html" class="nav__link">
                                       <i class='bx bxs-adjust-alt nav__icon' ></i>
                                       <span class="nav__name">Circles</span>
                                   </a>
@@ -260,6 +260,7 @@ $conn->close();
                             </div>
         
                             <div class="user-details">
+<<<<<<< HEAD:admin/profile.php
                                 <div class="title">
                                     <div class="avatar"><img class="profile_img rounded-circle" src="../assets/image/perfil.jpg" alt=""></div>
                                     <h4><?php echo '$username' ?></h4>
@@ -268,30 +269,46 @@ $conn->close();
                                         <h6><?php echo $data['University']?></h6>
                                     </a>
                                 </div>
+=======
+                                <ul class="title">
+                                    <li><div class="avatar"><img class="avatar_img rounded-circle" src="../assets/image/perfil.jpg" alt=""></div></li>
+                                    <li><span class="username">username</span></li>
+                                    <li><span class="rc">root circle</span></li>
+                                    <li>
+                                      <a class="root_circle" href="">
+                                       <h6>United International University</h6>
+                                      </a>
+                                   </li>
+                                </ul>
+>>>>>>> b1c89bee6417d08c29352504ce495f5280b8021d:admin/profile.html
 
-                                <div class="line"> </div>
+                                <div class="line2"> </div>
 
                                 <div class="user-info">
-                                    <ul class="follow">
+                                    <ul class="info-card">
                                         <li>
-                                            <div class="fol-c">
-                                                <span class="fol-count">09</span>
-                                                <span class="fc">Circle_in</span>
+                                            <div class="fol">
+                                                <span class="count" id="fol-count">09</span>
+                                                <span class="f-lable">Circle_in</span>
                                               </div>
                                         </li>
 
+                                        <li><div class="line-s"></div></li>
+
                                         <li>
-                                            <div class="fol-team">
-                                                <span class="team-count">10 </span>
-                                                <span class="tc">Joined_team</span>
+                                            <div class="fol">
+                                                <span class="count" id="team-count">10 </span>
+                                                <span class="f-lable">Joined_team</span>
                                              
                                               </div>
                                         </li>
 
+                                        <li><div class="line-s"></div></li>
+
                                         <li>
-                                            <div class="fol-comp">
-                                                <span class="comp-count">0 </span>
-                                                <span class="cc">Joined_competetion</span>
+                                            <div class="fol">
+                                                <span class="count" id="comp-count">0 </span>
+                                                <span class="f-lable">Competetion</span>
                                              
                                               </div>
                                         </li>
@@ -302,10 +319,18 @@ $conn->close();
                         </div>
 
 
-                        <div class="aside">
 
+                        <div class="row2">
+
+                          <div class="aside">
+                            <div class="line3"></div>
                             <div class="aboutme">
+                                <h5>About me</h5>
+                            
+
+                              
                                 <ul>
+<<<<<<< HEAD:admin/profile.php
                                     <li>
                                         <div class="icon"><i class='bx bxs-adjust-alt nav__icon' ></i></div>
                                         <h5>root circle</h5>
@@ -334,6 +359,45 @@ $conn->close();
                                         <div class="icon"><i class='bx bx-line-chart'></i></div>
                                         <h5><?php echo $data['total_rank']?></h5>
                                         <span class="total_rank" name="total_rank"><?php echo $data['total_rank']?></span>
+=======
+
+                                    <li class="col">
+
+                                            <div class="icon">
+                                              <i class='bx bxs-adjust-alt'></i>
+                                            </div>UIU
+                                          
+                                    </li>
+
+                                    <li class="col">
+                                      <div class="icon">
+                                        <i class='bx bxs-book-alt'></i>
+                                      </div>
+                                       computer science
+                                    </li>
+
+                                    <li class="col">
+                                      
+                                        <div class="icon">
+                                          <i class='bx bxs-map'></i>
+                                        </div>
+                                        Dhaka
+                                    </li>
+
+                                    <li class="col">
+                                      
+                                        <div class="icon">
+                                          <i class='bx bx-coin-stack'></i>
+                                        </div>
+                                        0
+                                      
+                                      </li>
+
+                                    <li class="col">
+                                      
+                                          <div class="icon"><i class='bx bx-line-chart'></i></div>
+                                         0
+>>>>>>> b1c89bee6417d08c29352504ce495f5280b8021d:admin/profile.html
                                     </li>
                                 </ul>
 
@@ -344,8 +408,10 @@ $conn->close();
                                 
                             </div>
 
-
+                            <div class="line4"></div>
                             <div class="mycircles">
+                              <h5>My Circles</h5>
+                              
                                 <ul class="circle-show">
                                    <li>
                                         <div class="circle-img">
@@ -368,10 +434,16 @@ $conn->close();
 
 
                         <div class="middle-container">
+
+                          <div class="create-post btn btn-primary">                    
+                            <i class='bx bx-plus-circle'></i>
+                            <a class="add_link" href="#">create post</a>
+                          </div>
+                          
                         
                                 <div class="post-card">
                                     <div class="post-header">
-                                      <div class="media"><img class="user-img rounded-circle" src="/assets/image/perfil.jpg" alt="">                            
+                                      <div class="media"><img class="postu-img rounded-circle" src="../assets/image/perfil.jpg" alt="">                            
                                             <div class="media-body">
                                                 <h5 class="user-name">Emay Walter</h5>
                                                 <h6 class="post-time">22 Hours ago</h6>
@@ -383,14 +455,14 @@ $conn->close();
 
                                     <div class="post-body">
                                         <div class="post-banner">
-                                            <img src="/assets/image/profile/post1.jpg" alt="">
+                                            <img src="../assets/image/profile/post1.jpg" alt="">
                                         </div>
 
                                       <div class="post-react">
                                         <ul>
-                                          <li><img class="rounded-circle" src="/assets/image/user/3.jpg" alt=""></li>
-                                          <li><img class="rounded-circle" src="/assets/image/user/5.jpg" alt=""></li>
-                                          <li><img class="rounded-circle" src="/assets/image/user/1.jpg" alt=""></li>
+                                          <li><img class="rounded-circle" src="../assets/image/user/3.jpg" alt=""></li>
+                                          <li><img class="rounded-circle" src="../assets/image/user/5.jpg" alt=""></li>
+                                          <li><img class="rounded-circle" src="../assets/image/user/1.jpg" alt=""></li>
                                         </ul>
                                         <h6>+5 people react this post</h6>
                                       </div>
@@ -402,13 +474,13 @@ $conn->close();
 
                                       <ul class="post-reaction">
                                         <li>
-                                          <label><a href="#"><i data-feather="heart"></i>&nbsp;&nbsp;Like<span class="counter">50</span></a></label>
+                                          <label><a href="#"><i class='bx bx-album'></i>circling<span class="counter">50</span></a></label>
                                         </li>
                                         <li>
-                                          <label><a href="#"><i data-feather="message-square"></i>&nbsp;&nbsp;Comment<span class="counter">70</span></a></label>
+                                          <label><a href="#"><i class='bx bx-message-square'></i>Comment<span class="counter">70</span></a></label>
                                         </li>
                                         <li>
-                                          <label><a href="#"><i data-feather="share"></i>&nbsp;&nbsp;share<span class="counter">20</span></a></label>
+                                          <label><a href="#"><i class='bx bx-share-alt'></i>share<span class="counter">20</span></a></label>
                                         </li>
                                       </ul>
                                     </div>
@@ -417,9 +489,10 @@ $conn->close();
 
                         </div>
 
+                        </div>
 
 
-                    </div>
+                        </div>
                             
                           
 

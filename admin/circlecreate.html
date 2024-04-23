@@ -136,12 +136,12 @@
                                       <span class="nav__name">Home</span>
                                   </a>
       
-                                  <a href="./profile.php" class="nav__link">
+                                  <a href="./profile.html" class="nav__link">
                                        <i class='bx bx-user nav__icon' ></i>
                                        <span class="nav__name">Profile</span>
                                   </a>
       
-                                  <a href="./circle.html" class="nav__link">
+                                  <a href="#" class="nav__link">
                                       <i class='bx bxs-adjust-alt nav__icon' ></i>
                                       <span class="nav__name">Circles</span>
                                   </a>
@@ -235,127 +235,33 @@
               
               
               <main class="main" id="mainContent">
-                <form action="../assets/php/insert.php" method="post">
-                <div class="create-card">
-                    <div class="project-title">
-                        <label for="">Project Titile</label>
-                        <input class="form-control" type="text" name ="projectName" id="projectName" placeholder="project name">
-                    </div>
+             
+                <div class="post">
+                    <form class="create" action="../assets/php/submit_circle.php" method="post" enctype="multipart/form-data">
 
-                    <div class="project-admin">
-                      <label for="">Project Admin</label>
-                      <input class="form-control" id="ProjectFormControlInput" type="text" name="projectAdmin" placeholder="project admin name">
-                  </div>
-
-
-
-                  <div class="member-required">
-                    <label for="">Member Required</label>
-                    <input class="form-control" id="ProjectFormControlInput" type="text" name="numOfMembers" placeholder="num of members">
-                   </div>
-
-                   <div class="p-des">
-                    <div class="admin-circle">
-                        <label for="">Admin Root Circle</label>
-                        <input class="form-control" id="ProjectFormControlInput" type="text" name ="rootCircle" placeholder="root circle name">
-                    </div>
-
-                    <div class="project-type">
-                        <label for="">Project Type</label>
-                        <select class="form-select" id="projectSelect" name="projectSelect">
-                            <option>CSE PROJECTS</option>
-                            <option>EEE PROJECTS</option>
-                            <option>CIVIL PROJECTS</option>
-                            <option>MACANICAL PROJECTS</option>
-                            <option>TEXTILE PROJECTS</option>
-                            <option>GRAPHIC DESIGN PROJECTS</option>
-                            <option>3D MODELS PROJECTS</option>
-                            <option>MARKETING PROJECTS</option>
-                            <option>RESEARCH</option>
-                            <option>OTHERS</option>
-                        </select>
-                    </div>
-
-                    </div>
-
-                    <div class="project-duration">
-                        <div class="star-date">
-                            <label>Starting date</label>
-                            <input class="datepicker-here form-control" id="ProjectFormControlInput" type="text" name ="startDate" data-language="en">
-                        </div>
-
-                        <div class="end-date">
-                            <label>Ending date</label>
-                            <input class="datepicker-here form-control" id="ProjectFormControlInput" type="text" name ="endDate" data-language="en">
-                        </div>
-
-                    <div class="project-coins">
-                        <label for="">Earn Coins</label>
-                        <select class="form-select" id="earnCoins" name="earnCoins">
-                          <option value="10">10</option>
-                          <option value="20">20</option>
-                          <option value="30">30</option>
-                          <option value="50">50</option>
-                      </select>
-                    </div>
-
-                    </div>
-
-
-
-                    <div class="project-description">
-                        <label for="">Project Description</label>
-                        <textarea class="form-control" id="ProjectFormControlTextarea" name="projectDescription"></textarea>
-                    </div>
-
-
-                    <div class="project-banner">
-                      <label>upload project banner</label>
-                      <div class="dropzone" id="singleFileUpload" name="projectBanner">
-                        <div class="dz-message needsclick"><i class='bx bxs-cloud-upload'></i>
-                            <h6>Drop files here or click to upload.</h6>
-                        </div>
-                        
-                      </div>
-                    </div>
-
-
-                  <div class="buttons">
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-secondary">Add</button>
-                        <a class="btn btn-danger" href="#" onclick="window.history.back(); return false;">Cancel</a>
-                    </div>
+                        <input class="circle_img" type="file" id="formFile">
+                        <input type="text" placeholder="circle name"></form>
+                        <input type="text" placeholder="university name"></input>
+                        <input class="university_img" type="file" id="formFile">
+                        <div class="catagory">
+                            <label class="catagory-text" for="inputGroupSelect01">Catagory</label>
+                            <select class="form-select" id="inputGroupSelect01">
+                              <option selected>Choose...</option>
+                              <option value="1">Academic</option>
+                              <option value="2">Engineering</option>
+                              <option value="3">Skill Develop</option>
+                              <option value="4">Research</option>
+                            </select>
+                          </div>
+                            <textarea class="driscription" placeholder="Circle Driscription" id="floatingTextarea2" style="height: 100px"></textarea>
+                          <input class="btn btn-primary" type="submit" value="Create">
+                    </form>
                 </div>
-
-
-
-                    
-                
-              </form>
-
               </main>
   
 
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.js"></script>
-              //for img upload
-              <script>
-   Dropzone.options.singleFileUpload = {
-    url: '../assets/php/upload.php',
-    maxFiles: 1,
-    init: function() {
-        this.on('success', function(file, response) {
-            console.log('File uploaded successfully');
-        });
-        this.on('sending', function(file, xhr, formData) {
-            // Get the project name from the input field
-            var projectname = document.getElementById('projectName').value;
+             
 
-            // Append the project name to the form data
-            formData.append('projectname', projectname);
-        });
-    }
-};
-                </script>
               <script src="../assets/js/projectcreate.js"></script>
 </body>
 </html>
