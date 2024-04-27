@@ -730,7 +730,136 @@ img {
 
   }
 
+  .create-card{
+    margin-top: 1rem;
+    background-color: var(--container-color);
+    padding: 2rem;
+    color: var(--text-color-light);
+    font-weight: 420;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+  }
+
+  .form-control{
+    background-color: transparent;
+    border-radius: 3px;
+    border-color: var(--first-color);
+    margin-bottom: 1rem;
+  }
+
+  .create-card input::placeholder{
+    color: var(--text-color-1);
+    font-size: 15px;
+  }
   
+  .create-card select{
+    color: var(--text-color-1);
+    font-size: 15px;
+  } 
+
+  .project-duration{
+    display: flex;
+    gap: 30px;
+    width: 100%;
+  
+  }
+
+  .p-des{
+    display: flex;
+    gap: 30px;
+    width: 100%;
+  }
+
+
+  .form-select{
+    background-color: transparent;
+    border-radius: 2px;
+    border-color: var(--first-color);
+    margin-bottom: 1rem;
+
+  }
+
+  .admin-circle,
+  .project-type{
+
+    width: 100%;
+  }
+
+  .star-date,
+  .end-date,
+  .project-coins{
+
+    width: 100%;
+  }
+
+  .project-description{
+
+    width: 100%;
+  }
+
+
+ option{
+    background-color: var(--container-color);
+  }
+
+
+  #projectName{
+
+    background-color: var(--container-color);
+    color: var(--text-color-light);
+  }
+
+  #ProjectFormControlTextarea{
+    background-color: var(--container-color);
+    color: var(--text-color-light);
+    
+  }
+
+  .project-duration input{
+
+    background-color: var(--container-color);
+    color: var(--text-color-light);
+
+  }
+
+  #ProjectFormControlInput{
+
+    background-color: var(--container-color);
+    color: var(--text-color-light);
+  }
+
+
+  /* =============dropzone================== */
+
+  .dropzone{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 60px;
+    background-color: #202938;
+    border-radius: 4px;
+    border-style: dashed;
+    border-color: var(--first-color);
+    cursor: pointer;
+  }
+
+  .dz-message i{
+
+    font-size: 60px;
+  }
+
+
+
+  .buttons{
+
+    margin-top: 1rem;
+    font-size: 15px;
+
+  }
 
 
 
