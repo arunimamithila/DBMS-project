@@ -1,3 +1,23 @@
+
+<?php
+session_start();
+
+include '../assets/php/db_conn.php';
+$username = $_SESSION['username'];
+
+$stmt = $conn->prepare('SELECT * FROM user_table WHERE username = ?');
+$stmt->bind_param('s', $username);
+$stmt->execute();
+
+$result = $stmt->get_result();
+$data = $result->fetch_assoc();
+
+
+$stmt->close();
+$conn->close();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -134,7 +154,7 @@
                                       <span class="nav__name">Home</span>
                                   </a>
       
-                                  <a href="./profile.html" class="nav__link">
+                                  <a href="./profile.php" class="nav__link">
                                        <i class='bx bx-user nav__icon' ></i>
                                        <span class="nav__name">Profile</span>
                                   </a>
@@ -240,6 +260,16 @@
                             </div>
         
                             <div class="user-details">
+<<<<<<< HEAD:admin/profile.php
+                                <div class="title">
+                                    <div class="avatar"><img class="profile_img rounded-circle" src="../assets/image/perfil.jpg" alt=""></div>
+                                    <h4><?php echo '$username' ?></h4>
+                                    <h5>root circle</h5>
+                                    <a class="root_circle" href="">
+                                        <h6><?php echo $data['University']?></h6>
+                                    </a>
+                                </div>
+=======
                                 <ul class="title">
                                     <li><div class="avatar"><img class="avatar_img rounded-circle" src="../assets/image/perfil.jpg" alt=""></div></li>
                                     <li><span class="username">username</span></li>
@@ -250,6 +280,7 @@
                                       </a>
                                    </li>
                                 </ul>
+>>>>>>> b1c89bee6417d08c29352504ce495f5280b8021d:admin/profile.html
 
                                 <div class="line2"> </div>
 
@@ -299,6 +330,36 @@
 
                               
                                 <ul>
+<<<<<<< HEAD:admin/profile.php
+                                    <li>
+                                        <div class="icon"><i class='bx bxs-adjust-alt nav__icon' ></i></div>
+                                        <h5>root circle</h5>
+                                        <span class="rootcircle_name" name="rootcircle_name"><?php echo $data['University']?></span>
+                                    </li>
+
+                                    <li>
+                                        <div class="icon"><i class='bx bxs-book-alt'></i></div>
+                                        <h5>study</h5>
+                                        <span class="study" name="study"><?php echo $data['study']?></span>
+                                    </li>
+
+                                    <li>
+                                        <div class="icon"><i class='bx bxs-map'></i></div>
+                                        <h5>lives</h5>
+                                        <span class="lives" name="lives"><?php echo $data['lives']?></span>
+                                    </li>
+
+                                    <li>
+                                        <div class="icon"><i class='bx bx-coin-stack' ></i></div>
+                                        <h5><?php echo $data['coin_earned']?></h5>
+                                        <span class="coin_earned" name="coin_earned"><?php echo $data['coin_earned']?></span>
+                                    </li>
+
+                                    <li>
+                                        <div class="icon"><i class='bx bx-line-chart'></i></div>
+                                        <h5><?php echo $data['total_rank']?></h5>
+                                        <span class="total_rank" name="total_rank"><?php echo $data['total_rank']?></span>
+=======
 
                                     <li class="col">
 
@@ -336,6 +397,7 @@
                                       
                                           <div class="icon"><i class='bx bx-line-chart'></i></div>
                                          0
+>>>>>>> b1c89bee6417d08c29352504ce495f5280b8021d:admin/profile.html
                                     </li>
                                 </ul>
 
@@ -439,7 +501,51 @@
 
 
               </main>
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+              <script>
+        $(document).ready(function(){
+            $(".edit").click(function(){
+                if ($(".edit_link").text() == "Edit") {
+                    // Change text to input fields
+                    $(".aboutme span").each(function(){
+                        var content = $(this).text();
+                        $(this).replaceWith('<input type="text" class="editable" value="' + content + '" />');
+                    });
 
+                    // Change "Edit" button to "Save"
+                    $(".edit_link").text("Save");
+                } else {
+                    // Prepare data for AJAX request
+                    var data = {};
+                    $(".aboutme .editable").each(function(){
+                        var key = $(this).attr('class').split(' ')[0]; // Get the first class of the span element
+                        var value = $(this).val();
+                        data[key] = value;
+                    });
+
+                    // Send AJAX request
+                    $.ajax({
+                        url: '../assets/php/profileEdit.php',
+                        type: 'post',
+                        data: data,
+                        success: function(response) {
+                            // Handle response here
+                            console.log(response);
+                        }
+                    });
+
+                    // Change input fields back to text
+                    $(".aboutme input").each(function(){
+                        var content = $(this).val();
+                        $(this).replaceWith('<span>' + content + '</span>');
+                    });
+
+                    // Change "Save" button back to "Edit"
+                    $(".edit_link").text("Edit");
+                }
+            });
+        });
+    </script>
               <script src="../assets/js/profile.js"></script>
 
       </body>

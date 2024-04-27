@@ -4,11 +4,19 @@ include '../assets/php/db_conn.php';
 
 $username = $_SESSION['username'];
 
-// Prepare a SQL statement to fetch the project info for this user
-$stmt = $conn->prepare("SELECT * FROM projects WHERE projectAdmin = ?");
-
-// Bind the username to the SQL statement
-$stmt->bind_param('s', $username);
+// Check if a projectName was passed in the URL
+if (isset($_GET['projectName'])) {
+    $projectName = $_GET['projectName'];
+    // Prepare a SQL statement to fetch the project info for this project
+    $stmt = $conn->prepare("SELECT * FROM projects WHERE projectName = ? AND projectAdmin = ?");
+    // Bind the project name and username to the SQL statement
+    $stmt->bind_param('ss', $projectName, $username);
+} else {
+    // Prepare a SQL statement to fetch the latest project info for this user
+    $stmt = $conn->prepare("SELECT * FROM projects WHERE projectAdmin = ? ORDER BY id DESC LIMIT 1");
+    // Bind the username to the SQL statement
+    $stmt->bind_param('s', $username);
+}
 
 // Execute the SQL statement
 $stmt->execute();
@@ -24,8 +32,6 @@ $stmt->close();
 
 // Close the database connection
 $conn->close();
-
-
 ?>
     
 <!DOCTYPE html>
@@ -277,7 +283,7 @@ $conn->close();
                     </div>
 
                     <div class="project-details">
-                        <label for="">GoCircle Database design</label>
+                        <label for=""><?php echo $data['projectName'] ?> </label>
                         <div class="project-member-info">
                             <ul class="pm-info">
 
