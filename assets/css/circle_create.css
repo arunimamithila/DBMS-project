@@ -19,8 +19,6 @@
   --container-color: #111727;
   --primary-clr: #b38add;
 
-  --normal-white:#f5f5f5;
-
   /*========== Font and typography ==========*/
   --body-font: 'Poppins', sans-serif;
   --normal-font-size: .938rem;
@@ -732,211 +730,7 @@ img {
 
   }
 
-
-  .main-body{
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-   
-  }
-
-
-  /* ==========canvas=========== */
-
-  canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100;
   
-    background: linear-gradient(transparent,#1c2137);
-  
-  }
-
-
-  .glassy-overlay{
-    top: 0;
-    left: 0;
-    height: 100px;
-    backdrop-filter: blur(10px);
-    pointer-events: none;
-   
-  }
-
-
-  /* ========circles body=========== */
-
-
-  .circle-body{
-
-    margin-top: 25rem;
-  }
-
-
-  .create-circle{
-
-    display: flex;
-    align-items: center; 
-    justify-content: space-between;
-    padding: 5px;
-    padding-left: 6px;
-    background-color: transparent;
-    border: ridge;
-    border-radius: 5px;
-    border-color: #21363f;
-    position: relative;
-    max-width: 6rem;
-  }
-
-
-  .create-circle:hover{
-    background-color: #21363f;
-    border-color: #21363f;
-
-  }
-
-  .create-circle a{
-    font-size: 1rem;
-    color: var(--title-color); 
-    margin-right: .6rem;  
-  }
-
-  .create-circle i{
-    font-size: 1.2rem;
-    margin-right: 5px;
-  }
-
-
-  /* =============my circle================== */
-
-  .circle-body{
-    margin-left: 16rem;
-    margin-right: 16rem;
-  }
-
-  .create-wrapper{
-
-    max-height: 280px;
-    border: 1px;
-    display: grid;
-    gap: 1rem;
-    grid-auto-flow: column;
-    grid-auto-columns: 16%;
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-   
-
-  }
-
-  .create-wrapper::-webkit-scrollbar{
-
-    width: 0;
-   
-    
-  }
-
-  .create-wrapper .mycircle{
-
-    width: 200px;
-    height: 270px;
-    line-height: 270px;
-    text-align: center;
-    background-color: var(--normal-white);
-    margin-right: 15px;
-  }
-
-
-  .mycircle{
-
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
-
-  .circle-img{
-
-    border-radius: 10px 10px 0px 0px;
-    min-height: 75%;
-    position: relative;
-
-  }
-
-  .circle-uni-img {
-
-    position: absolute;
-    width: 55px;
-    height: 55px;
-    background-color: black;
-    left: 72px;
-    bottom: 40px;
-    border: 5px solid var(--normal-white);
-    
-
-  }
-
- 
-
-  .content h5{
-
-    color: var(--title-color);
-    margin-top: 2rem;
-    margin-bottom: .5rem;
-  }
-
-  .para{
-
-    color: black;
-    font-weight: bold;
- 
-   margin-top: -6rem;
-  }
-
-
-  .all-circle{
-
-    display: grid;
-    color: var(--first-color);
-    width: 100%;
-
-    margin-top: 6rem;
-    grid-template-columns: repeat(5, 13.5rem);
-
-    grid-auto-columns: 16%;
-    overflow-y: auto;
-    overscroll-behavior-inline: contain;
-  }
-
-  .all-circle .mycircle{
-
-    width: 200px;
-    height: 270px;
-    line-height: 270px;
-    text-align: center;
-    background-color: var(--normal-white);
-    
-  }
-
-  .all-circle::-webkit-scrollbar{
-
-    width: 0;
-   
-    
-  }
-
-  .group h5{
-
-    color: var(--title-color);
-    margin-top: 6rem;
-    margin-bottom: -5rem;
-    
-  }
-
-
-
-    
 
 
 
@@ -946,8 +740,7 @@ img {
 
 
 
-
-        /* ========== MEDIA QUERIES ==========*/
+      /* ========== MEDIA QUERIES ==========*/
 /* For small devices reduce search*/
 @media screen and (max-width: 320px) {
     .header_search {
@@ -1021,3 +814,4 @@ img {
       opacity: 1;
     }
   }
+  
