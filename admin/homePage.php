@@ -352,7 +352,7 @@ $username = $_SESSION['username'];
                     </div>
   
                     <div class="title">
-                      <p>Welcome,<span class="welcome_id">username</span>!</p>
+                      <p>Welcome,<span class="welcome_id"><?php echo $username; ?></span>!</p>
                       <span class="wel-t">Jump back in, or start something new.</span>
                     </div>
 

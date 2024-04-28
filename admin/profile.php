@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -260,16 +259,6 @@ $conn->close();
                             </div>
         
                             <div class="user-details">
-<<<<<<< HEAD:admin/profile.php
-                                <div class="title">
-                                    <div class="avatar"><img class="profile_img rounded-circle" src="../assets/image/perfil.jpg" alt=""></div>
-                                    <h4><?php echo '$username' ?></h4>
-                                    <h5>root circle</h5>
-                                    <a class="root_circle" href="">
-                                        <h6><?php echo $data['University']?></h6>
-                                    </a>
-                                </div>
-=======
                                 <ul class="title">
                                     <li><div class="avatar"><img class="avatar_img rounded-circle" src="../assets/image/perfil.jpg" alt=""></div></li>
                                     <li><span class="username">username</span></li>
@@ -280,7 +269,6 @@ $conn->close();
                                       </a>
                                    </li>
                                 </ul>
->>>>>>> b1c89bee6417d08c29352504ce495f5280b8021d:admin/profile.html
 
                                 <div class="line2"> </div>
 
@@ -330,36 +318,6 @@ $conn->close();
 
                               
                                 <ul>
-<<<<<<< HEAD:admin/profile.php
-                                    <li>
-                                        <div class="icon"><i class='bx bxs-adjust-alt nav__icon' ></i></div>
-                                        <h5>root circle</h5>
-                                        <span class="rootcircle_name" name="rootcircle_name"><?php echo $data['University']?></span>
-                                    </li>
-
-                                    <li>
-                                        <div class="icon"><i class='bx bxs-book-alt'></i></div>
-                                        <h5>study</h5>
-                                        <span class="study" name="study"><?php echo $data['study']?></span>
-                                    </li>
-
-                                    <li>
-                                        <div class="icon"><i class='bx bxs-map'></i></div>
-                                        <h5>lives</h5>
-                                        <span class="lives" name="lives"><?php echo $data['lives']?></span>
-                                    </li>
-
-                                    <li>
-                                        <div class="icon"><i class='bx bx-coin-stack' ></i></div>
-                                        <h5><?php echo $data['coin_earned']?></h5>
-                                        <span class="coin_earned" name="coin_earned"><?php echo $data['coin_earned']?></span>
-                                    </li>
-
-                                    <li>
-                                        <div class="icon"><i class='bx bx-line-chart'></i></div>
-                                        <h5><?php echo $data['total_rank']?></h5>
-                                        <span class="total_rank" name="total_rank"><?php echo $data['total_rank']?></span>
-=======
 
                                     <li class="col">
 
@@ -397,7 +355,6 @@ $conn->close();
                                       
                                           <div class="icon"><i class='bx bx-line-chart'></i></div>
                                          0
->>>>>>> b1c89bee6417d08c29352504ce495f5280b8021d:admin/profile.html
                                     </li>
                                 </ul>
 
@@ -501,7 +458,6 @@ $conn->close();
 
 
               </main>
-              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
               <script>
         $(document).ready(function(){
             $(".edit").click(function(){
@@ -546,6 +502,7 @@ $conn->close();
             });
         });
     </script>
+
               <script src="../assets/js/profile.js"></script>
 
       </body>

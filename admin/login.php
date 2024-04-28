@@ -1,3 +1,11 @@
+<?php 
+session_start();
+include "../assets/php/db_conn.php";
+
+$username = $_SESSION["username"];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

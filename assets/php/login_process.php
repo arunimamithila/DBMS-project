@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           // Authentication successful, set session variables
          // $_SESSION["username"] = $username;
          $_SESSION['loggedin'] = true;
+         $_SESSION['password']=$password;
 
           // Redirect to the welcome page
           header("Location: ..\..\admin\homePage.php");

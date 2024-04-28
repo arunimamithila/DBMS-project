@@ -5,7 +5,7 @@ include '../assets/php/db_conn.php';
 $username = $_SESSION['username'];
 
 // Prepare a SQL statement to fetch the project info for this user
-$stmt = $conn->prepare("SELECT * FROM projects WHERE projectAdmin = ?");
+$stmt = $conn->prepare("SELECT * FROM projects WHERE projectAdmin = ? ORDER BY id DESC");
 
 // Bind the username to the SQL statement
 $stmt->bind_param('s', $username);
@@ -153,7 +153,7 @@ $result = $stmt->get_result();
                                       <span class="nav__name">Home</span>
                                   </a>
       
-                                  <a href="./profile.html" class="nav__link">
+                                  <a href="./profile.php" class="nav__link">
                                        <i class='bx bx-user nav__icon' ></i>
                                        <span class="nav__name">Profile</span>
                                   </a>

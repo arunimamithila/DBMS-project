@@ -2,9 +2,9 @@
 // Include the database connection file
 include 'db_conn.php';
 
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_POST);
+// echo "</pre>";
 
 
 try {
@@ -21,7 +21,7 @@ try {
     $stmt->execute();
 
    // echo "New record created successfully";
-    header("Location: ..\..\admin\projecthome.php");
+    header("Location: ..\..\admin\project.php");
 
 } catch(Exception $e) {
     echo "Error: " . $e->getMessage();
