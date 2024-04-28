@@ -865,7 +865,10 @@ img {
     display: flex;
     flex-direction: column;
     position: relative;
+    cursor: pointer;
   }
+
+
 
   .circle-img{
 
