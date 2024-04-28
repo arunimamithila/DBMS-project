@@ -102,7 +102,7 @@ function update(t) {
 }
 
 function setupCanvas() {  
-var mainContentWidth = document.querySelector('.main_content').offsetWidth;
+var mainContentWidth = document.querySelector('.canvas-body').offsetWidth;
    
     // Set the canvas width to match the width of the main content area
    canvas.width = mainContentWidth;

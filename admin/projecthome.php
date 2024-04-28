@@ -176,7 +176,7 @@ $conn->close();
                                           <span class="nav__name">Home</span>
                                       </a>
           
-                                      <a href="./profile.html" class="nav__link">
+                                      <a href="./profile.php" class="nav__link">
                                            <i class='bx bx-user nav__icon' ></i>
                                            <span class="nav__name">Profile</span>
                                       </a>
