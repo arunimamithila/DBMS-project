@@ -237,26 +237,25 @@
               <main class="main" id="mainContent">
              
                 <div class="post">
-                    <form class="create" action="../assets/php/submit_circle.php" method="post" enctype="multipart/form-data">
-
-                        <input class="circle_img" type="file" id="formFile">
-                        <input type="text" placeholder="circle name"></form>
-                        <input type="text" placeholder="university name"></input>
-                        <input class="university_img" type="file" id="formFile">
-                        <div class="catagory">
-                            <label class="catagory-text" for="inputGroupSelect01">Catagory</label>
-                            <select class="form-select" id="inputGroupSelect01">
+                  <form class="create" action="../assets/php/submit_circle.php" method="post" enctype="multipart/form-data">
+                      <input class="circle_img" type="file" id="formFile" name="circle_img">
+                      <input type="text" placeholder="circle name" name="circle_name">
+                      <input type="text" placeholder="university name" name="university_name">
+                      <input class="university_img" type="file" id="formFile" name="university_img">
+                      <div class="catagory">
+                          <label class="catagory-text" for="inputGroupSelect01">Catagory</label>
+                          <select class="form-select" id="inputGroupSelect01" name="category">
                               <option selected>Choose...</option>
                               <option value="1">Academic</option>
                               <option value="2">Engineering</option>
                               <option value="3">Skill Develop</option>
                               <option value="4">Research</option>
-                            </select>
-                          </div>
-                            <textarea class="driscription" placeholder="Circle Driscription" id="floatingTextarea2" style="height: 100px"></textarea>
-                          <input class="btn btn-primary" type="submit" value="Create">
-                    </form>
-                </div>
+                          </select>
+                      </div>
+                      <textarea class="description" placeholder="Circle Description" id="floatingTextarea2" style="height: 100px" name="description"></textarea>
+                      <input class="btn btn-primary" type="submit" value="Create">
+                  </form>
+              </div>
               </main>
   
 
