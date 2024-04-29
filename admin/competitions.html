@@ -1,29 +1,24 @@
-<?php
-session_start();
-
-include '../assets/php/db_conn.php';
-$username = $_SESSION['username'];
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GoCircle homepage</title>
+  <title>GoCircle Competitions</title>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" href="../assets/css/homepage.css">
-
+  <link rel="stylesheet" href="../assets/css/competitions.css">
 </head>
-
 <body>
+
       <!-- ========header============ -->
 
       <header class = "header">
+         
 
         <div class="header_container">
 
@@ -89,7 +84,7 @@ $username = $_SESSION['username'];
                 <div class="pro-des">
                   <img src="../assets/image/perfil.jpg" alt="">
                 <div>
-                  <p class="pro-usrname"><?php echo $username; ?></p> 
+                  <p class="pro-usrname">user_name 
                   <span class="pro-mail">user1234@gmail.com</span></p>
                 </div>
                 </div>
@@ -136,17 +131,17 @@ $username = $_SESSION['username'];
           
                           <div class="nav__list">
                                   
-                                  <a href="#" class="nav__link active">
+                                  <a href="../admin/homePage.php" class="nav__link active">
                                       <i class='bx bx-home nav__icon' ></i>
                                       <span class="nav__name">Home</span>
                                   </a>
       
-                                  <a href="./profile.php" class="nav__link">
+                                  <a href="../admin/profile.php" class="nav__link">
                                        <i class='bx bx-user nav__icon' ></i>
                                        <span class="nav__name">Profile</span>
                                   </a>
       
-                                  <a href="./circle.html" class="nav__link">
+                                  <a href="../admin/circle.html" class="nav__link">
                                       <i class='bx bxs-adjust-alt nav__icon' ></i>
                                       <span class="nav__name">Circles</span>
                                   </a>
@@ -170,7 +165,8 @@ $username = $_SESSION['username'];
                                       <i class='bx bxs-network-chart nav__icon'></i>
                                       <span class="nav__name">Team</span>
                                   </a>
-      
+
+                                  
                                   <div class="nav__dropdown">
                                     <a href="../admin/project.php" class="nav__link"> 
                                       <i class="bx bx-shape-square nav__icon"></i>
@@ -187,6 +183,8 @@ $username = $_SESSION['username'];
                                         </div>
                                     </div>
                                   </div>
+
+
                                   <a href="#" class="nav__link">
                                     <i class='bx bx-medal nav__icon'></i>
                                     <span class="nav__name">Rank</span>
@@ -232,186 +230,137 @@ $username = $_SESSION['username'];
                         <span class="nav__name">Log Out</span>
                     </a>
                     </nav>     
-              </div>
+                </div>
 
-
-
-              <!-- ============body main================ -->
+              
+              
               <main class="main" id="mainContent">
                 <div class="container">
-                  <div class="left">
-                    <div class="calendar">
-                      <div class="month">
-                        <i class="fas fa-angle-left prev"></i>
-                        <div class="date">April 2024</div>
-                        <i class="fas fa-angle-right next"></i>
-                      </div>
-                      <div class="weekdays">
-                        <div>Sun</div>
-                        <div>Mon</div>
-                        <div>Tue</div>
-                        <div>Wed</div>
-                        <div>Thu</div>
-                        <div>Fri</div>
-                        <div>Sat</div>
-                      </div>
-                      <div class="days">
-                            <div class="day prev-date">30</div>
-                            <div class="day prev-date">31</div>
-                            <div class="day">1</div>
-                            <div class="day">2</div>
-                            <div class="day">3</div>
-                            <div class="day">4</div>
-                            <div class="day">5</div>
-                            <div class="day">6</div>
-                            <div class="day">7</div>
-                            <div class="day event">8</div>
-                            <div class="day">9</div>
-                            <div class="day">10</div>
-                            <div class="day">11</div>
-                            <div class="day">12</div>
-                            <div class="day">13</div>
-                            <div class="day">14</div>
-                            <div class="day today active">15</div>
-                            <div class="day">16</div>
-                            <div class="day">17</div>
-                            <div class="day">18</div> 
-                            <div class="day">19</div>
-                            <div class="day">20</div>
-                            <div class="day event">21</div>
-                            <div class="day">22</div>
-                            <div class="day">23</div>
-                            <div class="day">24</div>
-                            <div class="day">25</div>
-                            <div class="day">26</div>
-                            <div class="day">27</div>
-                            <div class="day">28</div>
-                            <div class="day">29</div>
-                            <div class="day">30</div>
-                            <div class="day next-date">1</div>
-                            <div class="day next-date">2</div>
-                            <div class="day next-date">3</div>
-                          
-                      </div>
-                      <div class="goto-today">
-                        <div class="goto">
-                          <input type="text" placeholder="mm/yyyy" class="date-input" />
-                          <button class="goto-btn">Go</button>
-                        </div>
-                        <button class="today-btn">Today</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="right">
-                    <div class="today-date">
-                      <div class="event-day">Sun</div>
-                      <div class="event-date">12th May 2024</div>
-                    </div>
-                    <div class="events"></div>
-                    <div class="add-event-wrapper">
-                      <div class="add-event-header">
-                        <div class="title">Add Event</div>
-                        <i class="fas fa-times close"></i>
-                      </div>
-                      <div class="add-event-body">
-                        <div class="add-event-input">
-                          <input type="text" placeholder="Event Name" class="event-name" />
-                        </div>
-                        <div class="add-event-input">
-                          <input
-                            type="text"
-                            placeholder="Event Time From"
-                            class="event-time-from"
-                          />
-                        </div>
-                        <div class="add-event-input">
-                          <input
-                            type="text"
-                            placeholder="Event Time To"
-                            class="event-time-to"
-                          />
-                        </div>
-                      </div>
-                      <div class="add-event-footer">
-                        <button class="add-event-btn">Add Event</button>
-                      </div>
-                    </div>
-                  </div>
-                  <button class="add-event">
-                    <i class="fas fa-plus"></i>
-                  </button>
-                </div>
 
-                <div class="activity_container">
-                  <div class="welcome">
-                    <div class="progress_container">
-                      <div class="circular-progress" data-progress="<?php echo $progressPercentage; ?>">
-                        <span class="progress-value">0%</span>
-                      </div>
-                      <span class="text">Activity Log</span>
-                    </div>
-  
-                    <div class="title">
-                      <p>Welcome,<span class="welcome_id"><?php echo $username; ?></span>!</p>
-                      <span class="wel-t">Jump back in, or start something new.</span>
+                    <div class="heading">
+
+                        <div class="discription">
+                            <h3>Competitions</h3>
+                            <p>Grow your skills by competing with your piers 
+                                <br>and enhance your teamwork
+                            </p>
+                        </div>
+
+                        <div class="pic">
+                            <img src="../assets/image/com.png" alt="">
+                        </div>
                     </div>
 
-                  </div>
-  
-                    <div class="card_container">
-                      <div class="card-body">
-                          <div class="team"><i class='bx bx-network-chart'></i>
-                            <h6>Team</h6>
-                            <div class="count-progress">
-                              <h5>0</h5><span>total joined</span>
+                    <div class="button btn btn-primary">                    
+                        <a class="add_link" href="#">Host a Competition </a>
+                      </div>
+
+
+
+
+                    <div class="Competition">
+
+                      
+                        <div class="title">
+                            <i class='bx bx-time-five' ></i>
+                            <h5>Active Competitions</h5>
+                        </div>
+
+                        
+
+                        <div class="com-container">
+
+                            <div class="card-container">
+                                <div class="comp-card">
+                                    <div class="comp-img">
+    
+                                        <img class="compimg" src="../assets/image/aicomp.jpg" alt="">
+                                    </div>
+    
+                                    <div class="comp-name">
+                                        <h6>AI Mathematical Olympiad</h6>
+                                         
+                                    </div>
+
+                                    <div class="team">team joind 
+                                        
+                                        <div class="num-team">
+                                            128
+                                        </div>
+                                    
+                                    </div>
+    
+                                    <div class="comp-achive">
+                                        
+                                        <div class="ammount">
+                                            <i class='bx bx-dollar-circle' ></i>
+                                            10K
+                                        </div>
+    
+                                        <div class="time">
+                                            2 months to go
+                                        </div>
+                                    </div>
+                                    
+                             </div>
+
+
+                             
+                                <div class="comp-card">
+                                    <div class="comp-img ">
+    
+                                        <img class="compimg" src="../assets/image/data.jpg" alt="">
+                                    </div>
+    
+                                    <div class="comp-name">
+                                        <h6>Data Science Essay writing</h6>
+                                        
+                                    </div>
+
+                                    <div class="team">team joind 
+                                        
+                                        <div class="num-team">
+                                            500
+                                        </div>
+                                    
+                                    </div>
+    
+                                    <div class="comp-achive">
+                                        
+                                        <div class="ammount">
+                                            <i class='bx bx-dollar-circle' ></i>
+                                            2K
+                                        </div>
+    
+                                        <div class="time">
+                                            1 months to go
+                                        </div>
+                                    </div>
+                                    
+                             </div>
+    
+                              
+                                
+    
+                                
                             </div>
+
+
                         </div>
-                      </div>
-    
-                      <div class="card-body">
-                        <div class="project"><i class="bx bx-shape-square"></i>
-                          <h6>Project</h6>
-                          <div class="count-progress">
-                            <h5>0</h5><span>total finished</span>
-                          </div>
+
                         </div>
-                      </div>
-    
-    
-                      <div class="card-body">
-                        <div class="skill"><i class='bx bx-expand-horizontal'></i>
-                          <h6>Skill</h6>
-                          <div class="count-progress">
-                            <h5>0</h5><span>total learned</span>
-                          </div>
-                        </div>
-                      </div>
-    
-    
-                      <div class="card-body">
-                        <div class="Competition"><i class='bx bx-trophy'></i>
-                          <h6>Competition</h6>
-                          <div class="count-progress">
-                            <h5>0</h5><span>total created</span>
-                          </div>
-                        </div>
-                      </div>
+
+                    
+                    
                     </div>
-  
-                  
+
                 </div>
-
- 
-                
-
+           
               </main>
-         
+  
 
-    
-        <script src="../assets/js/homepage.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
+             
+
+              <script src="../assets/js/projectcreate.js"></script>
 </body>
 </html>
- 

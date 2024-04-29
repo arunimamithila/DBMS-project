@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GoCircle Create a Project</title>
+  <title>GoCircle Create Circle</title>
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" rel="stylesheet">
 
@@ -136,12 +136,16 @@
                                       <span class="nav__name">Home</span>
                                   </a>
       
+<<<<<<< HEAD
                                   <a href="./profile.php" class="nav__link">
+=======
+                                  <a href="../admin/profile.php" class="nav__link">
+>>>>>>> 36462c44ac0da1c29b9c4c7122096da885b08a4d
                                        <i class='bx bx-user nav__icon' ></i>
                                        <span class="nav__name">Profile</span>
                                   </a>
       
-                                  <a href="#" class="nav__link">
+                                  <a href="../admin/circle.html" class="nav__link">
                                       <i class='bx bxs-adjust-alt nav__icon' ></i>
                                       <span class="nav__name">Circles</span>
                                   </a>
@@ -238,13 +242,33 @@
              
                 <div class="post">
                   <form class="create" action="../assets/php/submit_circle.php" method="post" enctype="multipart/form-data">
-                      <input class="circle_img" type="file" id="formFile" name="circle_img">
-                      <input type="text" placeholder="circle name" name="circle_name">
-                      <input type="text" placeholder="university name" name="university_name">
-                      <input class="university_img" type="file" id="formFile" name="university_img">
+                      <div class="circle-des">
+                          <div class="input-div">
+                              <label class="input-label" for="circleName">Circle Name</label>
+                              <input class="circle_name form-control" id="circleName" type="text" placeholder="circle name" name="circle_name">
+                          </div>
+              
+                          <div class="input-div">
+                              <label class="input-label" for="circleImg">Circle Image</label>
+                              <input class="circle_img form-control" type="file" id="circleImg" name="circle_img">
+                          </div>
+                      </div>
+              
+                      <div class="uni-des">
+                          <div class="input-div">
+                              <label class="input-label" for="uniName">University Name</label>
+                              <input class="uni_name form-control" id="uniName" type="text" placeholder="university name" name="university_name">
+                          </div>
+              
+                          <div class="input-div">
+                              <label class="input-label" for="uniLogo">University Logo</label>
+                              <input class="university_img form-control" type="file" id="uniLogo" name="university_img">
+                          </div>
+                      </div>
+              
                       <div class="catagory">
-                          <label class="catagory-text" for="inputGroupSelect01">Catagory</label>
-                          <select class="form-select" id="inputGroupSelect01" name="category">
+                          <label class="catagory-text" for="categorySelect">Category</label>
+                          <select class="form-select" id="categorySelect" name="category">
                               <option selected>Choose...</option>
                               <option value="1">Academic</option>
                               <option value="2">Engineering</option>
@@ -252,8 +276,15 @@
                               <option value="4">Research</option>
                           </select>
                       </div>
-                      <textarea class="description" placeholder="Circle Description" id="floatingTextarea2" style="height: 100px" name="description"></textarea>
-                      <input class="btn btn-primary" type="submit" value="Create">
+              
+                      <div class="input-div">
+                          <label class="input-label" for="circleDesc">Circle Description</label>
+                          <textarea class="description" placeholder="circle description" id="circleDesc" style="height: 100px" name="description"></textarea>
+                      </div>
+              
+                      <div class="button">
+                          <input class="btn btn-primary button" type="submit" value="Create">
+                      </div>
                   </form>
               </div>
               </main>

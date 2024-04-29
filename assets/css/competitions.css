@@ -724,133 +724,111 @@ img {
 
   .main{
     margin-top: 1rem;
-    margin-left: 1.5rem;
+    margin-left: 1rem;
     margin-right: 1rem;
     overscroll-behavior: none;
 
   }
 
-  .post{
+  .container{
 
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+    color: var(--text-color-light);
     margin-top: 1rem;
-    background-color: var(--container-color);
-    padding: 2rem;
-    color: var(--text-color-light);
-    font-weight: 420;
+  }
+
+  .heading{
     display: flex;
-    flex-direction: column;
-    gap: 35px;
-    height: 600px;
-  }
-
- .post input{
-
-    background-color: transparent;
-    border-radius: 3px;
-    border-color: var(--first-color);
-    
-  }
-
-  .post input::placeholder{
-    color: var(--text-color-1);
-    font-size: 15px;
-  }
-
-  .form-select{
-    background-color: transparent;
-    border-radius: 2px;
-    border-color: var(--first-color);
-    margin-bottom: 1rem;
+    gap: 30rem;
     color: var(--text-color-light);
-  }
-
-  option{
-    background-color: var(--container-color);
-  }
-
-  
-
-  .input-div{
-
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-  }
-
-  .input-div label{
-
-    font-size: 1rem;
-  }
-
-  .input-div input::placeholder{
-
-    color: var(--text-color-1);
-    font-size: 15px;
-  }
-
-  .driscription{
-
-    border-color: var(--first-color);
-    margin-bottom: 1.5rem;
-    
-  }
-
-  .driscription::placeholder{
-
-    color: var(--text-color-1);
-    font-size: 15px;
-
-
-  }
-
-  #floatingTextarea2{
-    background-color: var(--container-color);
-    color: var(--text-color-light);
-   
-  }
-
-  .circle-des,
-  .uni-des{
-
-    display: flex;
-    width: 100%;
-    gap: 50px;
+    align-items: center;
    
 
   }
-  
-  .circle-des input,
-  .uni-des input{
-    width: 53rem;
-    
+
+  .title{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
   }
 
-  .button{
+  .title i{
+    font-size: 1.5rem;
+  }
+
+  /* =======comp card========== */
+
+
+  .card-container{
+
+    display: grid;
+    color: var(--first-color);
     width: 100%;
-    background-color: #202938;
-    border-color: var(--first-color);
+    margin-top: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+   
+  }
+
+  
+  .card-container::-webkit-scrollbar{
+
+    width: 0;
+   
     
   }
 
-  .button:hover{
 
-    background-color: var(--first-color);
-    border-color: #24695c;
+  .card-container .comp-card{
+
+    width: 380px;
+    height: 340px;
+    text-align: center;
+    background-color: #f5f5f5;
+
+   
+  }
+
+  .comp-card{
+
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    color: var(--container-color);
+  }
+
+ .comp-img{
+  min-height: 72%;
+ }
+
+  .compimg{
+
+    border-radius: 10px 10px 0px 0px;
+    
     
   }
 
-  #circlename,
-  #uniname,
-  #formFile
-  {
-
-    background-color: var(--container-color);
-    color: var(--text-color-light);
+  .team{
+    display: flex;
+    gap: 4rem;
+    margin-left: 6.5rem;
+    align-items: center;
   }
 
-  #formFile{
-    background-color: #202938;
+  .comp-achive{
+
+    display: flex;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    margin-top: .6rem;
+    justify-content: space-between;
+    align-items: center;
   }
+
+
 
 
 
