@@ -2,7 +2,7 @@
 session_start();
 include "../assets/php/db_conn.php";
 
-$username = $_SESSION["username"];
+//$username = $_SESSION["username"];
 
 ?>
 

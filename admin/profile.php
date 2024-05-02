@@ -1,8 +1,12 @@
 <?php
 session_start();
+$username = $_SESSION['username'];
+$user_Email=$_SESSION['user_Email'];
+$profilePic=$_SESSION['profilePic'];
 
 include '../assets/php/db_conn.php';
-$username = $_SESSION['username'];
+
+
 
 $stmt = $conn->prepare('SELECT * FROM user_table WHERE username = ?');
 $stmt->bind_param('s', $username);
@@ -67,7 +71,7 @@ $conn->close();
                             src="../assets/image/red_dot.png" alt=""></span></div>
 
                 <div class="profile_img">
-                    <a href="#"><img src="../assets/image/perfil.jpg" alt="" id="my-profile-pic"></a>
+                    <a href="#"><img src="<?php echo $data['profile_pic_link'] ?>" alt="" id="my-profile-pic"></a>
                 </div>
 
             </div>
@@ -124,7 +128,7 @@ $conn->close();
 
                 <div class="profile_dropdown">
                     <div class="pro-des">
-                        <img src="../assets/image/perfil.jpg" alt="">
+                    <a href="#"><img src="<?php echo $data['profile_pic_link'] ?>" alt="" id="my-profile-pic"></a>
                         <div>
                             <p class="pro-usrname"><?php echo $username  ?></p>
                             <span class="pro-mail">user1234@gmail.com</span>
@@ -289,8 +293,13 @@ $conn->close();
                 <div class="user-details">
                     <ul class="title">
                         <li>
-                            <div class="avatar"><img class="avatar_img rounded-circle" src="../assets/image/perfil.jpg"
-                                    alt=""></div>
+                            <div class="avatar"><img class="avatar_img rounded-circle" src="<?php echo $data['profile_pic_link'] ?>"
+                                    alt="">
+                                    <form action="../assets/php/profilePic.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="profilePicture">
+    <input type="submit" value="Upload Image">
+</form>
+                                </div>
                         </li>
                         <li><span class="username"><?php echo $username  ?></span></li>
                         <li><span class="rc">root circle</span></li>

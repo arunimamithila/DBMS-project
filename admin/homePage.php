@@ -151,7 +151,7 @@ $username = $_SESSION['username'];
                                       <span class="nav__name">Circles</span>
                                   </a>
 
-                                  <a href="./discussions.html" class="nav__link">
+                                  <a href="./discussions.php" class="nav__link">
                                     <i class='bx bx-conversation nav__icon' ></i>
                                     <span class="nav__name">Discussions</span>
                                 </a>

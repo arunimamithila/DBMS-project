@@ -1,9 +1,18 @@
+<?php 
+session_start();
+$username = $_SESSION["username"];
+$user_Email = $_SESSION["user_Email"];
+$profilePic = $_SESSION["profilePic"];
+
+//include "../assets/php/db_conn.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GoCircle Create Circle</title>
+  <title>UniCircle Create Circle</title>
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" rel="stylesheet">
 
@@ -11,7 +20,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" href="../assets/css/discussions.css">
+  <link rel="stylesheet" href="../assets/css/circle_create.css">
 </head>
 <body>
 
@@ -24,7 +33,7 @@
 
           <div class="header_container_left">
 
-              <a href="#" class="header_logo"><span class="header_title">GoCircle</span></a>
+              <a href="#" class="header_logo"><span class="header_title">UniCircle</span></a>
             
               <!-- <div class="header_toggle">
                 <i class='bx bxs-grid-alt'></i>
@@ -45,7 +54,7 @@
               <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img src="../assets/image/red_dot.png" alt=""></span></div>
           
               <div class="profile_img">
-                <a href="#"><img src="../assets/image/perfil.jpg" alt="" id="my-profile-pic"></a>
+                <a href="#"><img src="<?php echo $profilePic?>" alt="" id="my-profile-pic"></a>
               </div>
               
           </div>
@@ -82,10 +91,10 @@
   
               <div class="profile_dropdown">
                 <div class="pro-des">
-                  <img src="../assets/image/perfil.jpg" alt="">
+                <img src="<?php echo $profilePic?>" alt="">
                 <div>
-                  <p class="pro-usrname">user_name 
-                  <span class="pro-mail">user1234@gmail.com</span></p>
+                  <p class="pro-usrname">$username</p> 
+                  <span class="pro-mail">$user_Email</span></p>
                 </div>
                 </div>
   
@@ -125,7 +134,7 @@
                              <!-- <img src="./img/Go.svg" alt=""> -->
                              <img src="../assets/image/gocircle_logo.png">
   
-                              <span class="nav__logo-name"> <h4>GoCircle</h4></span>
+                              <span class="nav__logo-name"> <h4>UniCircle</h4></span>
                           </a>
                   
           
@@ -146,7 +155,7 @@
                                       <span class="nav__name">Circles</span>
                                   </a>
 
-                                  <a href="./discussions.html" class="nav__link">
+                                  <a href="./discussions.php" class="nav__link">
                                     <i class='bx bx-conversation nav__icon' ></i>
                                     <span class="nav__name">Discussions</span>
                                 </a>
@@ -236,151 +245,53 @@
               
               <main class="main" id="mainContent">
              
-                <div class="container">
-
-                    <div class="heading">
-
-                        <div class="discription">
-                            <h3>Discussion</h3>
-                            <p>Discuss in the GoCircle platform within and outside your
-                               <br>university circles. Also ask question, share your feedback,
-                               and more
-                            </p>
-                        </div>
-
-                        <div class="pic">
-                            <img src="../assets/image/dis.png" alt="">
-                        </div>
-                    </div>
-
-
-                    <div class="uni-discussion">
-
-                        <div class="title">
-                            <i class='bx bxs-chat'></i>
-                            <h5>Circles Discussion</h5>
-                        </div>
-
-                        <div class="card-container">
-                            <div class="dis-card">
-                                <div class="card-img ">
-
-                                    <img src="../assets/image/bubble.png" alt="">
-                                </div>
-
-                                <div class="dis-name">
-                                    <h6>General</h6>
-                                    <p>General chat for any university circle</p>
-                                </div>
-                                
-                            </div>
-
-                            <div class="dis-card">
-                                <div class="card-img adjust">
-
-                                    <img src="../assets/image/ask.png" alt="">
-                                </div>
-
-                                <div class="dis-name">
-                                    <h6>Questions & Answers</h6>
-                                    <p>Get advice from your piers</p>
-                                </div>
-                                
-                            </div>
-
-                            <div class="dis-card">
-                                <div class="card-img">
-
-                                    <img src="../assets/image/annouce.png" alt="">
-                                </div>
-
-                                <div class="dis-name">
-                                    <h6>Annoucement</h6>
-                                    <p>Look for your project teammate <br>
-                                        also share your projects</p>
-                                </div>
-                                
-                            </div>
-
-                            <div class="dis-card">
-                                <div class="card-img">
-
-                                    <img src="../assets/image/dice.png" alt="">
-                                </div>
-
-                                <div class="dis-name">
-                                    <h6>Study Material</h6>
-                                    <p>Share the study guid earn coins</p>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="top-discussion">
-
-                        <div class="title">
-                            <i class='bx bx-shape-polygon'></i>
-                            <h5>University Circles</h5>
-                        </div>
-
-
-                        <div class="card-container">
-                            <div class="dis-card">
-                                <div class="card-img ">
-
-                                    <img class="circle-uni-img rounded-circle" src="../assets/image/buet.svg" alt="">
-                                </div>
-
-                                <div class="dis-name">
-                                    <h6>BUET</h6>
-                                    
-                                </div>
-                                
-                            </div>
-
-                            <div class="dis-card">
-                                <div class="card-img">
-
-                                    <img class="circle-uni-img rounded-circle" src="../assets/image/uiu.png" alt="">
-                                </div>
-
-                                <div class="dis-name">
-                                    <h6>UIU</h6>
-                                    
-                                </div>
-                                
-                            </div>
-
-                            <div class="dis-card">
-                                <div class="card-img">
-
-                                    <img class="circle-uni-img rounded-circle" src="../assets/image/du.png" alt="">
-                                </div>
-
-                                <div class="dis-name">
-                                    <h6>DU</h6>
-                                    
-                                </div>
-                                
-                            </div>
-
-                            <div class="dis-card">
-                                <div class="card-img">
-
-                                    <img class="circle-uni-img rounded-circle" src="../assets/image/sust.png" alt="">
-                                </div>
-
-                                <div class="dis-name">
-                                    <h6>SUST</h6>
-                                    
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="post">
+                  <form class="create" action="../assets/php/submit_circle.php" method="post" enctype="multipart/form-data">
+                      <div class="circle-des">
+                          <div class="input-div">
+                              <label class="input-label" for="circleName">Circle Name</label>
+                              <input class="circle_name form-control" id="circleName" type="text" placeholder="circle name" name="circle_name">
+                          </div>
+              
+                          <div class="input-div">
+                              <label class="input-label" for="circleImg">Circle Image</label>
+                              <input class="circle_img form-control" type="file" id="circleImg" name="circle_img">
+                          </div>
+                      </div>
+              
+                      <div class="uni-des">
+                          <div class="input-div">
+                              <label class="input-label" for="uniName">University Name</label>
+                              <input class="uni_name form-control" id="uniName" type="text" placeholder="university name" name="university_name">
+                          </div>
+              
+                          <div class="input-div">
+                              <label class="input-label" for="uniLogo">University Logo</label>
+                              <input class="university_img form-control" type="file" id="uniLogo" name="university_img">
+                          </div>
+                      </div>
+              
+                      <div class="catagory">
+                          <label class="catagory-text" for="categorySelect">Category</label>
+                          <select class="form-select" id="categorySelect" name="category">
+                              <option selected>Choose...</option>
+                              <option value="1">Academic</option>
+                              <option value="2">Engineering</option>
+                              <option value="3">Skill Develop</option>
+                              <option value="4">Research</option>
+                          </select>
+                      </div>
+              
+                      <div class="input-div">
+                          <label class="input-label" for="circleDesc">Circle Description</label>
+                          <textarea class="description" placeholder="circle description" id="circleDesc" style="height: 100px" name="description"></textarea>
+                      </div>
+              
+                      <div class="button">
+                          <input class="btn btn-primary button" type="submit" value="Create">
+                      </div>
+                  </form>
+              </div>
               </main>
   
 

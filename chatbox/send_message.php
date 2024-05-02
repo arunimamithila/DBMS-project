@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "chat_db";
+    $dbname = "unicircle";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -13,7 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $message = $_POST["message"];
-    $sql = "INSERT INTO messages (message) VALUES ('$message')";
+    $username = $_POST["username"];
+    $group_name = $_POST["circle_name"];
+    $sql = "INSERT INTO massages (content, sender, destination) VALUES ('$message', '$username', '$group_name')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Message sent successfully";

@@ -797,7 +797,11 @@ img {
 
 
 
-
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
 
 
 
