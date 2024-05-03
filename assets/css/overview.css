@@ -1,0 +1,123 @@
+/*========== GOOGLE FONTS ==========*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+
+:root {
+    --header-height: 3.5rem;
+    --nav-width: 219px;
+  
+    /*========== Colors ==========*/
+    --first-color: #24695c;
+    --second_color:#bd946f;
+    --first-color-light: #424242;
+    --title-color: #fff;
+    --text-color-1: #797d86;
+    --text-color-light: #A5A1AA;
+    --gradiant-color: linear-gradient(250.59deg, #322c38 0%,  #1c2137 28.53%, #000 75.52%);
+    --gradiant-color2: linear-gradient(310deg ,#322c38 0%,  #1c2137 28.53%, #000 75.52%);
+    --body-color:  #202938;
+    --container-color: #111727;
+    --primary-clr: #b38add;
+
+      /*========== Font and typography ==========*/
+    --body-font: 'Inter', sans-serif;
+    --normal-font-size: .9rem;
+    --small-font-size: .75rem;
+    --smaller-font-size: .5rem;
+
+
+
+}
+
+@media screen and (min-width: 1024px) {
+    :root {
+      --normal-font-size: 1rem;
+      --small-font-size: .875rem;
+      --smaller-font-size: .813rem;
+    }
+  
+ }
+
+ *, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+  }
+
+h5 {
+    margin: 0;
+  }
+  
+ul {
+  
+    list-style-type: none;
+    }
+  
+a {
+      
+    text-decoration: none; 
+    a:hover {
+      text-decoration: none; }
+  }
+  
+img {
+    max-width: 100%;
+    height: auto;
+  }
+
+
+body{
+    
+    background-color: var(--container-color);
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    font-style: normal;
+    font-weight: normal;
+    overscroll-behavior: none;
+
+}
+
+.target-content{
+
+    width: 100%;
+    height: 500px;
+    background-color: var(--container-color);
+    color: var(--text-color-1);
+  
+}
+
+table,th{
+
+    box-sizing: border-box;
+    border-style: ridge;
+    border-width: 1px;
+    border-collapse: collapse;
+    border-color: #202938;
+   
+}
+
+.add-task{
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    padding: 5px;
+    padding-left: 6px;
+    background-color: transparent;
+    border: none;
+    margin-left: 1rem;
+    position: relative;
+    color: var(--text-color-1);
+ 
+}
+
+.add-task i{
+    font-size: 1.2rem;
+    margin-right: 5px;
+    color: var(--text-color-1);
+}
+
+.add-task a{
+    font-size: 1rem;
+    color: var(--text-color-1); 
+}
+
