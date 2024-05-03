@@ -1,6 +1,6 @@
 <?php
 session_start();
-//include '../assets/php/db_conn.php';
+include '../assets/php/db_conn.php';
 $username = $_SESSION['username'];
 $user_Email=$_SESSION['user_Email'];
 $profilePic=$_SESSION['profilePic'];
