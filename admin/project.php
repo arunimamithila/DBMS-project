@@ -3,6 +3,12 @@ session_start();
 include '../assets/php/db_conn.php';
 
 $username = $_SESSION['username'];
+$user_Email = $_SESSION['user_Email'];
+
+$stmt = $conn->prepare('SELECT profile_pic_link FROM user_table WHERE username = ?');
+$stmt->bind_param('s', $username);
+$stmt->execute();
+$profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
 
 // Prepare a SQL statement to fetch the project info for this user
 $stmt = $conn->prepare("SELECT * FROM projects WHERE projectAdmin = ? ORDER BY id DESC");
@@ -99,10 +105,10 @@ $result = $stmt->get_result();
   
               <div class="profile_dropdown">
                 <div class="pro-des">
-                  <img src="../assets/image/perfil.jpg" alt="">
+                  <img src=<?php echo $profile_pic?>" alt="">
                 <div>
                   <p class="pro-usrname">< <?php echo $username; ?> ></p>
-                  <span class="pro-mail">user1234@gmail.com</span></p>
+                  <span class="pro-mail"><?php echo $user_Email?></span></p>
                 </div>
                 </div>
   
@@ -163,7 +169,7 @@ $result = $stmt->get_result();
                                       <span class="nav__name">Circles</span>
                                   </a>
 
-                                  <a href="./discussions.html" class="nav__link">
+                                  <a href="./discussions.php" class="nav__link">
                                     <i class='bx bx-conversation nav__icon' ></i>
                                     <span class="nav__name">Discussions</span>
                                 </a>

@@ -29,12 +29,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           // Authentication successful, set session variables
          // $_SESSION["username"] = $username;
          $_SESSION['loggedin'] = true;
-         $_SESSION['password']=$password;
+         //$_SESSION['password']=$password;
          $_SESSION['user_Email']=$row['User_Email'];
          $_SESSION['profilePic']=$row['profile_pic_link'];
 
-         echo $_SESSION['profilePic'];
-
+         
           // Redirect to the welcome page
           header("Location: ..\..\admin\homePage.php");
           exit();

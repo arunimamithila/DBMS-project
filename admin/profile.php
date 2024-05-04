@@ -2,10 +2,13 @@
 session_start();
 $username = $_SESSION['username'];
 $user_Email = $_SESSION['user_Email'];
-$profilePic = $_SESSION['profilePic'];
+
 
 include '../assets/php/db_conn.php';
-
+$stmt = $conn->prepare('SELECT profile_pic_link FROM user_table WHERE username = ?');
+$stmt->bind_param('s', $username);
+$stmt->execute();
+$profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
 
 
 $stmt = $conn->prepare('SELECT * FROM user_table WHERE username = ?');
@@ -46,7 +49,7 @@ $conn->close();
 
             <div class="header_container_left">
 
-                <a href="#" class="header_logo"><span class="header_title">GoCircle</span></a>
+                <a href="#" class="header_logo"><span class="header_title">UniCircle</span></a>
 
                 <!-- <div class="header_toggle">
                 <i class='bx bxs-grid-alt'></i>
@@ -67,7 +70,7 @@ $conn->close();
                 <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img src="../assets/image/red_dot.png" alt=""></span></div>
 
                 <div class="profile_img">
-                    <a href="#"><img src="<?php echo $data['profile_pic_link'] ?>" alt="" id="my-profile-pic"></a>
+                    <a href="#"><img class="avatar_img rounded-circle" src="<?php echo $profile_pic  . '?v=' . time(); ?>" alt="">" alt="" id="my-profile-pic"></a>
                 </div>
 
             </div>
@@ -116,7 +119,7 @@ $conn->close();
 
                 <div class="profile_dropdown">
                     <div class="pro-des">
-                        <a href="#"><img src="<?php echo $data['profile_pic_link'] ?>" alt="" id="my-profile-pic"></a>
+                        <a href="#"><img src="<?php echo $profile_pic  ?>" alt="" id="my-profile-pic"></a>
                         <div>
                             <p class="pro-usrname"><?php echo $username  ?></p>
                             <span class="pro-mail"><?php echo $user_Email ?></span>
@@ -183,7 +186,7 @@ $conn->close();
                         <span class="nav__name">Circles</span>
                     </a>
 
-                    <a href="./discussions.html" class="nav__link">
+                    <a href="./discussions.php" class="nav__link">
                         <i class='bx bx-conversation nav__icon'></i>
                         <span class="nav__name">Discussions</span>
                     </a>

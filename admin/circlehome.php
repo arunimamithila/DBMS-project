@@ -1,9 +1,21 @@
+<?php
+include "../assets/php/db_conn.php";
+session_start();
+$username = $_SESSION['username'];
+$user_Email = $_SESSION['user_Email'];
+
+$stmt = $conn->prepare('SELECT profile_pic_link FROM user_table WHERE username = ?');
+$stmt->bind_param('s', $username);
+$stmt->execute();
+$profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GoCircle Create Circle</title>
+  <title>UniCircle Create Circle</title>
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" rel="stylesheet">
 
@@ -11,7 +23,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" href="../assets/css/discussionhome.css">
+  <link rel="stylesheet" href="../assets/css/circlehome.css">
 </head>
 <body>
 
@@ -24,7 +36,7 @@
 
           <div class="header_container_left">
 
-              <a href="#" class="header_logo"><span class="header_title">GoCircle</span></a>
+              <a href="#" class="header_logo"><span class="header_title">UbiCircle</span></a>
             
               <!-- <div class="header_toggle">
                 <i class='bx bxs-grid-alt'></i>
@@ -45,7 +57,7 @@
               <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img src="../assets/image/red_dot.png" alt=""></span></div>
           
               <div class="profile_img">
-                <a href="#"><img src="../assets/image/perfil.jpg" alt="" id="my-profile-pic"></a>
+                <a href="#"><img src="<?php echo $profile_pic?>" alt="" id="my-profile-pic"></a>
               </div>
               
           </div>
@@ -82,10 +94,10 @@
   
               <div class="profile_dropdown">
                 <div class="pro-des">
-                  <img src="../assets/image/perfil.jpg" alt="">
+                  <img src="<?php echo $profile_pic?>" alt="">
                 <div>
-                  <p class="pro-usrname">user_name 
-                  <span class="pro-mail">user1234@gmail.com</span></p>
+                  <p class="pro-usrname"><?php echo $username?> 
+                  <span class="pro-mail"><?php echo $user_Email?></span></p>
                 </div>
                 </div>
   
@@ -125,7 +137,7 @@
                              <!-- <img src="./img/Go.svg" alt=""> -->
                              <img src="../assets/image/gocircle_logo.png">
   
-                              <span class="nav__logo-name"> <h4>GoCircle</h4></span>
+                              <span class="nav__logo-name"> <h4>UniCircle</h4></span>
                           </a>
                   
           
@@ -141,17 +153,17 @@
                                        <span class="nav__name">Profile</span>
                                   </a>
       
-                                  <a href="../admin/circle.html" class="nav__link">
+                                  <a href="../admin/circle.php" class="nav__link">
                                       <i class='bx bxs-adjust-alt nav__icon' ></i>
                                       <span class="nav__name">Circles</span>
                                   </a>
 
-                                  <a href="#" class="nav__link">
+                                  <a href="./discussions.html" class="nav__link">
                                     <i class='bx bx-conversation nav__icon' ></i>
                                     <span class="nav__name">Discussions</span>
                                 </a>
       
-                                  <a href="#" class="nav__link">
+                                  <a href="./competitions.html" class="nav__link">
                                       <i class='bx bx-trophy nav__icon'></i>
                                       <span class="nav__name">Compititions</span>
                                   </a>
@@ -236,115 +248,11 @@
               
               <main class="main" id="mainContent">
              
-                                <div class="container" id="blur">
-
-                  <div class="heading">
-
-                    <div class="discription">
-                      <h4>General</h4>
-                      <p>
-                        Announcements, resources, and interesting discussions
-                      </p>
-                    </div>
-
-                    <div class="topic-btn btn bt-primary">
-                      <i class='bx bx-plus'></i>
-                      <a class="add_link" onclick="toggle()"> New Topic</a>
-                    </div>
-
-
-                  </div>
-
-
-                  <div class="discussions">
-                    <div class="title">
-                      <i class='bx bx-at'></i>
-                      <h5>Topics</h5>
-                    </div>
-
-                    <div class="dis-card">
-
-                     
-
-                      <div class="profile_pic">
-                        <img src="../assets/image/perfil.jpg" alt="">
-
-                      </div>
-
-                      
-
-                      <div class="topic-name">
-
-                        <div class="topic-title">
-                          topic heading 
-                        </div>
-
-                        <div class="username">
-                          user_name
-                        </div>
-
-                      </div>
-
-                      <div class="right-side">
-                          <div class="upbeat">
-
-
-                            <div class="upbeat-btn btn bt-primary">
-                              <i class='bx bx-caret-up'></i> 
-                            </div>
-                            <a class="" href="">0</a>
-
-                          </div>
-
-                          <div class="comment-count">
-                            <a href="">0</a>
-                            Comments
-                          </div>
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                </div>
-           
-
-                <div class="new-topic" id="popup">
-                  
-                    <form class="topic" action="../assets/php/topic.php" method="post" enctype="multipart/form-data">
-                       
-                        <div class="input-div">
-                            <label class="input-label" for="topicName">Topic Heading</label>
-                            <input class="topic_name form-control" id="topicName" type="text" placeholder="topic heading" name="topic_name">
-                         </div>
-
-
-                         <div class="input-div">
-                          <label class="input-label" for="topicDesc">Topic Description</label>
-                          <textarea class="description" placeholder="   topic description" id="topicDesc" style="height: 150px" name="description"></textarea>
-                         </div>
-              
-                
-                        <div class="button">
-                            <input class="btn btn-primary button" type="submit" value="Create" onclick="toggle()">
-                        </div>
-                    </form>
-                </div>
            
               </main>
   
 
-             <script type="text/javascript">
-
-                function toggle(){
-                  var blur = document.getElementById('blur');
-                  blur.classList.toggle('active')
-
-                  var popup = document.getElementById('popup');
-                  popup.classList.toggle('active')
-                }
-              </script>
-
+             
 
               <script src="../assets/js/projectcreate.js"></script>
 </body>

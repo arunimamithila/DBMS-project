@@ -1,10 +1,14 @@
 <?php 
+include "../assets/php/db_conn.php";
 session_start();
 $username = $_SESSION["username"];
 $user_Email = $_SESSION["user_Email"];
-$profilePic = $_SESSION["profilePic"];
+$stmt = $conn->prepare('SELECT profile_pic_link FROM user_table WHERE username = ?');
+$stmt->bind_param('s', $username);
+$stmt->execute();
+$profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link']; 
 
-//include "../assets/php/db_conn.php";
+
 
 ?>
 <!DOCTYPE html>
@@ -93,8 +97,8 @@ $profilePic = $_SESSION["profilePic"];
                 <div class="pro-des">
                 <img src="<?php echo $profilePic?>" alt="">
                 <div>
-                  <p class="pro-usrname">$username</p> 
-                  <span class="pro-mail">$user_Email</span></p>
+                  <p class="pro-usrname"><?php echo $username?></p> 
+                  <span class="pro-mail"><?php echo $user_Email?></span></p>
                 </div>
                 </div>
   

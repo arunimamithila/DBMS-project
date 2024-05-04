@@ -3,7 +3,11 @@ session_start();
 include '../assets/php/db_conn.php';
 $username = $_SESSION['username'];
 $user_Email=$_SESSION['user_Email'];
-$profilePic=$_SESSION['profilePic'];
+
+$stmt = $conn->prepare('SELECT profile_pic_link FROM user_table WHERE username = ?');
+$stmt->bind_param('s', $username);
+$stmt->execute();
+$profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
 
 
 // First query
@@ -25,7 +29,7 @@ $result2 = $stmt2->get_result();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoCircle Create a Project</title>
+    <title>UniCircle Create a Circle</title>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" rel="stylesheet">
 
@@ -68,7 +72,7 @@ $result2 = $stmt2->get_result();
                 <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img src="../assets/image/red_dot.png" alt=""></span></div>
 
                 <div class="profile_img">
-                    <a href="#"><img src="<?php echo $profilePic?>" alt="" id="my-profile-pic"></a>
+                <a href="#"><img src="<?php echo $profile_pic?>" alt="" id="my-profile-pic"></a>
                 </div>
 
             </div>

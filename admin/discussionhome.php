@@ -1,19 +1,28 @@
 <?php
-include '../assets/php/db_conn.php';
 session_start();
 $username = $_SESSION['username'];
 $user_Email = $_SESSION['user_Email'];
 
-$sql = "SELECT * FROM circle_table";
-$result = $conn->query($sql);
-
+include '../assets/php/db_conn.php';
 $stmt = $conn->prepare('SELECT profile_pic_link FROM user_table WHERE username = ?');
 $stmt->bind_param('s', $username);
 $stmt->execute();
 $profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
 
+// Prepare an SQL statement
+$stmt = $conn->prepare("SELECT Topics.*, user_table.profile_pic_link FROM Topics INNER JOIN user_table ON Topics.username = user_table.username");
+$stmt->execute();
 
+// Get the result
+$result = $stmt->get_result();
+
+
+$sql = "SELECT profile_pic_link FROM user_table WHERE username = '$username'";
+$result2 = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result2);
+$profilePic = $row['profile_pic_link'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +37,7 @@ $profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" href="../assets/css/discussions.css">
+  <link rel="stylesheet" href="../assets/css/discussionhome.css">
 </head>
 
 <body>
@@ -63,7 +72,7 @@ $profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
         <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img src="../assets/image/red_dot.png" alt=""></span></div>
 
         <div class="profile_img">
-          <a href="#"><img src="<?php echo $profile_pic?>" alt="" id="my-profile-pic"></a>
+          <a href="#"><img src="<?php echo $profilePic?>" alt="" id="my-profile-pic"></a>
         </div>
 
       </div>
@@ -112,9 +121,9 @@ $profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
 
         <div class="profile_dropdown">
           <div class="pro-des">
-            <img src="<?php echo $profile_pic?>" alt="">
+            <img src="<?php echo $profilePic?>" alt="">
             <div>
-              <p class="pro-usrname"><?php echo $username?>
+              <p class="pro-usrname"><?php echo $username?></p>
                 <span class="pro-mail"><?php echo $user_Email?></span>
               </p>
             </div>
@@ -179,12 +188,12 @@ $profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
             <span class="nav__name">Circles</span>
           </a>
 
-          <a href="./discussions.php" class="nav__link">
+          <a href="discussions.php" class="nav__link">
             <i class='bx bx-conversation nav__icon'></i>
             <span class="nav__name">Discussions</span>
           </a>
 
-          <a href="./competitions.html" class="nav__link">
+          <a href="competitions.html" class="nav__link">
             <i class='bx bx-trophy nav__icon'></i>
             <span class="nav__name">Compititions</span>
           </a>
@@ -269,96 +278,100 @@ $profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
 
   <main class="main" id="mainContent">
 
-    <div class="container">
+    <div class="container" id="blur">
 
       <div class="heading">
 
         <div class="discription">
-          <h3>Discussion</h3>
-          <p>Discuss in the GoCircle platform within and outside your
-            <br>university circles. Also ask question, share your feedback,
-            and more
+          <h4>General</h4>
+          <p>
+            Announcements, resources, and interesting discussions
           </p>
         </div>
 
-        <div class="pic">
-          <img src="../assets/image/dis.png" alt="">
+        <div class="topic-btn btn bt-primary">
+          <i class='bx bx-plus'></i>
+          <a class="add_link" onclick="toggle()"> New Topic</a>
         </div>
+
+
       </div>
 
 
-      <div class="uni-discussion">
-
+      <div class="discussions">
         <div class="title">
-          <i class='bx bxs-chat'></i>
-          <h5>Circles Discussion</h5>
+          <i class='bx bx-at'></i>
+          <h5>Topics</h5>
         </div>
 
-        <div class="card-container">
-          <div class="dis-card">
-            <div class="card-img ">
+        <div class="dis-card">
 
-              <img src="../assets/image/bubble.png" alt="">
-            </div>
+          <?php
 
-            <div class="dis-name">
-              <h6>General</h6>
-              <a href="./discussionhome.php"><p>General chat for any university circle</p></a>
-            </div>
-
-          </div>
-
-          <div class="dis-card">
-            <div class="card-img adjust">
-
-              <img src="../assets/image/ask.png" alt="">
-            </div>
-
-            <div class="dis-name">
-              <h6>Questions & Answers</h6>
-              <p>Get advice from your piers</p>
-            </div>
-
-          </div>
-
-          <div class="dis-card">
-            <div class="card-img">
-
-              <img src="../assets/image/annouce.png" alt="">
-            </div>
-
-            <div class="dis-name">
-              <h6>Annoucement</h6>
-              <p>Look for your project teammate <br>
-                also share your projects</p>
-            </div>
-
-          </div>
-
-          <div class="dis-card">
-            <div class="card-img">
-
-              <img src="../assets/image/dice.png" alt="">
-            </div>
-
-            <div class="dis-name">
-              <h6>Study Material</h6>
-              <p>Share the study guid earn coins</p>
-            </div>
-
-          </div>
+          while ($row = $result->fetch_assoc()) {
+            echo '<div class="dis-card">';
+            echo '<div class="profile_pic">';
+            echo '<img src="' . $row['profile_pic_link'] . '" alt="">';
+            echo '</div>';
+            echo '<div class="topic-name">';
+            echo '<div class="topic-title">' . $row['Title'] . '</div>';
+            echo '<div class="username">' . $row['username'] . '</div>';
+            echo '</div>';
+            echo '<div class="right-side">';
+            echo '<div class="upbeat">';
+            echo '<div class="upbeat-btn btn bt-primary">';
+            echo '<i class="bx bx-caret-up"></i>';
+            echo '</div>';
+            echo '<a class="" href="">0</a>';
+            echo '</div>';
+            echo '<div class="comment-count">';
+            echo '<a href="">0</a>';
+            echo 'Comments';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+          }
+          ?>
         </div>
 
       </div>
 
-      <div class="top-discussion">
 
-    
-      
+      <div class="new-topic" id="popup">
+
+        <form class="topic" action="../assets/php/topic.php" method="post" enctype="multipart/form-data">
+
+          <div class="input-div">
+            <label class="input-label" for="topicName">Topic Heading</label>
+            <input class="topic_name form-control" id="topicName" type="text" placeholder="topic heading" name="topic_name">
+          </div>
+
+
+          <div class="input-div">
+            <label class="input-label" for="topicDesc">Topic Description</label>
+            <textarea class="description" placeholder="   topic description" id="topicDesc" style="height: 150px" name="description"></textarea>
+          </div>
+
+
+          <div class="button">
+            <input class="btn btn-primary button" type="submit" value="Create" onclick="toggle()">
+          </div>
+        </form>
+      </div>
 
   </main>
 
 
+
+  <script type="text/javascript">
+    function toggle() {
+      var blur = document.getElementById('blur');
+      blur.classList.toggle('active')
+
+      var popup = document.getElementById('popup');
+      popup.classList.toggle('popup-active') // Changed this line
+    }
+</script>
 
 
   <script src="../assets/js/projectcreate.js"></script>

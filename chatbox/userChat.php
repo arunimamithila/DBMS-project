@@ -1,7 +1,7 @@
 <?php
 session_start();
 $username = $_SESSION['username'];
-$circle_name = $_GET['circle_name'];
+$circle_name = $_GET['username'];
 include '../assets/php/db_conn.php';
 ?>
 <!DOCTYPE html>
@@ -15,8 +15,11 @@ include '../assets/php/db_conn.php';
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="../assets/css/discussionhome.css">
 </head>
@@ -50,7 +53,8 @@ include '../assets/php/db_conn.php';
             <div class="header_container_right">
 
                 <div class="bookmark_box"><i class='bx bx-sticker' style='color:#ffffff'></i></div>
-                <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img src="../assets/image/red_dot.png" alt=""></span></div>
+                <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img
+                            src="../assets/image/red_dot.png" alt=""></span></div>
 
                 <div class="profile_img">
                     <a href="#"><img src="../assets/image/perfil.jpg" alt="" id="my-profile-pic"></a>
@@ -70,14 +74,19 @@ include '../assets/php/db_conn.php';
                             </form>
                         </li>
 
-                        <li class="add-bm"><i class="bx bx-underline" style='color:#ffffff' data-feather="inbox"></i></i>
-                            <p>University</p><span class="pull-right"><i class="bx bx-star" style='color:#ffffff' data-feather="star"></i></span>
+                        <li class="add-bm"><i class="bx bx-underline" style='color:#ffffff'
+                                data-feather="inbox"></i></i>
+                            <p>University</p><span class="pull-right"><i class="bx bx-star" style='color:#ffffff'
+                                    data-feather="star"></i></span>
                         </li>
-                        <li class="add-bm"><i class="bx bx-shape-square" style='color:#ffffff' data-feather="project"></i>
-                            <p>Project</p><span class="pull-right"><i class="bx bx-star" style='color:#ffffff' data-feather="star"></i></span>
+                        <li class="add-bm"><i class="bx bx-shape-square" style='color:#ffffff'
+                                data-feather="project"></i>
+                            <p>Project</p><span class="pull-right"><i class="bx bx-star" style='color:#ffffff'
+                                    data-feather="star"></i></span>
                         </li>
                         <li class="add-bm"><i class="bx bxs-adjust-alt" style='color:#ffffff' data-feather="circle"></i>
-                            <p>Circle</p><span class="pull-right"><i class="bx bx-star" style='color:#ffffff' data-feather="star"></i></span>
+                            <p>Circle</p><span class="pull-right"><i class="bx bx-star" style='color:#ffffff'
+                                    data-feather="star"></i></span>
                         </li>
                     </ul>
 
@@ -86,13 +95,16 @@ include '../assets/php/db_conn.php';
                 <div class="notification">
                     <ul class="noti_time">
 
-                        <li class="add_noti"><i class='bx bx-bar-chart' style='color:#ffffff' data-feather="project-noti"></i>
+                        <li class="add_noti"><i class='bx bx-bar-chart' style='color:#ffffff'
+                                data-feather="project-noti"></i>
                             <p>Project Activity <br><span class="noti_time">10 minutes ago</span> </p>
                         </li>
-                        <li class="add_noti"><i class='bx bxl-microsoft-teams' style='color:#ffffff' data-feather="team-noti"></i>
+                        <li class="add_noti"><i class='bx bxl-microsoft-teams' style='color:#ffffff'
+                                data-feather="team-noti"></i>
                             <p>Team Aproval <br><span class="noti_time">20 minutes ago</span></p>
                         </li>
-                        <li class="add_noti"><i class='bx bx-log-in-circle bx-rotate-180' style='color:#ffffff' data-feather="circle-noti"></i>
+                        <li class="add_noti"><i class='bx bx-log-in-circle bx-rotate-180' style='color:#ffffff'
+                                data-feather="circle-noti"></i>
                             <p>Circle in <br><span class="noti_time">45 minutes ago</span></p>
                         </li>
 
@@ -258,173 +270,122 @@ include '../assets/php/db_conn.php';
 
 
     <main class="main" id="mainContent">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <div class="wrapper">
-            <div class="chat-container">
-                <div class="userlist" id="userList">
-                    <!-- User list will be appended here -->
-                </div>
-                <div class="chatbox">
-                    <div class="chatbox__messages" id="chatboxMessages">
-                        <div class="message">
-                            <img src="#" alt="Profile Picture" class="message__profile-pic">
-                            <p class="message__text">Hello, this is a message!</p>
-                        </div>
-                        <!-- Messages will be appended here -->
-                    </div>
-                    <form id="chatboxForm" class="chatbox__form">
-                        <input type="text" id="chatboxInput" class="chatbox__input" placeholder="Type a message...">
-                        <input type="text" class="destination" name="destination" value="<?php echo $circle_name; ?>" hidden>
-                        <button type="submit" class="chatbox__submit">Send</button>
-                    </form>
-                </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div class="wrapper">
+    <div class="chat-container">
+    <div class="chatbox">
+        <div class="chatbox__messages" id="chatboxMessages">
+            <div class="message">
+                <img src="#" alt="Profile Picture" class="message__profile-pic">
+                <p class="message__text">Hello, this is a message!</p>
             </div>
+            <!-- Messages will be appended here -->
         </div>
-    </main>
-    <script>
-        $(document).ready(function() {
-            var current_username = '<?php echo $username; ?>'; // Replace with the current user's username
+        <form id="chatboxForm" class="chatbox__form">
+            <input type="text" id="chatboxInput" class="chatbox__input" placeholder="Type a message...">
+            <input type="text" class="destination" name="destination" value="<?php echo $circle_name; ?>" hidden>
+            <button type="submit" class="chatbox__submit">Send</button>
+        </form>
+    </div>
+</div>
+    </div>
+</main>
+<script>
+   $(document).ready(function () {
+    var current_username = '<?php echo $username;?>'; // Replace with the current user's username
 
-            // Load messages every 1 second
-            setInterval(function() {
-                $.ajax({
-                    url: 'get_messages.php',
-                    data: {
-                        circle_name: $('.destination').val()
-                    },
-                    success: function(data) {
-                        var parsedData = JSON.parse(data); // Assuming the data is in JSON format
-                        var messagesHtml = '';
-                        for (var i = 0; i < parsedData.length; i++) {
-                            var messageClass = parsedData[i].incoming_username === current_username ? 'message--outgoing' : 'message--incoming';
-                            messagesHtml += '<div class="message ' + messageClass + '">';
-                            messagesHtml += '<img class="profile-pic" src="' + parsedData[i].profile_image_link + '" alt="Profile Image">'; // Add profile image
-                            messagesHtml += '<p>' + parsedData[i].message + '</p></div>'; // Create HTML for the message
-                        }
-                        $('#chatboxMessages').html(messagesHtml); // Update the chatbox with the messages
-                    }
-                });
-            }, 2000);
+    // Load messages every 1 second
+    setInterval(function () {
+        $.ajax({
+            url: 'get_user_message.php',
+            data: { circle_name: $('.destination').val() },
+            success: function (data) {
+                var parsedData = JSON.parse(data); // Assuming the data is in JSON format
+                var messagesHtml = '';
+                for (var i = 0; i < parsedData.length; i++) {
+                    var messageClass = parsedData[i].incoming_username === current_username ? 'message--outgoing' : 'message--incoming';
+                    messagesHtml += '<div class="message ' + messageClass + '">';
+                    messagesHtml += '<img class="profile-pic" src="' + parsedData[i].profile_image_link + '" alt="Profile Image">'; // Add profile image
+                    messagesHtml += '<p>' + parsedData[i].message + '</p></div>'; // Create HTML for the message
+                }
+                $('#chatboxMessages').html(messagesHtml); // Update the chatbox with the messages
+            }
         });
+    }, 2000);
+});
 
         // Send a new message
-        $('#chatboxForm').on('submit', function(e) {
+        $('#chatboxForm').on('submit', function (e) {
             e.preventDefault();
 
             $.ajax({
-                type: 'POST',
-                url: 'send_message.php',
-                data: {
-                    message: $('#chatboxInput').val(),
-                    username: '<?php echo $username; ?>', // Output the username as a string
-                    circle_name: '<?php echo $circle_name; ?>' // Replace with the actual group name
-                },
-                success: function() {
-                    console.log('AJAX request successful'); // Add this line
-                    $('#chatboxInput').val('');
-                }
-            });
+    type: 'POST',
+    url: 'send_message.php',
+    data: {
+        message: $('#chatboxInput').val(),
+        username: '<?php echo $username;?>', // Output the username as a string
+        circle_name: '<?php echo $circle_name; ?>' // Replace with the actual group name
+    },
+    success: function() {
+        console.log('AJAX request successful'); // Add this line
+        $('#chatboxInput').val('');
+    }
+});
         });
 
-        $(document).ready(function() {
-            var current_username = '<?php echo $username; ?>';
-            // Load user list
-            setInterval(function() {
-                $.ajax({
-                    url: 'get_users.php', // Replace with the URL of your server-side script that returns the user list
-                    data: {
-                        circle_name: $('.destination').val()
-                    },
-                    success: function(data) {
-                        console.log(data);
-                        var parsedData = JSON.parse(data); // Assuming the data is in JSON format
-                        var usersHtml = '';
-                        for (var i = 0; i < parsedData.length; i++) {
-                            if (parsedData[i].incoming_username !== current_username) { // Skip the current user
-                                usersHtml += '<div class="user" data-username="' + parsedData[i].incoming_username + '">' +
-                                    '<img class="profile-pic" src="' + parsedData[i].profile_image_link + '">' +
-                                    parsedData[i].incoming_username +
-                                    '</div>'; // Create HTML for the user
-                            }
-                        }
-                        $('#userList').html(usersHtml); // Update the user list
+      
 
-                        // Add click event listener to .user elements
-                        $('.user').click(function() {
-                            var username = $(this).data('username'); // Get the username
-                            window.location.href = 'userChat.php?username=' + encodeURIComponent(username); // Redirect to userChat.php with the username as a query parameter
-                        });
-                    }
-                });
-            }, 5000);
-        });
-    </script>
+</script>
 
     <!-- Add some styles for the chatbox -->
     <style>
-        html,
-        body,
-        main {
-            height: 90%;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            /* Centers content horizontally */
-            align-items: center;
-            /* Centers content vertically */
-        }
+        html, body, main {
+  height: 90%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+}
+.profile-pic {
+    border-radius: 50%; /* This will make the image round */
+    width: 50px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    object-fit: cover; /* This will ensure the image covers the whole area */
+    margin-right: 10px; /* This will add some space between the image and the message */
+}
 
-        .profile-pic {
-            border-radius: 50%;
-            /* This will make the image round */
-            width: 50px;
-            /* Adjust as needed */
-            height: 50px;
-            /* Adjust as needed */
-            object-fit: cover;
-            /* This will ensure the image covers the whole area */
-            margin-right: 10px;
-            /* This will add some space between the image and the message */
-        }
+.wrapper {
+  width: 100%;
+  max-width: 800px; /* Set to the desired width */
+  height: 100%;
+}
+.chat-container {
+    display: flex;
+}
 
-        .wrapper {
-            width: 100%;
-            max-width: 800px;
-            /* Set to the desired width */
-            height: 100%;
-        }
-
-        .chat-container {
-            display: flex;
-        }
-
-        .userlist {
-            /* Adjust width as needed */
-            width: 30%;
-            height: 100%;
-            /* Set to the desired height */
-            overflow-y: auto;
-            /* Enable vertical scrolling */
-        }
+.userlist {
+    /* Adjust width as needed */
+    width: 30%;
+    height: 100%; /* Set to the desired height */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
 
 
-        .chatbox {
-            width: 70%;
-            height: calc(100vh - 50px);
-            /* Adjust as needed */
-            border: 1px solid #ccc;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-            /* Enable vertical scrolling */
-        }
+.chatbox {
+  width: 70%;
+  height: calc(100vh - 50px); /* Adjust as needed */
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
 
-        .chatbox__messages {
-            flex-grow: 1;
-            overflow-y: auto;
-            padding: 10px;
-        }
+.chatbox__messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
 
         .chatbox__form {
             display: flex;
@@ -436,47 +397,38 @@ include '../assets/php/db_conn.php';
             flex-grow: 1;
             margin-right: 10px;
         }
-
         .message--outgoing {
-            text-align: right;
-            background-color: #d1f7d1;
-            /* Light green */
-        }
+    text-align: right;
+    background-color: #d1f7d1; /* Light green */
+}
 
-        .message--incoming {
-            text-align: left;
-            background-color: #d1d1f7;
-            /* Light blue */
-        }
+.message--incoming {
+    text-align: left;
+    background-color: #d1d1f7; /* Light blue */
+}
+.userlist {
+    width: 30%; /* Adjust as needed */
+    border-right: 1px solid #ccc;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #f5f5f5; /* Light grey background */
+}
 
-        .userlist {
-            width: 30%;
-            /* Adjust as needed */
-            border-right: 1px solid #ccc;
-            padding: 10px;
-            overflow-y: auto;
-            background-color: #f5f5f5;
-            /* Light grey background */
-        }
+.userlist .user {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    font-size: 1.2em; /* Larger text */
+    color: #333; /* Dark grey text */
+}
 
-        .userlist .user {
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-            font-size: 1.2em;
-            /* Larger text */
-            color: #333;
-            /* Dark grey text */
-        }
-
-        .userlist .user:hover {
-            background-color: #e5e5e5;
-            /* Slightly darker grey background on hover */
-            cursor: pointer;
-        }
+.userlist .user:hover {
+    background-color: #e5e5e5; /* Slightly darker grey background on hover */
+    cursor: pointer;
+}
     </style>
 
     <script src="../assets/js/projectcreate.js"></script>
-
+   
 </body>
 
 </html>

@@ -5,16 +5,17 @@ include 'db_conn.php';
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
-    $topic_name = $_POST['topic_name'];
+    $username = $_SESSION['username']; // Assuming the username is stored in session
+    $title = $_POST['topic_name'];
     $description = $_POST['description'];
 
     // Prepare an SQL statement
-    $stmt = $conn->prepare("INSERT INTO topic_table (topic_name, description) VALUES (?, ?)");
-    $stmt->bind_param("ss", $topic_name, $description);
+    $stmt = $conn->prepare("INSERT INTO Topics (username, Title, Description) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $username, $title, $description);
 
     // Execute the statement
     if ($stmt->execute()) {
-        header("Location: ../../admin/discussionhome.html"); // Redirect to desired page after successful insertion
+        header("Location: ../../admin/discussionhome.php"); // Redirect to desired page after successful insertion
         exit(); // Make sure to exit after redirection
     } else {
         echo "Error: " . $stmt->error;
