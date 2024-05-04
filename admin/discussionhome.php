@@ -278,9 +278,10 @@ $profilePic = $row['profile_pic_link'];
 
   <main class="main" id="mainContent">
 
-    <div class="container" id="blur">
+    <div class="container">
 
-      <div class="heading">
+     <div class="topic-con" id="blur">
+       <div class="heading">
 
         <div class="discription">
           <h4>General</h4>
@@ -335,6 +336,7 @@ $profilePic = $row['profile_pic_link'];
         </div>
 
       </div>
+     </div>
 
 
       <div class="popup-container">
@@ -361,7 +363,9 @@ $profilePic = $row['profile_pic_link'];
             </div>
       </div>
 
-  </main>
+  
+        </div>
+    </main>
 
 
 
