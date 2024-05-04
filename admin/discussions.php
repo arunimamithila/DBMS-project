@@ -294,7 +294,7 @@ $result = $conn->query($sql);
 
             <div class="dis-name">
               <h6>General</h6>
-              <p>General chat for any university circle</p>
+              <a href="./discussionhome.html"><p>General chat for any university circle</p></a>
             </div>
 
           </div>

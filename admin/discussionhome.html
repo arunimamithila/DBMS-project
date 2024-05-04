@@ -236,12 +236,115 @@
               
               <main class="main" id="mainContent">
              
+                                <div class="container" id="blur">
+
+                  <div class="heading">
+
+                    <div class="discription">
+                      <h4>General</h4>
+                      <p>
+                        Announcements, resources, and interesting discussions
+                      </p>
+                    </div>
+
+                    <div class="topic-btn btn bt-primary">
+                      <i class='bx bx-plus'></i>
+                      <a class="add_link" onclick="toggle()"> New Topic</a>
+                    </div>
+
+
+                  </div>
+
+
+                  <div class="discussions">
+                    <div class="title">
+                      <i class='bx bx-at'></i>
+                      <h5>Topics</h5>
+                    </div>
+
+                    <div class="dis-card">
+
+                     
+
+                      <div class="profile_pic">
+                        <img src="../assets/image/perfil.jpg" alt="">
+
+                      </div>
+
+                      
+
+                      <div class="topic-name">
+
+                        <div class="topic-title">
+                          topic heading 
+                        </div>
+
+                        <div class="username">
+                          user_name
+                        </div>
+
+                      </div>
+
+                      <div class="right-side">
+                          <div class="upbeat">
+
+
+                            <div class="upbeat-btn btn bt-primary">
+                              <i class='bx bx-caret-up'></i> 
+                            </div>
+                            <a class="" href="">0</a>
+
+                          </div>
+
+                          <div class="comment-count">
+                            <a href="">0</a>
+                            Comments
+                          </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+           
+
+                <div class="new-topic" id="popup">
+                  
+                    <form class="topic" action="../assets/php/topic.php" method="post" enctype="multipart/form-data">
+                       
+                        <div class="input-div">
+                            <label class="input-label" for="topicName">Topic Heading</label>
+                            <input class="topic_name form-control" id="topicName" type="text" placeholder="topic heading" name="topic_name">
+                         </div>
+
+
+                         <div class="input-div">
+                          <label class="input-label" for="topicDesc">Topic Description</label>
+                          <textarea class="description" placeholder="   topic description" id="topicDesc" style="height: 150px" name="description"></textarea>
+                         </div>
+              
                 
+                        <div class="button">
+                            <input class="btn btn-primary button" type="submit" value="Create" onclick="toggle()">
+                        </div>
+                    </form>
+                </div>
            
               </main>
   
 
-             
+             <script type="text/javascript">
+
+                function toggle(){
+                  var blur = document.getElementById('blur');
+                  blur.classList.toggle('active')
+
+                  var popup = document.getElementById('popup');
+                  popup.classList.toggle('active')
+                }
+              </script>
+
 
               <script src="../assets/js/projectcreate.js"></script>
 </body>
