@@ -337,26 +337,28 @@ $profilePic = $row['profile_pic_link'];
       </div>
 
 
-      <div class="new-topic" id="popup">
+      <div class="popup-container">
+           <div class="new-topic" id="popup">
 
-        <form class="topic" action="../assets/php/topic.php" method="post" enctype="multipart/form-data">
+              <form class="topic" action="../assets/php/topic.php" method="post" enctype="multipart/form-data">
 
-          <div class="input-div">
-            <label class="input-label" for="topicName">Topic Heading</label>
-            <input class="topic_name form-control" id="topicName" type="text" placeholder="topic heading" name="topic_name">
-          </div>
-
-
-          <div class="input-div">
-            <label class="input-label" for="topicDesc">Topic Description</label>
-            <textarea class="description" placeholder="   topic description" id="topicDesc" style="height: 150px" name="description"></textarea>
-          </div>
+                <div class="input-div">
+                  <label class="input-label" for="topicName">Topic Heading</label>
+                  <input class="topic_name form-control" id="topicName" type="text" placeholder="topic heading" name="topic_name">
+                </div>
 
 
-          <div class="button">
-            <input class="btn btn-primary button" type="submit" value="Create" onclick="toggle()">
-          </div>
-        </form>
+                <div class="input-div">
+                  <label class="input-label" for="topicDesc">Topic Description</label>
+                  <textarea class="description" placeholder="   topic description" id="topicDesc" style="height: 150px" name="description"></textarea>
+                </div>
+
+
+                <div class="button">
+                  <input class="btn btn-primary button" type="submit" value="Create" onclick="toggle()">
+                </div>
+              </form>
+            </div>
       </div>
 
   </main>
@@ -369,7 +371,7 @@ $profilePic = $row['profile_pic_link'];
       blur.classList.toggle('active')
 
       var popup = document.getElementById('popup');
-      popup.classList.toggle('popup.active') // Changed this line
+      popup.classList.toggle('active') // Changed this line
     }
 </script>
 
