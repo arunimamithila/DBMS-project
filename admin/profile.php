@@ -1,8 +1,8 @@
 <?php
 session_start();
 $username = $_SESSION['username'];
-$user_Email=$_SESSION['user_Email'];
-$profilePic=$_SESSION['profilePic'];
+$user_Email = $_SESSION['user_Email'];
+$profilePic = $_SESSION['profilePic'];
 
 include '../assets/php/db_conn.php';
 
@@ -30,11 +30,8 @@ $conn->close();
     <title>GoCircle homepage</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="../assets/css/profile.css">
 
@@ -67,8 +64,7 @@ $conn->close();
             <div class="header_container_right">
 
                 <div class="bookmark_box"><i class='bx bx-sticker' style='color:#ffffff'></i></div>
-                <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img
-                            src="../assets/image/red_dot.png" alt=""></span></div>
+                <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img src="../assets/image/red_dot.png" alt=""></span></div>
 
                 <div class="profile_img">
                     <a href="#"><img src="<?php echo $data['profile_pic_link'] ?>" alt="" id="my-profile-pic"></a>
@@ -88,19 +84,14 @@ $conn->close();
                             </form>
                         </li>
 
-                        <li class="add-bm"><i class="bx bx-underline" style='color:#ffffff'
-                                data-feather="inbox"></i></i>
-                            <p>University</p><span class="pull-right"><i class="bx bx-star" style='color:#ffffff'
-                                    data-feather="star"></i></span>
+                        <li class="add-bm"><i class="bx bx-underline" style='color:#ffffff' data-feather="inbox"></i></i>
+                            <p>University</p><span class="pull-right"><i class="bx bx-star" style='color:#ffffff' data-feather="star"></i></span>
                         </li>
-                        <li class="add-bm"><i class="bx bx-shape-square" style='color:#ffffff'
-                                data-feather="project"></i>
-                            <p>Project</p><span class="pull-right"><i class="bx bx-star" style='color:#ffffff'
-                                    data-feather="star"></i></span>
+                        <li class="add-bm"><i class="bx bx-shape-square" style='color:#ffffff' data-feather="project"></i>
+                            <p>Project</p><span class="pull-right"><i class="bx bx-star" style='color:#ffffff' data-feather="star"></i></span>
                         </li>
                         <li class="add-bm"><i class="bx bxs-adjust-alt" style='color:#ffffff' data-feather="circle"></i>
-                            <p>Circle</p><span class="pull-right"><i class="bx bx-star" style='color:#ffffff'
-                                    data-feather="star"></i></span>
+                            <p>Circle</p><span class="pull-right"><i class="bx bx-star" style='color:#ffffff' data-feather="star"></i></span>
                         </li>
                     </ul>
 
@@ -109,16 +100,13 @@ $conn->close();
                 <div class="notification">
                     <ul class="noti_time">
 
-                        <li class="add_noti"><i class='bx bx-bar-chart' style='color:#ffffff'
-                                data-feather="project-noti"></i>
+                        <li class="add_noti"><i class='bx bx-bar-chart' style='color:#ffffff' data-feather="project-noti"></i>
                             <p>Project Activity <br><span class="noti_time">10 minutes ago</span> </p>
                         </li>
-                        <li class="add_noti"><i class='bx bxl-microsoft-teams' style='color:#ffffff'
-                                data-feather="team-noti"></i>
+                        <li class="add_noti"><i class='bx bxl-microsoft-teams' style='color:#ffffff' data-feather="team-noti"></i>
                             <p>Team Aproval <br><span class="noti_time">20 minutes ago</span></p>
                         </li>
-                        <li class="add_noti"><i class='bx bx-log-in-circle bx-rotate-180' style='color:#ffffff'
-                                data-feather="circle-noti"></i>
+                        <li class="add_noti"><i class='bx bx-log-in-circle bx-rotate-180' style='color:#ffffff' data-feather="circle-noti"></i>
                             <p>Circle in <br><span class="noti_time">45 minutes ago</span></p>
                         </li>
 
@@ -128,10 +116,10 @@ $conn->close();
 
                 <div class="profile_dropdown">
                     <div class="pro-des">
-                    <a href="#"><img src="<?php echo $data['profile_pic_link'] ?>" alt="" id="my-profile-pic"></a>
+                        <a href="#"><img src="<?php echo $data['profile_pic_link'] ?>" alt="" id="my-profile-pic"></a>
                         <div>
                             <p class="pro-usrname"><?php echo $username  ?></p>
-                            <span class="pro-mail">user1234@gmail.com</span>
+                            <span class="pro-mail"><?php echo $user_Email ?></span>
                             </p>
                         </div>
                     </div>
@@ -173,7 +161,7 @@ $conn->close();
                     <img src="../assets/image/gocircle_logo.png">
 
                     <span class="nav__logo-name">
-                        <h4>GoCircle</h4>
+                        <h4>UniCircle</h4>
                     </span>
                 </a>
 
@@ -293,13 +281,12 @@ $conn->close();
                 <div class="user-details">
                     <ul class="title">
                         <li>
-                            <div class="avatar"><img class="avatar_img rounded-circle" src="<?php echo $data['profile_pic_link'] ?>"
-                                    alt="">
-                                    <form action="../assets/php/profilePic.php" method="post" enctype="multipart/form-data">
-    <input type="file" name="profilePicture">
-    <input type="submit" value="Upload Image">
-</form>
-                                </div>
+                            <div class="avatar"><img class="avatar_img rounded-circle" src="<?php echo $data['profile_pic_link'] ?>" alt="">
+                                <form action="../assets/php/profilePic.php" method="post" enctype="multipart/form-data">
+                                    <input type="file" name="profilePicture">
+                                    <input type="submit" value="Upload Image">
+                                </form>
+                            </div>
                         </li>
                         <li><span class="username"><?php echo $username  ?></span></li>
                         <li><span class="rc">root circle</span></li>
@@ -444,8 +431,7 @@ $conn->close();
                     <div class="post-card">
 
                         <div class="post-header">
-                            <div class="media"><img class="postu-img rounded-circle" src="../assets/image/perfil.jpg"
-                                    alt="">
+                            <div class="media"><img class="postu-img rounded-circle" src="../assets/image/perfil.jpg" alt="">
                                 <div class="media-body">
                                     <h5 class="user-name">Emay Walter</h5>
                                     <h6 class="post-time">22 Hours ago</h6>
@@ -481,16 +467,13 @@ $conn->close();
 
                             <ul class="post-reaction">
                                 <li>
-                                    <label><a href="#"><i class='bx bx-album'></i>circling<span
-                                                class="counter">50</span></a></label>
+                                    <label><a href="#"><i class='bx bx-album'></i>circling<span class="counter">50</span></a></label>
                                 </li>
                                 <li>
-                                    <label><a href="#"><i class='bx bx-message-square'></i>Comment<span
-                                                class="counter">70</span></a></label>
+                                    <label><a href="#"><i class='bx bx-message-square'></i>Comment<span class="counter">70</span></a></label>
                                 </li>
                                 <li>
-                                    <label><a href="#"><i class='bx bx-share-alt'></i>share<span
-                                                class="counter">20</span></a></label>
+                                    <label><a href="#"><i class='bx bx-share-alt'></i>share<span class="counter">20</span></a></label>
                                 </li>
                             </ul>
                         </div>
@@ -512,66 +495,66 @@ $conn->close();
 
     </main>
     <script>
-    var button = document.querySelector('.edit_link');
+        var button = document.querySelector('.edit_link');
 
-    button.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent the default action of the anchor tag
+        button.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default action of the anchor tag
 
-        if (button.textContent === 'Edit') {
-            // Make the fields editable
-            document.getElementById('rootCircle').contentEditable = true;
-            document.getElementById('studies').contentEditable = true;
-            document.getElementById('lives').contentEditable = true;
-            document.getElementById('earned_coined').contentEditable = true;
-            document.getElementById('rank').contentEditable = true;
+            if (button.textContent === 'Edit') {
+                // Make the fields editable
+                document.getElementById('rootCircle').contentEditable = true;
+                document.getElementById('studies').contentEditable = true;
+                document.getElementById('lives').contentEditable = true;
+                // document.getElementById('earned_coined').contentEditable = true;
+                // document.getElementById('rank').contentEditable = true;
 
-            // Change the button to a "Save" button
-            button.textContent = 'Save';
-        } else {
-            var rootCircle = document.getElementById('rootCircle').innerText;
-            var studies = document.getElementById('studies').innerText;
-            var lives = document.getElementById('lives').innerText;
-            var earned_coined = document.getElementById('earned_coined').innerText;
-            var rank = document.getElementById('rank').innerText;
+                // Change the button to a "Save" button
+                button.textContent = 'Save';
+            } else {
+                var rootCircle = document.getElementById('rootCircle').innerText;
+                var studies = document.getElementById('studies').innerText;
+                var lives = document.getElementById('lives').innerText;
+                var earned_coined = document.getElementById('earned_coined').innerText;
+                var rank = document.getElementById('rank').innerText;
 
-            var data = {
-                rootCircle: rootCircle,
-                studies: studies,
-                lives: lives,
-                earned_coined: earned_coined,
-                rank: rank
-            };
+                var data = {
+                    rootCircle: rootCircle,
+                    studies: studies,
+                    lives: lives,
+                    earned_coined: earned_coined,
+                    rank: rank
+                };
 
-            fetch('../assets/php/profileEdit.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Profile updated successfully!');
-                    } else {
-                        alert('There was an error updating the profile.');
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
+                fetch('../assets/php/profileEdit.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('Profile updated successfully!');
+                        } else {
+                            alert('There was an error updating the profile.');
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
 
-            // Make the fields non-editable
-            document.getElementById('rootCircle').contentEditable = false;
-            document.getElementById('studies').contentEditable = false;
-            document.getElementById('lives').contentEditable = false;
-            document.getElementById('earned_coined').contentEditable = false;
-            document.getElementById('rank').contentEditable = false;
+                // Make the fields non-editable
+                document.getElementById('rootCircle').contentEditable = false;
+                document.getElementById('studies').contentEditable = false;
+                document.getElementById('lives').contentEditable = false;
+                document.getElementById('earned_coined').contentEditable = false;
+                document.getElementById('rank').contentEditable = false;
 
-            // Change the button back to an "Edit" button
-            button.textContent = 'Edit';
-        }
-    });
+                // Change the button back to an "Edit" button
+                button.textContent = 'Edit';
+            }
+        });
     </script>
 
     <script src="../assets/js/profile.js"></script>

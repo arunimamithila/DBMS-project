@@ -1,8 +1,15 @@
 <?php
 session_start();
-
 include '../assets/php/db_conn.php';
 $username = $_SESSION['username'];
+$user_Email=$_SESSION['user_Email'];
+
+
+$sql = "SELECT profile_pic_link FROM user_table WHERE username = '$username'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$profilePic = $row['profile_pic_link'];
+
 
 ?>
 <!DOCTYPE html>
@@ -29,7 +36,7 @@ $username = $_SESSION['username'];
 
           <div class="header_container_left">
 
-              <a href="#" class="header_logo"><span class="header_title">GoCircle</span></a>
+              <a href="#" class="header_logo"><span class="header_title">UniCircle</span></a>
             
               <!-- <div class="header_toggle">
                 <i class='bx bxs-grid-alt'></i>
@@ -50,7 +57,7 @@ $username = $_SESSION['username'];
               <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img src="../assets/image/red_dot.png" alt=""></span></div>
           
               <div class="profile_img">
-                <a href="#"><img src="../assets/image/perfil.jpg" alt="" id="my-profile-pic"></a>
+                <a href="#"><img src="<?php echo $profilePic?>" alt="" id="my-profile-pic"></a>
               </div>
               
           </div>
@@ -87,10 +94,10 @@ $username = $_SESSION['username'];
   
               <div class="profile_dropdown">
                 <div class="pro-des">
-                  <img src="../assets/image/perfil.jpg" alt="">
+                  <img src="<?php echo $profilePic?>" alt="">
                 <div>
                   <p class="pro-usrname"><?php echo $username; ?></p> 
-                  <span class="pro-mail">user1234@gmail.com</span></p>
+                  <span class="pro-mail"><?php echo $user_Email?></span></p>
                 </div>
                 </div>
   
@@ -130,7 +137,7 @@ $username = $_SESSION['username'];
                              <!-- <img src="./img/Go.svg" alt=""> -->
                              <img src="../assets/image/gocircle_logo.png">
   
-                              <span class="nav__logo-name"> <h4>GoCircle</h4></span>
+                              <span class="nav__logo-name"> <h4>UniCircle</h4></span>
                           </a>
                   
           

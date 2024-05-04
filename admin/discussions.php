@@ -344,7 +344,7 @@ $result = $conn->query($sql);
 
       <div class="top-discussion">
 
-        <div class="title">
+        <!-- <div class="title">
           <i class='bx bx-shape-polygon'></i>
           <h5>University Circles</h5>
         </div>
@@ -369,7 +369,7 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-?>
+?> -->
       
 
   </main>

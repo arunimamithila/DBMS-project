@@ -1,6 +1,6 @@
 <?php
 session_start();
-//include '../assets/php/db_conn.php';
+include '../assets/php/db_conn.php';
 $username = $_SESSION['username'];
 $user_Email=$_SESSION['user_Email'];
 $profilePic=$_SESSION['profilePic'];
@@ -301,26 +301,25 @@ $result2 = $stmt2->get_result();
 
                         <?php
 
-                        if ($result1->num_rows > 0) {
-                            // output data of each row
-                            while ($data = $result1->fetch_assoc()) {
-                                echo '<a href="circlehome.html">';
-                                echo '<div class="mycircle">';
-                                echo '<img class="circle-img" src="' . $data["circle_image_url"] . '" alt="">';
-                                echo '<div class="header__img" id="my-circle-picture">';
-                                echo '<img class="circle-uni-img rounded-circle" src="' . $data["uni_img"] . '" alt="">';
-                                echo '</div>';
-                                echo '<div class="para">';
-                                echo '<p>' . $data["circle_name"] . '</p>';
-                                echo '</div>';
-                                echo '</div>';
-                                echo '</a>';
-                            }
-                        } else {
-                            echo "No circles found";
-                        }
-
-                        ?>
+if ($result1->num_rows > 0) {
+    // output data of each row
+    while ($data = $result1->fetch_assoc()) {
+        echo '<a href="../chatbox/circleChat.php?circle_name=' . urlencode($data["circle_name"]) . '">';
+        echo '<div class="mycircle">';
+        echo '<img class="circle-img" src="' . $data["circle_image_url"] . '" alt="">';
+        echo '<div class="header__img" id="my-circle-picture">';
+        echo '<img class="circle-uni-img rounded-circle" src="' . $data["uni_img"] . '" alt="">';
+        echo '</div>';
+        echo '<div class="para">';
+        echo '<p>' . $data["circle_name"] . '</p>';
+        echo '</div>';
+        echo '</div>';
+        echo '</a>';
+    }
+} else {
+    echo "No circles found";
+}
+?>
 
 
 
@@ -339,7 +338,8 @@ $result2 = $stmt2->get_result();
                         if ($result2->num_rows > 0) {
                             // output data of each row
                             while ($data2 = $result2->fetch_assoc()) {
-                                echo '<a href="circlehome.html">';
+                                echo '<a href="../chatbox/circleChat.php?circle_name=' . urlencode($data2["circle_name"]) . '">';
+
 
                                 echo '<div class="mycircle">';
                                 echo '<img class="circle-img" src="' . $data2["circle_image_url"] . '" alt="">';
