@@ -369,7 +369,7 @@ $profilePic = $row['profile_pic_link'];
       blur.classList.toggle('active')
 
       var popup = document.getElementById('popup');
-      popup.classList.toggle('popup-active') // Changed this line
+      popup.classList.toggle('popup.active') // Changed this line
     }
 </script>
 

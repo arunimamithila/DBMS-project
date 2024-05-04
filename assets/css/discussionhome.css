@@ -900,7 +900,8 @@ img {
     visibility: hidden;
     opacity: 0;
     translate: 0.5s;  
-    
+    display: flex;
+    flex-direction: column;
   }
 
   
