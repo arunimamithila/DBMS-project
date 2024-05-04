@@ -757,6 +757,11 @@ img {
     display: flex;
     align-items: center;
     gap: 5px;
+    
+  }
+
+  .reaction a{
+    color: var(--text-color-light);
   }
 
   .topic-heading{
@@ -919,7 +924,7 @@ img {
 
 .comment-card .upbeat{
   align-self: flex-end;
-  margin-left: 56rem;
+  margin-left: 52rem;
 }
 
 
