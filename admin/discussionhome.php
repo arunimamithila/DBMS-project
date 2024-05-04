@@ -305,34 +305,36 @@ $profilePic = $row['profile_pic_link'];
           <h5>Topics</h5>
         </div>
 
+        <div class="topic-wrapper">
         <div class="dis-card">
 
-          <?php
+                <?php
 
-          while ($row = $result->fetch_assoc()) {
-            echo '<div class="dis-card">';
-            echo '<div class="profile_pic">';
-            echo '<img src="' . $row['profile_pic_link'] . '" alt="">';
-            echo '</div>';
-            echo '<div class="topic-name">';
-            echo '<div class="topic-title">' . $row['Title'] . '</div>';
-            echo '<div class="username">' . $row['username'] . '</div>';
-            echo '</div>';
-            echo '<div class="right-side">';
-            echo '<div class="upbeat">';
-            echo '<div class="upbeat-btn btn bt-primary">';
-            echo '<i class="bx bx-caret-up"></i>';
-            echo '</div>';
-            echo '<a class="" href="">0</a>';
-            echo '</div>';
-            echo '<div class="comment-count">';
-            echo '<a href="">0</a>';
-            echo 'Comments';
-            echo '</div>';
-            echo '</div>';
-            echo '</div>';
-          }
-          ?>
+                while ($row = $result->fetch_assoc()) {
+                  echo '<div class="dis-card">';
+                  echo '<div class="profile_pic">';
+                  echo '<img src="' . $row['profile_pic_link'] . '" alt="">';
+                  echo '</div>';
+                  echo '<div class="topic-name">';
+                  echo '<div class="topic-title">' . $row['Title'] . '</div>';
+                  echo '<div class="username">' . $row['username'] . '</div>';
+                  echo '</div>';
+                  echo '<div class="right-side">';
+                  echo '<div class="upbeat">';
+                  echo '<div class="upbeat-btn btn bt-primary">';
+                  echo '<i class="bx bx-caret-up"></i>';
+                  echo '</div>';
+                  echo '<a class="" href="">0</a>';
+                  echo '</div>';
+                  echo '<div class="comment-count">';
+                  echo '<a href="">0</a>';
+                  echo 'Comments';
+                  echo '</div>';
+                  echo '</div>';
+                  echo '</div>';
+                }
+                ?>
+                </div>
         </div>
 
       </div>

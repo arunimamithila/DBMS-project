@@ -902,7 +902,7 @@ img {
     translate: 0.5s;  
     
   }
-  .popup-container{
+  .topic-wrapper{
 
     display: flex;
     flex-direction: column;
