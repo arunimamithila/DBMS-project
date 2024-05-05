@@ -298,12 +298,12 @@ $topic_id = $_GET['topic_id'];
           </p>
         </div>
 
-        <div class="reaction">
+        <!-- <div class="reaction">
           <a href="">
             <i class='bx bx-bulb'></i>
             0
           </a>
-        </div>
+        </div> -->
 
       </div>
 
@@ -318,10 +318,10 @@ $topic_id = $_GET['topic_id'];
 
       <div class="comments">
         <form action="../assets/php/postComment.php" method="post">
-          <div class="create-comments">
+          <!-- <div class="create-comments">
             <div class="profile-img">
               <img class="pro-img rounded-circle" src="../assets/image/perfil.jpg" alt="">
-            </div>
+            </div> -->
 
             <div class="com-section">
               <textarea class="description" placeholder="Comment Here" id="commentDesc" style="height: 70px" name="content"></textarea>

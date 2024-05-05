@@ -20,7 +20,7 @@ $data = $result->fetch_assoc();
 
 
 $stmt->close();
-$conn->close();
+
 
 
 ?>
@@ -399,37 +399,36 @@ $conn->close();
                     </div>
 
                     <div class="line4"></div>
+                    <?php
+                    // Include your database connection file
+
+
+                    // Prepare an SQL statement to fetch circles
+                    $stmt = $conn->prepare("SELECT * FROM circle_table");
+                    $stmt->execute();
+                    $result1 = $stmt->get_result();
+                    $stmt->close();
+                    $conn->close();
+                    ?>
+
                     <div class="mycircles">
                         <h5>My Circles</h5>
 
                         <ul class="circle-show">
-                            <li>
-                                <div class="circle-img">
-                                    <img class="circle_img rounded-circle" src="../assets/image/buet.svg" alt="">
-                                </div>
-                                <div class="circle-name">buet champion league</div>
-                            </li>
-
-                            <li>
-                                <div class="circle-img">
-                                    <img class="circle_img rounded-circle" src="../assets/image/ai_uiu.png" alt="">
-                                </div>
-                                <div class="circle-name">uiu freshers of AI</div>
-                            </li>
-
+                            <?php while ($row = $result1->fetch_assoc()) : ?>
+                                <li>
+                                    <div class="circle-img">
+                                        <img class="circle_img rounded-circle" src="<?php echo $row['circle_image_url']; ?>" alt="">
+                                    </div>
+                                    <div class="circle-name"><?php echo $row['owner']; ?></div>
+                                </li>
+                            <?php endwhile; ?>
                         </ul>
-
                     </div>
                 </div>
 
 
-                <div class="middle-container">
-
-                    <div class="create-post btn btn-primary">
-                        <i class='bx bx-plus-circle'></i>
-                        <a class="add_link" href="#">create post</a>
-                    </div>
-
+                <!-- <div class="middle-container">
 
                     <div class="post-card">
 
@@ -449,14 +448,14 @@ $conn->close();
                                 <img src="../assets/image/profile/post1.jpg" alt="">
                             </div>
 
-                            <div class="post-react">
+                             <div class="post-react">
                                 <ul>
                                     <li><img class="rounded-circle" src="../assets/image/user/3.jpg" alt=""></li>
                                     <li><img class="rounded-circle" src="../assets/image/user/5.jpg" alt=""></li>
                                     <li><img class="rounded-circle" src="../assets/image/user/1.jpg" alt=""></li>
                                 </ul>
                                 <h6>+5 people react this post</h6>
-                            </div>
+                            </div> 
 
                             <div class="post-text">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -483,7 +482,7 @@ $conn->close();
                     </div>
 
 
-                </div>
+                </div> -->
 
             </div>
 
