@@ -803,17 +803,18 @@ img {
     gap: 1rem;
   }
 
-  .dis-card{
-
+  .dis-card {
     display: flex;
     align-items: center;
+    flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap; /* Add this line */
     background-color: #21363f;
     padding: .8rem;
     border-radius: 5px;
     cursor: pointer;
-    
-  }
+}
+  
 
   .dis-card:hover{
 
@@ -833,15 +834,15 @@ img {
 
   .topic-name{
 
-    margin-left: -55rem;
+    /*margin-left: -55rem;*/
     font-size: 15px;
   }
 
 
-  .right-side{
-
+  .right-side {
+    flex: 1;
     margin-right: 2rem;
-  }
+}
 
   .upbeat{
 
