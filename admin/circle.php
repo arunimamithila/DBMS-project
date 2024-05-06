@@ -68,6 +68,15 @@ $result2 = $stmt2->get_result();
                     <div id="search-results" style="display: none;"></div>
                 </form>
 
+
+                <!-- <form class="search-form" action="">
+                    <div class="header_search">
+                        <i class='bx bx-search' style='color:#ffffff'></i>
+                        <input type="search" placeholder="Search" class="header_input">
+                    </div>
+                </form> -->
+
+
             </div>
 
             <div class="header_container_right">
@@ -428,6 +437,17 @@ $result2 = $stmt2->get_result();
             });
         });
     </script>
+
+    
+    <!-- <script>    
+         function submitForm() {
+        document.getElementById("searchForm").action = "./search.php";
+        document.getElementById("searchForm").submit();
+
+
+         }
+    </script> -->
+
     <style>
         .search-profile-image {
             border-radius: 50%;
