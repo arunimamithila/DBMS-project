@@ -306,7 +306,7 @@ $profilePic = $row['profile_pic_link'];
         </div>
 
         <div class="topic-wrapper">
-        <div class="dis-card">
+               <div class="dis-card">
 
                 <?php
 
@@ -334,7 +334,8 @@ $profilePic = $row['profile_pic_link'];
                   echo '</div>';
                 }
                 ?>
-                </div>
+              </div>
+
         </div>
 
       </div>
