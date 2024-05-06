@@ -1,0 +1,156 @@
+/*========== GOOGLE FONTS ==========*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/*========== VARIABLES CSS ==========*/
+:root {
+  --header-height: 3.5rem;
+  --nav-width: 219px;
+
+  /*========== Colors ==========*/
+  --first-color: #24695c;
+  --second_color:#bd946f;
+  --first-color-light: #424242;
+  --title-color: #fff;
+  --text-color-1: #797d86;
+  --text-color-light: #A5A1AA;
+  --gradiant-color: linear-gradient(250.59deg, #322c38 0%,  #1c2137 28.53%, #000 75.52%);
+  --gradiant-color2: linear-gradient(310deg ,#322c38 0%,  #1c2137 28.53%, #000 75.52%);
+  --body-color:  #202938;
+  --container-color: #111727;
+  --primary-clr: #b38add;
+  --bk-color: #e2edf0;
+
+  /*========== Font and typography ==========*/
+  --body-font: 'Poppins', sans-serif;
+  --normal-font-size: .938rem;
+  --small-font-size: .75rem;
+  --smaller-font-size: .75rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== z index ==========*/
+  --z-fixed: 100;
+
+/*========== padding ==========*/
+  --border-radius: 2rem;
+  --card-border-radius: 1rem;
+  --btn-padding: 12px 28px;
+  --search-padding: .2rem;
+  --card-padding: 1rem;
+
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+
+}
+
+/*========== BASE ==========*/
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  
+  padding: 0; 
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  /* background: var(--gradiant-color); */
+  color: var(--text-color);
+  overscroll-behavior: none;
+
+}
+
+h5 {
+  margin: 0;
+}
+
+ul {
+
+  list-style-type: none;
+  }
+
+a {
+    
+  text-decoration: none; 
+  a:hover {
+    text-decoration: none; }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+.header {
+    margin-top: 0;
+    height: var(--header-height);
+ }
+
+ .header_search{
+    display: flex;
+    background-color: #e2edf0;
+    padding: var(--search-padding);
+    align-items: center;
+    justify-content: start;
+    height: 3.5rem;
+   
+ }
+
+ .header_search i{
+
+    padding: 0.3rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 7px;
+    cursor: pointer;
+  }
+
+  .header_search i:hover{
+
+    background-color: #9db7be;
+    border-radius: 50%;
+   
+  }
+  
+  .header_search input[type = "search"]{
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent; 
+    height: var(--header-height);
+    margin-left: 1rem; 
+    margin-top: 0;
+    
+  }
+  
+  .header_search input[type="search"]:focus {
+    color: rgb(0, 0, 0); /* Text color when input is in focus */
+    font-size: 1.1rem;
+    margin-right: 1rem;
+  }
+  
+  .header_search input[type = "search"]::placeholder {
+    font-family: var(--body-font);
+    color: black;
+  
+  }
+
+  #search-result{
+    margin-top: 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+
+  }
