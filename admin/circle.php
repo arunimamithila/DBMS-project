@@ -2,7 +2,7 @@
 session_start();
 include '../assets/php/db_conn.php';
 $username = $_SESSION['username'];
-$user_Email=$_SESSION['user_Email'];
+$user_Email = $_SESSION['user_Email'];
 
 $stmt = $conn->prepare('SELECT profile_pic_link FROM user_table WHERE username = ?');
 $stmt->bind_param('s', $username);
@@ -60,15 +60,13 @@ $result2 = $stmt2->get_result();
                 <i class='bx bxs-grid-alt'></i>
               </div> -->
 
-              
-              
-              <form method="get" id="searchForm">
-                <div class="header_search">
-                    <i class='bx bx-search' style='color:#ffffff'></i>
-                    <input type="search" placeholder="Search" class="header_input" name="search" onclick="submitForm()">
-                </div>
-            </form>
-           
+                <form class="search-form" action="">
+                    <div class="header_search">
+                        <i class='bx bx-search' style='color:#ffffff'></i>
+                        <input type="search" placeholder="Search" class="header_input">
+                    </div>
+                    <div id="search-results" style="display: none;"></div>
+                </form>
 
             </div>
 
@@ -78,7 +76,7 @@ $result2 = $stmt2->get_result();
                 <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img src="../assets/image/red_dot.png" alt=""></span></div>
 
                 <div class="profile_img">
-                <a href="#"><img src="<?php echo $profile_pic?>" alt="" id="my-profile-pic"></a>
+                    <a href="#"><img src="<?php echo $profile_pic ?>" alt="" id="my-profile-pic"></a>
                 </div>
 
             </div>
@@ -127,10 +125,10 @@ $result2 = $stmt2->get_result();
 
                 <div class="profile_dropdown">
                     <div class="pro-des">
-                        <img src="<?php echo $profilePic?>" alt="">
+                        <img src="<?php echo $profilePic ?>" alt="">
                         <div>
                             <p class="pro-usrname"><?php echo $username; ?></p>
-                            <span class="pro-mail"><?php echo $user_Email;?></span>
+                            <span class="pro-mail"><?php echo $user_Email; ?></span>
                             </p>
                         </div>
                     </div>
@@ -311,25 +309,25 @@ $result2 = $stmt2->get_result();
 
                         <?php
 
-if ($result1->num_rows > 0) {
-    // output data of each row
-    while ($data = $result1->fetch_assoc()) {
-        echo '<a href="../chatbox/circleChat.php?circle_name=' . urlencode($data["circle_name"]) . '">';
-        echo '<div class="mycircle">';
-        echo '<img class="circle-img" src="' . $data["circle_image_url"] . '" alt="">';
-        echo '<div class="header__img" id="my-circle-picture">';
-        echo '<img class="circle-uni-img rounded-circle" src="' . $data["uni_img"] . '" alt="">';
-        echo '</div>';
-        echo '<div class="para">';
-        echo '<p>' . $data["circle_name"] . '</p>';
-        echo '</div>';
-        echo '</div>';
-        echo '</a>';
-    }
-} else {
-    echo "No circles found";
-}
-?>
+                        if ($result1->num_rows > 0) {
+                            // output data of each row
+                            while ($data = $result1->fetch_assoc()) {
+                                echo '<a href="../chatbox/circleChat.php?circle_name=' . urlencode($data["circle_name"]) . '">';
+                                echo '<div class="mycircle">';
+                                echo '<img class="circle-img" src="' . $data["circle_image_url"] . '" alt="">';
+                                echo '<div class="header__img" id="my-circle-picture">';
+                                echo '<img class="circle-uni-img rounded-circle" src="' . $data["uni_img"] . '" alt="">';
+                                echo '</div>';
+                                echo '<div class="para">';
+                                echo '<p>' . $data["circle_name"] . '</p>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</a>';
+                            }
+                        } else {
+                            echo "No circles found";
+                        }
+                        ?>
 
 
 
@@ -380,20 +378,68 @@ if ($result1->num_rows > 0) {
 
 
     </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.header_input').on('input', function() {
+                var query = $(this).val();
+                if (query.length > 0) {
+                    $.ajax({
+                        url: '../assets/php/searchCircle.php',
+                        method: 'POST',
+                        data: {
+                            query: $('.header_input').val()
+                        }, // Ensure 'query' key is included in the data
+                        success: function(data) {
+                            // Parse the JSON data
+                            var jsonData = JSON.parse(data);
 
-    
+                            // Check for errors
+                            if (jsonData.error) {
+                                console.error(jsonData.error);
+                                return;
+                            }
+                            // Clear the search results
+                            $('#search-results').empty();
 
-    <script>    
-         function submitForm() {
-        document.getElementById("searchForm").action = "./search.php";
-        document.getElementById("searchForm").submit();
+                            // Loop through each item in the data
+                            $.each(jsonData, function(index, item) {
+                                // Create a new div for each item
+                                var div = $('<div>');
 
+                                // Create HTML for the circle
+                                var html = '<img src="' + item.circle_image_url + '" class="search-profile-image">';
+                                html += '<h2>' + item.circle_name + '</h2>';
 
-         }
+                                // Set the HTML of the div
+                                div.html(html);
+
+                                // Append the div to the search results
+                                $('#search-results').append(div);
+                            });
+
+                            // Show the search results
+                            $('#search-results').show();
+                        }
+                    });
+                } else {
+                    $('#search-results').hide();
+                }
+            });
+        });
     </script>
+    <style>
+        .search-profile-image {
+            border-radius: 50%;
+            max-width: 100px;
+            /* Adjust as needed */
+            max-height: 100px;
+            /* Adjust as needed */
+        }
+    </style>
 
-    <script src="../assets/js/circle.js">   
-    </script>
+
+    <script src="../assets/js/circle.js"></script>
 </body>
 
 </html>

@@ -176,17 +176,17 @@ include '../assets/php/db_conn.php';
                         <span class="nav__name">Profile</span>
                     </a>
 
-                    <a href="../admin/circle.html" class="nav__link">
+                    <a href="../admin/circle.php" class="nav__link">
                         <i class='bx bxs-adjust-alt nav__icon'></i>
                         <span class="nav__name">Circles</span>
                     </a>
 
-                    <a href="#" class="nav__link">
+                    <a href="../admin/discussions.php" class="nav__link">
                         <i class='bx bx-conversation nav__icon'></i>
                         <span class="nav__name">Discussions</span>
                     </a>
 
-                    <a href="#" class="nav__link">
+                    <a href="../admin/competitions.php" class="nav__link">
                         <i class='bx bx-trophy nav__icon'></i>
                         <span class="nav__name">Compititions</span>
                     </a>

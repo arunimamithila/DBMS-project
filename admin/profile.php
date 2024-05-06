@@ -404,7 +404,8 @@ $stmt->close();
 
 
                     // Prepare an SQL statement to fetch circles
-                    $stmt = $conn->prepare("SELECT * FROM circle_table");
+                    $stmt = $conn->prepare("SELECT * FROM circle_table where owner =?");
+                    $stmt->bind_param('s', $username);
                     $stmt->execute();
                     $result1 = $stmt->get_result();
                     $stmt->close();
@@ -420,7 +421,7 @@ $stmt->close();
                                     <div class="circle-img">
                                         <img class="circle_img rounded-circle" src="<?php echo $row['circle_image_url']; ?>" alt="">
                                     </div>
-                                    <div class="circle-name"><?php echo $row['owner']; ?></div>
+                                    <div class="circle-name"><?php echo $row['circle_name']; ?></div>
                                 </li>
                             <?php endwhile; ?>
                         </ul>
