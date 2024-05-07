@@ -72,9 +72,8 @@ $stmt->close();
                 <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img src="../assets/image/red_dot.png" alt=""></span></div> -->
 
                 <div class="profile_img">
-                    <a href="#"><img class="avatar_img rounded-circle" src="<?php echo $profile_pic  . '?v=' . time(); ?>" alt="">" alt="" id="my-profile-pic"></a>
+                    <a href="#"><img src="<?php echo $profilePic ?>" alt="" id="my-profile-pic"></a>
                 </div>
-
             </div>
 
             <section>
@@ -133,7 +132,7 @@ $stmt->close();
 
                     <div class="follow">
                         <div class="follow-c">
-                            <span class="fol-count"><?php echo $username?></span>
+                            <span class="fol-count"><?php echo $username ?></span>
                             <span class="fc">Circle_in</span>
                         </div>
 
@@ -308,7 +307,7 @@ $stmt->close();
                         <ul class="info-card">
                             <li>
                                 <div class="fol">
-                                    <span class="count" id="fol-count"><?php echo $numCircle?></span>
+                                    <span class="count" id="fol-count"><?php echo $numCircle ?></span>
                                     <span class="f-lable">Circle_in</span>
                                 </div>
                             </li>
