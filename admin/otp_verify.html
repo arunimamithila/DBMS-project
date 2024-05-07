@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OTP Verification</title>
+
+    <link rel="stylesheet" href="../assets/css/otp.css">
 </head>
 <body>
-    <h2>OTP Verification</h2>
-    <p>Please enter the OTP sent to your email:</p>
+    <div class="container">
+        <div class="heading">
+            <h2>OTP Verification</h2>
+            <p>Please enter the OTP sent to your email</p>
+        </div>
 
     <form action="..\assets\php\verification_process.php" method="POST">
-        <input type="text" name="otp" placeholder="Enter OTP" required>
-        <input type="submit" value="Verify">
+       <div class="input-group">
+        <input  type="text" name="otp" placeholder="Enter OTP" required>
+        <input class="button" type="submit" value="Verify">
+       </div>
     </form>
 </body>
+    </div>
 </html>
