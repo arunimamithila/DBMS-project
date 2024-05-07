@@ -4,10 +4,13 @@ session_start();
 $username = $_SESSION['username'];
 $user_Email = $_SESSION['user_Email'];
 
-$stmt = $conn->prepare('SELECT profile_pic_link FROM user_table WHERE username = ?');
-$stmt->bind_param('s', $username);
-$stmt->execute();
-$profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
+$sql = "SELECT profile_pic_link, (SELECT COUNT(*) FROM circle_table WHERE username = '$username') as numCircle FROM user_table WHERE username = '$username'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$profilePic = $row['profile_pic_link'];
+$numCircle = $row['numCircle'];
+
+
 $title = $_GET['title'];
 $description = $_GET['description'];
 $topic_id = $_GET['topic_id'];
@@ -60,8 +63,8 @@ $topic_id = $_GET['topic_id'];
 
       <div class="header_container_right">
 
-        <div class="bookmark_box"><i class='bx bx-sticker' style='color:#ffffff'></i></div>
-        <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img src="../assets/image/red_dot.png" alt=""></span></div>
+        <!-- <div class="bookmark_box"><i class='bx bx-sticker' style='color:#ffffff'></i></div>
+        <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img src="../assets/image/red_dot.png" alt=""></span></div> -->
 
         <div class="profile_img">
           <a href="#"><img src="<?php echo $profile_pic ?>" alt="" id="my-profile-pic"></a>
@@ -70,7 +73,7 @@ $topic_id = $_GET['topic_id'];
       </div>
 
       <section>
-        <div class="bookmarks">
+        <!-- <div class="bookmarks">
           <ul class="book_dropdown">
             <li class="bm-search">
               <form class="search-form2" action="">
@@ -109,7 +112,7 @@ $topic_id = $_GET['topic_id'];
 
           </ul>
 
-        </div>
+        </div> -->
 
         <div class="profile_dropdown">
           <div class="pro-des">
@@ -125,17 +128,17 @@ $topic_id = $_GET['topic_id'];
 
           <div class="follow">
             <div class="follow-c">
-              <span class="fol-count">09</span>
+              <span class="fol-count"><?php echo $numCircle?></span>
               <span class="fc">Circle_in</span>
             </div>
 
-            <div class="line-two"> </div>
+            <!-- <div class="line-two"> </div>
 
             <div class="fol-team">
               <span class="team-count">10 </span>
               <span class="tc">Joined_team</span>
 
-            </div>
+            </div> -->
           </div>
 
         </div>
@@ -158,7 +161,7 @@ $topic_id = $_GET['topic_id'];
           <img src="../assets/image/gocircle_logo.png">
 
           <span class="nav__logo-name">
-            <h4>GoCircle</h4>
+            <h4>UniCircle</h4>
           </span>
         </a>
 
@@ -175,22 +178,22 @@ $topic_id = $_GET['topic_id'];
             <span class="nav__name">Profile</span>
           </a>
 
-          <a href="../admin/circle.html" class="nav__link">
+          <a href="../admin/circle.php" class="nav__link">
             <i class='bx bxs-adjust-alt nav__icon'></i>
             <span class="nav__name">Circles</span>
           </a>
 
-          <a href="#" class="nav__link">
+          <a href="../admin/discussions.php" class="nav__link">
             <i class='bx bx-conversation nav__icon'></i>
             <span class="nav__name">Discussions</span>
           </a>
 
-          <a href="#" class="nav__link">
+          <a href="../admin/compititions.php" class="nav__link">
             <i class='bx bx-trophy nav__icon'></i>
             <span class="nav__name">Compititions</span>
           </a>
 
-          <a href="#" class="nav__link">
+          <!-- <a href="#" class="nav__link">
             <i class='bx bxs-graduation nav__icon'></i>
             <span class="nav__name">Learn</span>
           </a>
@@ -198,7 +201,7 @@ $topic_id = $_GET['topic_id'];
           <a href="#" class="nav__link">
             <i class='bx bxs-network-chart nav__icon'></i>
             <span class="nav__name">Team</span>
-          </a>
+          </a> -->
 
 
           <div class="nav__dropdown">
@@ -213,19 +216,19 @@ $topic_id = $_GET['topic_id'];
                 <a href="../admin/project.php" class="nav__dropdown-item">My projects</a>
                 <a href="../admin/projectcreate.html" class="nav__dropdown-item">Create</a>
                 <a href="../admin/projecthome.php" class="nav__dropdown-item">Workspace</a>
-                <a href="#" class="nav__dropdown-item">Projects wall</a>
+                <!-- <a href="#" class="nav__dropdown-item">Projects wall</a> -->
               </div>
             </div>
           </div>
 
 
-          <a href="#" class="nav__link">
+          <!-- <a href="#" class="nav__link">
             <i class='bx bx-medal nav__icon'></i>
             <span class="nav__name">Rank</span>
-          </a>
+          </a> -->
 
 
-          <div class="nav__items">
+          <!-- <div class="nav__items">
             <h3 class="nav__subtitle">Menu</h3>
 
             <div class="nav__dropdown">
@@ -255,7 +258,7 @@ $topic_id = $_GET['topic_id'];
               <i class='bx bx-book-reader nav__icon'></i>
               <span class="nav__name">Study plan</span>
             </a>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -323,68 +326,67 @@ $topic_id = $_GET['topic_id'];
               <img class="pro-img rounded-circle" src="../assets/image/perfil.jpg" alt="">
             </div> -->
 
-            <div class="com-section">
-              <textarea class="description" placeholder="Comment Here" id="commentDesc" style="height: 70px" name="content"></textarea>
+          <div class="com-section">
+            <textarea class="description" placeholder="Comment Here" id="commentDesc" style="height: 70px" name="content"></textarea>
 
-              <input type="hidden" name="topic_id" value="<?php echo $topic_id; ?>">
-              <input type="hidden" name="title" value="<?php echo $title; ?>">
-              <input type="hidden" name="description" value="<?php echo $description; ?>">
+            <input type="hidden" name="topic_id" value="<?php echo $topic_id; ?>">
+            <input type="hidden" name="title" value="<?php echo $title; ?>">
+            <input type="hidden" name="description" value="<?php echo $description; ?>">
 
 
-              <div class="button">
-                <input class="btn btn-primary button" type="submit" value="Post Comment">
-              </div>
+            <div class="button">
+              <input class="btn btn-primary button" type="submit" value="Post Comment">
             </div>
           </div>
-        </form>
       </div>
+      </form>
+    </div>
     </div>
 
-      <?php
-      // Prepare an SQL statement to get the comments for the current topic
-      $stmt = $conn->prepare("SELECT comments.*, user_table.profile_pic_link FROM comments INNER JOIN user_table ON comments.username = user_table.username WHERE comments.topic_id = ? ORDER BY comments.post_date DESC");
-      $stmt->bind_param('i', $topic_id);
+    <?php
+    // Prepare an SQL statement to get the comments for the current topic
+    $stmt = $conn->prepare("SELECT comments.*, user_table.profile_pic_link FROM comments INNER JOIN user_table ON comments.username = user_table.username WHERE comments.topic_id = ? ORDER BY comments.post_date DESC");
+    $stmt->bind_param('i', $topic_id);
 
-      // Execute the SQL statement
-      $stmt->execute();
+    // Execute the SQL statement
+    $stmt->execute();
 
-      // Get the result of the SQL statement
-      $result = $stmt->get_result();
+    // Get the result of the SQL statement
+    $result = $stmt->get_result();
 
-      // Loop through each row in the result
-      while ($row = $result->fetch_assoc()) {
-        // Generate the HTML for the comment
-        echo '<div class="posted-comments">';
-        echo '<div class="comment-card">';
-        echo '<div class="user-info">';
-        echo '<div class="profile-img">';
-        echo '<img class="pro-img rounded-circle" src="' . $row['profile_pic_link'] . '" alt="">';
-        echo '</div>';
-        echo '<div class="user-des">';
-        echo '<div class="user">' . $row['username'] . '</div>';
-        echo '<div class="post-date">Posted on ' . $row['post_date'] . '</div>';
-        echo '</div>';
-        echo '<div class="upbeat">';
-        echo '<div class="upbeat-btn btn bt-primary">';
-        echo '<i class="bx bx-caret-up"></i>';
-        echo '</div>';
-        echo '<a class="" href="">' . $row['reactions'] . '</a>';
-        echo '</div>';
-        echo '</div>';
-        echo '<div class="comment-des">';
-        echo '<p>' . $row['comment'] . '</p>';
-        echo '</div>';
-        echo '<div class="actions">';
-        echo '<div class="reply">';
-        echo '<a href="#" class="reply-link"><i class="bx bxs-share"></i> Reply</a>';
-        echo '</div>';
-        echo '<a href="#" class="reaction" data-id="' . $row['id'] . '"><i class="bx bx-bulb"></i> Reaction</a>';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
-        
-      }
-      ?>
+    // Loop through each row in the result
+    while ($row = $result->fetch_assoc()) {
+      // Generate the HTML for the comment
+      echo '<div class="posted-comments">';
+      echo '<div class="comment-card">';
+      echo '<div class="user-info">';
+      echo '<div class="profile-img">';
+      echo '<img class="pro-img rounded-circle" src="' . $row['profile_pic_link'] . '" alt="">';
+      echo '</div>';
+      echo '<div class="user-des">';
+      echo '<div class="user">' . $row['username'] . '</div>';
+      echo '<div class="post-date">Posted on ' . $row['post_date'] . '</div>';
+      echo '</div>';
+      echo '<div class="upbeat">';
+      echo '<div class="upbeat-btn btn bt-primary">';
+      echo '<i class="bx bx-caret-up"></i>';
+      echo '</div>';
+      echo '<a class="" href="">' . $row['reactions'] . '</a>';
+      echo '</div>';
+      echo '</div>';
+      echo '<div class="comment-des">';
+      echo '<p>' . $row['comment'] . '</p>';
+      echo '</div>';
+      // echo '<div class="actions">';
+      // echo '<div class="reply">';
+      // echo '<a href="#" class="reply-link"><i class="bx bxs-share"></i> Reply</a>';
+      // echo '</div>';
+      echo '<a href="#" class="reaction" data-id="' . $row['id'] . '"><i class="bx bx-bulb"></i> Reaction</a>';
+      echo '</div>';
+      echo '</div>';
+      echo '</div>';
+    }
+    ?>
     </div>
     </div>
 
@@ -408,35 +410,35 @@ $topic_id = $_GET['topic_id'];
           },
           success: function(response) {
             location.reload();
-            
+
           }
         });
       });
     });
   </script>
-<script>
+  <script>
     // Get all reply links
     var replyLinks = document.querySelectorAll('.reply-link');
 
     // Loop through each link
     replyLinks.forEach(function(link) {
-        // Add a click event listener
-        link.addEventListener('click', function(event) {
-            // Prevent the default action
-            event.preventDefault();
+      // Add a click event listener
+      link.addEventListener('click', function(event) {
+        // Prevent the default action
+        event.preventDefault();
 
-            // Get the reply form related to this link
-            var replyForm = link.parentElement.querySelector('.reply-form');
+        // Get the reply form related to this link
+        var replyForm = link.parentElement.querySelector('.reply-form');
 
-            // Toggle the display of the reply form
-            if (replyForm.style.display === 'none') {
-                replyForm.style.display = 'block';
-            } else {
-                replyForm.style.display = 'none';
-            }
-        });
+        // Toggle the display of the reply form
+        if (replyForm.style.display === 'none') {
+          replyForm.style.display = 'block';
+        } else {
+          replyForm.style.display = 'none';
+        }
+      });
     });
-</script>
+  </script>
 
 
   <script src="../assets/js/projectcreate.js"></script>

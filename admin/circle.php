@@ -4,10 +4,13 @@ include '../assets/php/db_conn.php';
 $username = $_SESSION['username'];
 $user_Email = $_SESSION['user_Email'];
 
-$stmt = $conn->prepare('SELECT profile_pic_link FROM user_table WHERE username = ?');
-$stmt->bind_param('s', $username);
-$stmt->execute();
-$profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
+
+$sql = "SELECT profile_pic_link, (SELECT COUNT(*) FROM circle_table WHERE username = '$username') as numCircle FROM user_table WHERE username = '$username'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$profilePic = $row['profile_pic_link'];
+$numCircle = $row['numCircle'];
+
 
 
 // First query
@@ -56,33 +59,33 @@ $result2 = $stmt2->get_result();
 
                 <a href="#" class="header_logo"><span class="header_title">UniCircle</span></a>
 
-                <!-- <div class="header_toggle">
+                <div class="header_toggle">
                 <i class='bx bxs-grid-alt'></i>
-              </div> -->
+              </div>
 
-                <form class="search-form" action="">
+              <!-- <form class="search-form" action="">
                     <div class="header_search">
                         <i class='bx bx-search' style='color:#ffffff'></i>
                         <input type="search" placeholder="Search" class="header_input">
                     </div>
                     <div id="search-results" style="display: none;"></div>
-                </form>
-
-
-                <!-- <form class="search-form" action="">
-                    <div class="header_search">
-                        <i class='bx bx-search' style='color:#ffffff'></i>
-                        <input type="search" placeholder="Search" class="header_input">
-                    </div>
                 </form> -->
+
+
+                <form class="search-form" action="search.php">
+    <div class="header_search">
+        <i class='bx bx-search' style='color:#ffffff' id="search-icon"></i>
+        <input type="search" placeholder="Search" class="header_input">
+    </div>
+</form>
 
 
             </div>
 
             <div class="header_container_right">
 
-                <div class="bookmark_box"><i class='bx bx-sticker' style='color:#ffffff'></i></div>
-                <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img src="../assets/image/red_dot.png" alt=""></span></div>
+                <!-- <div class="bookmark_box"><i class='bx bx-sticker' style='color:#ffffff'></i></div>
+                <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img src="../assets/image/red_dot.png" alt=""></span></div> -->
 
                 <div class="profile_img">
                     <a href="#"><img src="<?php echo $profile_pic ?>" alt="" id="my-profile-pic"></a>
@@ -91,7 +94,7 @@ $result2 = $stmt2->get_result();
             </div>
 
             <section>
-                <div class="bookmarks">
+                <!-- <div class="bookmarks">
                     <ul class="book_dropdown">
                         <li class="bm-search">
                             <form class="search-form2" action="">
@@ -113,9 +116,9 @@ $result2 = $stmt2->get_result();
                         </li>
                     </ul>
 
-                </div>
+                </div> -->
 
-                <div class="notification">
+                <!-- <div class="notification">
                     <ul class="noti_time">
 
                         <li class="add_noti"><i class='bx bx-bar-chart' style='color:#ffffff' data-feather="project-noti"></i>
@@ -130,7 +133,7 @@ $result2 = $stmt2->get_result();
 
                     </ul>
 
-                </div>
+                </div> -->
 
                 <div class="profile_dropdown">
                     <div class="pro-des">
@@ -146,17 +149,17 @@ $result2 = $stmt2->get_result();
 
                     <div class="follow">
                         <div class="follow-c">
-                            <span class="fol-count">09</span>
+                            <span class="fol-count"><?php echo $numCircle?></span>
                             <span class="fc">Circle_in</span>
                         </div>
 
-                        <div class="line-two"> </div>
+                        <!-- <div class="line-two"> </div>
 
                         <div class="fol-team">
                             <span class="team-count">10 </span>
                             <span class="tc">Joined_team</span>
 
-                        </div>
+                        </div> -->
                     </div>
 
                 </div>
@@ -206,12 +209,12 @@ $result2 = $stmt2->get_result();
                         <span class="nav__name">Discussions</span>
                     </a>
 
-                    <a href="./competitions.html" class="nav__link">
+                    <a href="./competitions.php" class="nav__link">
                         <i class='bx bx-trophy nav__icon'></i>
                         <span class="nav__name">Compititions</span>
                     </a>
 
-                    <a href="#" class="nav__link">
+                    <!-- <a href="#" class="nav__link">
                         <i class='bx bxs-graduation nav__icon'></i>
                         <span class="nav__name">Learn</span>
                     </a>
@@ -219,7 +222,7 @@ $result2 = $stmt2->get_result();
                     <a href="#" class="nav__link">
                         <i class='bx bxs-network-chart nav__icon'></i>
                         <span class="nav__name">Team</span>
-                    </a>
+                    </a> -->
 
 
                     <div class="nav__dropdown">
@@ -234,19 +237,19 @@ $result2 = $stmt2->get_result();
                                 <a href="../admin/project.php" class="nav__dropdown-item">My projects</a>
                                 <a href="../admin/projectcreate.html" class="nav__dropdown-item">Create</a>
                                 <a href="../admin/projecthome.php" class="nav__dropdown-item">Workspace</a>
-                                <a href="#" class="nav__dropdown-item">Projects wall</a>
+                                <!-- <a href="#" class="nav__dropdown-item">Projects wall</a> -->
                             </div>
                         </div>
                     </div>
 
 
-                    <a href="#" class="nav__link">
+                    <!-- <a href="#" class="nav__link">
                         <i class='bx bx-medal nav__icon'></i>
                         <span class="nav__name">Rank</span>
-                    </a>
+                    </a> -->
 
 
-                    <div class="nav__items">
+                    <!-- <div class="nav__items">
                         <h3 class="nav__subtitle">Menu</h3>
 
                         <div class="nav__dropdown">
@@ -277,7 +280,7 @@ $result2 = $stmt2->get_result();
                             <span class="nav__name">Study plan</span>
                         </a>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <a href="../assets/php/logout_process.php" class="nav__link nav__logout">
@@ -387,7 +390,7 @@ $result2 = $stmt2->get_result();
 
 
     </main>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
             $('.header_input').on('input', function() {
@@ -436,19 +439,16 @@ $result2 = $stmt2->get_result();
                 }
             });
         });
-    </script>
-
-    
-    <!-- <script>    
-         function submitForm() {
-        document.getElementById("searchForm").action = "./search.php";
-        document.getElementById("searchForm").submit();
-
-
-         }
     </script> -->
 
-    <style>
+    
+    <script>    
+         document.getElementById('search-icon').addEventListener('click', function() {
+        document.querySelector('.search-form').submit();
+    });
+    </script>
+
+    <!-- <style>
         .search-profile-image {
             border-radius: 50%;
             max-width: 100px;
@@ -456,7 +456,7 @@ $result2 = $stmt2->get_result();
             max-height: 100px;
             /* Adjust as needed */
         }
-    </style>
+    </style> -->
 
 
     <script src="../assets/js/circle.js"></script>

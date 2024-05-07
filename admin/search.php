@@ -43,29 +43,28 @@ include '../assets/php/db_conn.php';
             }
 
             $(document).ready(function() {
-                $("#search").keyup(function() {
-                    var input = $(this).val();
-                    // alert(input);
+    $("#search").keyup(function() {
+        var input = $(this).val();
 
-                    if(input != ""){
-                        $.ajax({
-                            url: "../assets/php/circle_search.php",
-                            method: "POST",
-                            data: { input: input },
-                            success: function(data) {
-                                $("#search-result").html(data);
-                                console.log(data);
-                            },
-                            error: function(xhr, status, error) {
-                                console.error(xhr.responseText);
-                            }
-                        });
-                    } else {
-                        $("#search-result").css("display", "none");
-                    }
-                });
+        if(input != ""){
+            $.ajax({
+                url: "../assets/php/circle_search.php",
+                method: "POST",
+                data: { input: input },
+                success: function(data) {
+                    $("#search-result").css("display", ""); // Add this line
+                    $("#search-result").html(data);
+                    console.log(data);
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
             });
-
+        } else {
+            $("#search-result").css("display", "none");
+        }
+    });
+});
         </script>
 
 

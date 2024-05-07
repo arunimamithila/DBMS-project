@@ -44,14 +44,14 @@ include "../assets/php/db_conn.php";
                       </div>
                     </div>
                     <div class="form-group">
-                      <div class="checkbox">
+                      <!-- <div class="checkbox">
                         <input id="checkbox1" type="checkbox">
                         <label for="checkbox1">Remember password</label>
   
                         <div class="forgot-pass">
                           <a class="link" href="forget-password.html">Forgot password?</a>
                         </div>
-                      </div>
+                      </div> -->
                       
                     </div>
                     <div class="form-group">
