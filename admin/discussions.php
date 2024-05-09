@@ -7,10 +7,11 @@ $user_Email = $_SESSION['user_Email'];
 $sql = "SELECT * FROM circle_table";
 $result = $conn->query($sql);
 
-$stmt = $conn->prepare('SELECT profile_pic_link FROM user_table WHERE username = ?');
-$stmt->bind_param('s', $username);
-$stmt->execute();
-$profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
+$sql = "SELECT profile_pic_link, (SELECT COUNT(*) FROM circle_table WHERE username = '$username') as numCircle FROM user_table WHERE username = '$username'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$profilePic = $row['profile_pic_link'];
+$numCircle = $row['numCircle'];
 
 
 ?>
@@ -59,17 +60,17 @@ $profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
 
       <div class="header_container_right">
 
-        <div class="bookmark_box"><i class='bx bx-sticker' style='color:#ffffff'></i></div>
-        <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img src="../assets/image/red_dot.png" alt=""></span></div>
+        <!-- <div class="bookmark_box"><i class='bx bx-sticker' style='color:#ffffff'></i></div>
+        <div class="notification_icon"><i class='bx bx-bell' style='color:#ffffff'></i><span class="dot"><img src="../assets/image/red_dot.png" alt=""></span></div> -->
 
         <div class="profile_img">
-          <a href="#"><img src="<?php echo $profile_pic?>" alt="" id="my-profile-pic"></a>
+          <a href="#"><img src="<?php echo $profilePic ?>" alt="" id="my-profile-pic"></a>
         </div>
 
       </div>
 
       <section>
-        <div class="bookmarks">
+        <!-- <div class="bookmarks">
           <ul class="book_dropdown">
             <li class="bm-search">
               <form class="search-form2" action="">
@@ -108,7 +109,7 @@ $profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
 
           </ul>
 
-        </div>
+        </div> -->
 
         <div class="profile_dropdown">
           <div class="pro-des">
@@ -124,17 +125,17 @@ $profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
 
           <div class="follow">
             <div class="follow-c">
-              <span class="fol-count">09</span>
+              <span class="fol-count"><?php echo $numCircle?></span>
               <span class="fc">Circle_in</span>
             </div>
 
-            <div class="line-two"> </div>
+            <!-- <div class="line-two"> </div>
 
             <div class="fol-team">
               <span class="team-count">10 </span>
               <span class="tc">Joined_team</span>
 
-            </div>
+            </div> -->
           </div>
 
         </div>
@@ -184,12 +185,12 @@ $profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
             <span class="nav__name">Discussions</span>
           </a>
 
-          <a href="./competitions.html" class="nav__link">
+          <a href="./competitions.php" class="nav__link">
             <i class='bx bx-trophy nav__icon'></i>
             <span class="nav__name">Compititions</span>
           </a>
 
-          <a href="#" class="nav__link">
+          <!-- <a href="#" class="nav__link">
             <i class='bx bxs-graduation nav__icon'></i>
             <span class="nav__name">Learn</span>
           </a>
@@ -197,7 +198,7 @@ $profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
           <a href="#" class="nav__link">
             <i class='bx bxs-network-chart nav__icon'></i>
             <span class="nav__name">Team</span>
-          </a>
+          </a> -->
 
 
           <div class="nav__dropdown">
@@ -212,19 +213,19 @@ $profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
                 <a href="../admin/project.php" class="nav__dropdown-item">My projects</a>
                 <a href="../admin/projectcreate.html" class="nav__dropdown-item">Create</a>
                 <a href="../admin/projecthome.php" class="nav__dropdown-item">Workspace</a>
-                <a href="#" class="nav__dropdown-item">Projects wall</a>
+                <!-- <a href="#" class="nav__dropdown-item">Projects wall</a> -->
               </div>
             </div>
           </div>
 
 
-          <a href="#" class="nav__link">
+          <!-- <a href="#" class="nav__link">
             <i class='bx bx-medal nav__icon'></i>
             <span class="nav__name">Rank</span>
-          </a>
+          </a> -->
 
 
-          <div class="nav__items">
+          <!-- <div class="nav__items">
             <h3 class="nav__subtitle">Menu</h3>
 
             <div class="nav__dropdown">
@@ -254,7 +255,7 @@ $profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
               <i class='bx bx-book-reader nav__icon'></i>
               <span class="nav__name">Study plan</span>
             </a>
-          </div>
+          </div> -->
         </div>
       </div>
 
