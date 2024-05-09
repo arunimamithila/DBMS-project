@@ -1,4 +1,5 @@
 <?php
+require_once '../assets/php/functions.php';
 include "../assets/php/db_conn.php";
 session_start();
 $username = $_SESSION['username'];
@@ -11,6 +12,7 @@ $profile_pic = $stmt->get_result()->fetch_assoc()['profile_pic_link'];
 $title = $_GET['title'];
 $description = $_GET['description'];
 $topic_id = $_GET['topic_id'];
+
 
 
 ?>
@@ -337,6 +339,8 @@ $topic_id = $_GET['topic_id'];
             </div>
           </div>
         </form>
+
+    
       </div>
     </div>
 
@@ -350,6 +354,9 @@ $topic_id = $_GET['topic_id'];
 
       // Get the result of the SQL statement
       $result = $stmt->get_result();
+
+        
+    
 
       // Loop through each row in the result
       while ($row = $result->fetch_assoc()) {
@@ -376,13 +383,50 @@ $topic_id = $_GET['topic_id'];
         echo '</div>';
         echo '<div class="actions">';
         echo '<div class="reply">';
-        echo '<a href="#" class="reply-link"><i class="bx bxs-share"></i> Reply</a>';
+        echo '<a href="#" class="reply-link"  onclick="toggleReplyForm(' . $row['id'] . ')><i class="bx bxs-share"></i> Reply</a>';
         echo '</div>';
         echo '<a href="#" class="reaction" data-id="' . $row['id'] . '"><i class="bx bx-bulb"></i> Reaction</a>';
         echo '</div>';
         echo '</div>';
+
+                // Output reply form for main comment
+            echo '<div id="reply-form-' . $row['id'] . '" class="reply-form" style="display: none;">';
+            echo '<form action="../assets/php/postComment.php" method="post">';
+            echo '<div class="create-comments">';
+            echo '<div class="profile-img">';
+            echo '<img class="pro-img rounded-circle" src="' . $row['profile_pic_link'] . '" alt="">';
+            echo '</div>';
+            echo '<div class="com-section">';
+            echo '<textarea class="description" placeholder="Comment Here" id="commentDesc" style="height: 70px" name="content"></textarea>';
+            echo '<input type="hidden" name="topic_id" value="' . $topic_id . '">';
+            echo '<input type="hidden" name="title" value="' . $title . '">';
+            echo '<input type="hidden" name="description" value="' . $description . '">';
+            echo '<input type="hidden" name="parent_comment_id" value="' . $row['id'] . '">';
+            echo '<div class="button">';
+            echo '<input class="btn btn-primary button" type="submit" value="Post Comment">';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+            echo '</form>';
+            echo '</div>'; 
         echo '</div>';
         
+          // Output nested replies if available
+        if (!empty($nestedReplies)) {
+          echo '<div class="nested-replies">';
+          foreach ($nestedReplies as $nestedReply) {
+              // Output nested reply HTML here...
+              echo '<div class="nested-reply">';
+              echo 'Nested Reply: ' . $nestedReply['reply']; // Example output, replace with your HTML structure
+              echo '</div>';
+          }
+          echo '</div>';
+      }
+
+      echo '</div>'; // Close posted-comments div
+    
+       
+      
       }
       ?>
     </div>
@@ -396,46 +440,32 @@ $topic_id = $_GET['topic_id'];
   </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
-    $(document).ready(function() {
-      $('.reaction').click(function(e) {
+   $(document).ready(function() {
+    $('.reaction').click(function(e) {
         e.preventDefault();
         var commentId = $(this).data('id');
         $.ajax({
-          url: '../assets/php/increase_reaction.php',
-          type: 'post',
-          data: {
-            id: commentId
-          },
-          success: function(response) {
-            location.reload();
-            
-          }
-        });
-      });
-    });
-  </script>
-<script>
-    // Get all reply links
-    var replyLinks = document.querySelectorAll('.reply-link');
-
-    // Loop through each link
-    replyLinks.forEach(function(link) {
-        // Add a click event listener
-        link.addEventListener('click', function(event) {
-            // Prevent the default action
-            event.preventDefault();
-
-            // Get the reply form related to this link
-            var replyForm = link.parentElement.querySelector('.reply-form');
-
-            // Toggle the display of the reply form
-            if (replyForm.style.display === 'none') {
-                replyForm.style.display = 'block';
-            } else {
-                replyForm.style.display = 'none';
+            url: '../assets/php/increase_reaction.php',
+            type: 'post',
+            data: {
+                id: commentId
+            },
+            success: function(response) {
+                location.reload();
             }
         });
     });
+
+    function toggleReplyForm(commentId) {
+        var replyForm = document.getElementById('reply-form-' + commentId);
+        if (replyForm.style.display === 'none') {
+            replyForm.style.display = 'block';
+        } else {
+            replyForm.style.display = 'none';
+        }
+    }
+});
+
 </script>
 
 
@@ -443,3 +473,4 @@ $topic_id = $_GET['topic_id'];
 </body>
 
 </html>
+

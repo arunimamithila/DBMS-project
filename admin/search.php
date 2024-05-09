@@ -24,7 +24,7 @@ include '../assets/php/db_conn.php';
 <body>
 
       
-        <form method="post" action="" id="searchForm">
+        <form method="post" action="../assets/php/circle_search.php" id="searchForm">
             <div class="header_search">
                 <i class='bx bx-arrow-back' onclick="goBack()"></i>
                 <input type="search" placeholder="Search" class="header_input" id="search">

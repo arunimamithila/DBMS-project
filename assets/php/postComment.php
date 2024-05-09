@@ -9,6 +9,7 @@ $content = $_POST['content'];
 $topic_id = $_POST['topic_id'];
 $title = $_POST['title'];
 $description = $_POST['description'];
+$id = $_POST['id'];
 
 include 'db_conn.php'; // Include your database connection file
 
